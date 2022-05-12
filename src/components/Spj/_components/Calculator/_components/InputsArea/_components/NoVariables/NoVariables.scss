@@ -1,0 +1,14 @@
+.info {
+  padding: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+
+  &__text {
+    background-color: #ffdfdf;
+    border: 1px solid #c51515;
+    padding: 20px;
+    border-radius: 3px;
+    color: #c51515;
+  }
+}

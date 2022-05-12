@@ -1,0 +1,29 @@
+.computation-step {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  padding: 10px 0;
+
+  &:first-child {
+    border-bottom: 1px solid #efefef;
+  }
+
+  &:hover {
+    background-color: #dfe9f0;
+  }
+
+  &__printout {
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__state {
+    //background-color: pink;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.variable {
+  padding-left: 20px;
+}

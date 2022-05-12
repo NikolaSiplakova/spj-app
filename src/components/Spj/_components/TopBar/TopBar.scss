@@ -1,0 +1,32 @@
+@import "/src/styles/colors.scss";
+
+.top-bar {
+  height: 100px;
+  background-color: $light-blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+
+  &__title {
+    font-size: 18px;
+    color: $aqua-blue;
+  }
+}
+
+.second-line {
+  background-color: $aqua-blue;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  color: $light-grey;
+  height: 60px;
+  padding: 0 40px;
+
+  &__link {
+    color: white;
+    width: 120px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

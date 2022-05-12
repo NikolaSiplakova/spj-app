@@ -1,0 +1,29 @@
+.input {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+
+  &__name {
+    color: #07486f;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__text {
+    height: 24px;
+    border: none;
+    display: block;
+  }
+}
+
+.error-message {
+  margin-top: 6px;
+  background-color: #ffdfdf;
+  border: 1px solid #c51515;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #c51515;
+  font-size: 12px;
+  display: block;
+}

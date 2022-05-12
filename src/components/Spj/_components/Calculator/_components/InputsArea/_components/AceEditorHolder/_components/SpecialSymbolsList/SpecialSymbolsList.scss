@@ -1,0 +1,61 @@
+@import "/src/styles/colors.scss";
+
+.library-holder {
+  display: flex;
+  margin-left: 20px;
+}
+
+.symbols-library {
+  cursor: pointer;
+  display: flex;
+  background-color: $white;
+  width: fit-content;
+  color: $aqua-blue;
+}
+
+.symbol {
+  height: 25px;
+  width: 25px;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  border-right: 1px solid $light-grey;
+
+  &--conj {
+    font-weight: 900;
+  }
+
+  &--div {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  &--rel {
+    font-size: 12px;
+  }
+
+  &--mul {
+    font-size: 16px;
+  }
+
+  &:hover {
+    box-shadow: inset 0px 0px 3px $aqua-blue-shadow;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}
+
+.toggle-library {
+  align-items: center;
+  background-color: $aqua-blue;
+  color: $white;
+  cursor: pointer;
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  height: 25px;
+  justify-content: center;
+  padding: 0 15px;
+}
