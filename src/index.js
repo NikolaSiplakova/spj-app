@@ -14,9 +14,9 @@ root.render(
       <App />
       {
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/grammar" element={<Grammar />} />
-          <Route path="/visualisation" element={<App />} />
+          <Route path="/spj-app/" element={<App />} />
+          <Route path="/spj-app/grammar" element={<Grammar />} />
+          <Route path="/spj-app/visualisation" element={<App />} />
         </Routes>
       }
     </BrowserRouter>
