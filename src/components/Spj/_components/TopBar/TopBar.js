@@ -12,10 +12,10 @@ const TopBar = () => {
         <div className="top-bar__title">Sémantika programovacích jazykov</div>
       </div>
       <div className="second-line">
-        <Link className="second-line__link" to="/visualisation">
+        <Link className="second-line__link" to="/spj-app/visualisation">
           Vizualizácia
         </Link>
-        <Link className="second-line__link" to="/grammar">
+        <Link className="second-line__link" to="/spj-app/grammar">
           Gramatika
         </Link>
       </div>

@@ -12,13 +12,11 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <App />
-      {
-        <Routes>
-          <Route path="/spj-app/" element={<App />} />
-          <Route path="/spj-app/grammar" element={<Grammar />} />
-          <Route path="/spj-app/visualisation" element={<App />} />
-        </Routes>
-      }
+      <Routes>
+        <Route path="/spj-app/" element={<App />} />
+        <Route path="/spj-app/grammar" element={<Grammar />} />
+        <Route path="/spj-app/visualisation" element={<App />} />
+      </Routes>
     </BrowserRouter>
   </React.StrictMode>
 )
