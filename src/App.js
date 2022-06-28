@@ -1,15 +1,12 @@
-import './App.scss';
-import Spj from './components/Spj/Spj';
+import "./App.scss"
+import Spj from "./components/Spj/Spj"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Spj />
-      </header>
+      <Spj />
     </div>
-  );
+  )
 }
 
-export default App;
-
+export default App

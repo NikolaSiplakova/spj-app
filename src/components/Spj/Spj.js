@@ -1,21 +1,32 @@
 import "./Spj.scss"
 import React, { useState } from "react"
+import SpjErrorListener from "../../antlr_files/errors/SpjErrorListener"
 
 import {
   getMyCalculator,
   getPlainCalculator,
-  getSyntaxTree,
+  getParser,
 } from "../../helpers/init"
 
-import TopBar from "./_components/TopBar/TopBar"
-
+import ErrorHolder from "./_components/ErrorHolder/ErrorHolder"
 import Calculator from "./_components/Calculator/Calculator"
+import TopBar from "./_components/TopBar/TopBar"
 
 const Spj = () => {
   const [janeCode, setJaneCode] = useState("")
   const [statements, setStatements] = useState([])
 
-  const tree = getSyntaxTree(janeCode)
+  //parser
+  const parser = getParser(janeCode)
+  parser.removeErrorListeners()
+
+  const errorListener = new SpjErrorListener()
+  parser.addErrorListener(errorListener)
+
+  const tree = parser.prog()
+
+  console.log("Spj errors")
+  console.log(errorListener.getErrors())
 
   //get variables in sentence
   const plainCalculator = getPlainCalculator()
@@ -44,6 +55,7 @@ const Spj = () => {
         statements={statements}
         programVariables={programVariables}
       />
+      {janeCode !== "" && <ErrorHolder errors={errorListener.errors} />}
     </div>
   )
 }

@@ -1,9 +1,6 @@
-import React, { useState, useRef } from "react"
+import React, { useState } from "react"
 import { SPECIAL_SYMBOLS } from "../../../../../../../../../../constants/specialSymbols"
-import { RELATIONAL_OPERATIONS } from "../../../../../../../../../../constants/relationalOperations"
 import "./SpecialSymbolsList.scss"
-import AceEditor from "react-ace"
-import ace from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import "ace-builds/src-noconflict/mode-javascript"
 

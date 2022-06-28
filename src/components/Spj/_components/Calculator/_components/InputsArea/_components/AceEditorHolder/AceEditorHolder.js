@@ -1,20 +1,16 @@
-import React, { useState, useRef } from "react"
+import React, { useEffect, useRef } from "react"
 import "./AceEditorHolder.scss"
 import AceEditor from "react-ace"
-import ace from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import "ace-builds/src-noconflict/mode-javascript"
 import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsList"
 import FileImporter from "./_components/FileImporter/FileImporter"
-
+import SyntaxHighlighter from "./SyntaxHighlighter"
+import "brace/theme/github"
 const AceEditorHolder = (props) => {
-  const {
-    janeCode,
-    setJaneCode,
-    startVisualization,
-    areVariablesSet,
-    setAreVariablesSet,
-  } = props
+  const { janeCode, setJaneCode, startVisualization, areVariablesSet } = props
+
+  const customMode = new SyntaxHighlighter()
 
   const janeEditor = useRef(null)
 
@@ -44,7 +40,7 @@ const AceEditorHolder = (props) => {
             width: "100%",
           }}
           placeholder="Vložte program v jazyku Jane"
-          mode="javascript"
+          mode={customMode}
           theme="tomorrow"
           name="jane-editor"
           onChange={(currentCode) => setJaneCode(currentCode)}

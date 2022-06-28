@@ -103,4 +103,7 @@ export const inputTexts = [
 
   /******************** REPEAT ********************/
   "repeat x:=x+2; until x>8",
+
+  //nefunguje
+  "if x>y then x:=x else y:=z; while (x>2) do x:=x+1; y:=z+4;",
 ]
