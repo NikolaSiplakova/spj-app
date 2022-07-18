@@ -5,4 +5,5 @@ export const STATEMENT_TYPES = {
   WHILE: "while-statement",
   REPEAT: "repeat-statement",
   FOR: "for-statement",
+  DO: "do-statement",
 }

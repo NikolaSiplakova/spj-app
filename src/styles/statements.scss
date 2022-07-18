@@ -1,0 +1,36 @@
+@import "/src/styles/colors.scss";
+
+.statement {
+  display: inline;
+  padding: 3px;
+}
+
+.while-statement {
+  &:hover {
+    background-color: $green-pastel;
+  }
+}
+
+.skip-statement {
+  &:hover {
+    background-color: $orange-pastel;
+  }
+}
+
+.assign-statement {
+  &:hover {
+    background-color: $blue-pastel;
+  }
+}
+
+.do-statement {
+  &:hover {
+    background-color: $yellow-pastel;
+  }
+}
+
+.if-statement {
+  &:hover {
+    background-color: $red-pastel;
+  }
+}

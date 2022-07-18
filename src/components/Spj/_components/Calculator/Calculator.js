@@ -27,7 +27,7 @@ const Calculator = (props) => {
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
       />
-      <ComputationsTable statements={statements} />
+      <ComputationsTable statementsRows={statements} />
     </div>
   )
 }
