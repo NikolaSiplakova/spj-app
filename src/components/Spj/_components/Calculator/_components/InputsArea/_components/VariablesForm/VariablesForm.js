@@ -1,15 +1,11 @@
 import "./VariablesForm.scss"
-import _ from "lodash"
 import { Formik } from "formik"
 import VariableInput from "./_components/VariableInput/VariableInput"
-import NoVariables from "./_components/VariableInput/VariableInput"
-import { useState } from "react"
 
 const VariableForm = (props) => {
   const {
     areVariablesSet,
     setAreVariablesSet,
-    inputValues,
     setInputValues,
     programVariables,
   } = props

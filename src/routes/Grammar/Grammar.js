@@ -1,5 +1,5 @@
 import "./Grammar.scss"
-import React, { useState } from "react"
+import React from "react"
 import assign from "../../pics/assign.png" // Tell Webpack this JS file uses this image
 import ifPic from "../../pics/if.png"
 import repeat from "../../pics/repeat.png" // Tell Webpack this JS file uses this image

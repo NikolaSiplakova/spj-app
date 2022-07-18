@@ -1,5 +1,5 @@
 import "./RuleHolder.scss"
-import React, { useState } from "react"
+import React from "react"
 
 const RuleHolder = (props) => {
   const { pic, title } = props
