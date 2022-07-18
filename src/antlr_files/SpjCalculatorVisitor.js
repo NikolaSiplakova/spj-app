@@ -55,24 +55,25 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       .map((child) => child.getText())
       .join(" \\ ")
 
+    console.log(printout)
+
     this.visitChildren(ctx)[0].map((child) => this.statements.push(child))
 
     const mainStatements = [...this.statements]
+
+    const mainStatementsPrintout = mainStatements.map((printout) => {
+      return {
+        oneStatementPrintout: printout.janeStatements,
+        statementType: printout.type,
+      }
+    })
+
+    debugger
     this.nodes = this.nodes.map((statementStep, index) => {
       if (index === 0) {
         return {
           ...statementStep,
-          printout: [
-            {
-              oneStatementPrintout: [
-                {
-                  text: printout,
-                  type: null,
-                },
-              ],
-              statementType: mainStatements[0].type,
-            },
-          ],
+          printout: mainStatementsPrintout,
         }
       }
 
@@ -194,7 +195,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
           type: STATEMENT_TYPES.SKIP,
         },
       ]
-      debugger
+
       const getDoStatements = () => {
         if (ctx.children[3].children[0].ruleIndex === SpjParser.RULE_seq) {
           const doStatements = this.visit(ctx.children[3])
