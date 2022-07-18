@@ -1,6 +1,8 @@
+@import "/src/styles/statements.scss";
+
 .computation-step {
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: 1fr 190px;
   padding: 10px 0;
 
   &:first-child {
@@ -11,14 +13,7 @@
     background-color: #dfe9f0;
   }
 
-  &__printout {
-    padding: 0 15px;
-    display: flex;
-    align-items: center;
-  }
-
   &__state {
-    //background-color: pink;
     display: grid;
     grid-template-columns: 1fr 2fr;
   }

@@ -82,6 +82,7 @@ const VariableForm = (props) => {
                   handleBlur={handleBlur}
                   handleChange={handleChange}
                   setAreVariablesSet={setAreVariablesSet}
+                  key={index}
                 />
               ))}
             </div>

@@ -13,7 +13,9 @@ import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "./_components/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState("")
+  const [janeCode, setJaneCode] = useState(
+    "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);"
+  )
   const [statements, setStatements] = useState([])
 
   //parser
@@ -24,9 +26,6 @@ const Spj = () => {
   parser.addErrorListener(errorListener)
 
   const tree = parser.prog()
-
-  console.log("Spj errors")
-  console.log(errorListener.getErrors())
 
   //get variables in sentence
   const plainCalculator = getPlainCalculator()
@@ -44,7 +43,7 @@ const Spj = () => {
   }
 
   return (
-    <div className="holder">
+    <div>
       <TopBar />
       <Calculator
         inputValues={inputValues}

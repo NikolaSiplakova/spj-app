@@ -1,14 +1,7 @@
 import "./VariableInput.scss"
 
 const VariableInput = (props) => {
-  const {
-    areVariablesSet,
-    errors,
-    index,
-    variable,
-    values,
-    setAreVariablesSet,
-  } = props
+  const { errors, index, variable, values } = props
 
   const inputName = `variable${index}`
 

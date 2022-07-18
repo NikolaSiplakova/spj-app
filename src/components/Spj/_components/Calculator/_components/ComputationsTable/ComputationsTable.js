@@ -1,13 +1,11 @@
 import "./ComputationsTable.scss"
 import ComputationRow from "./_components/ComputationRow/ComputationRow"
 
-const ComputationsTable = (props) => {
-  const { statements } = props
-
+const ComputationsTable = ({ statementsRows }) => {
   return (
     <div className="computations">
-      {statements.map((statement, index) => (
-        <ComputationRow key={index} statement={statement} />
+      {statementsRows.map((statementsRow, index) => (
+        <ComputationRow key={index} statementsRow={statementsRow} />
       ))}
     </div>
   )
