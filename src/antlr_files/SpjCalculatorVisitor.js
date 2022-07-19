@@ -50,13 +50,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
   // PROG ;
   visitProg(ctx) {
-    //inserted code in Jane
-    const printout = ctx.children[0].children
-      .map((child) => child.getText())
-      .join(" \\ ")
-
-    console.log(printout)
-
     this.visitChildren(ctx)[0].map((child) => this.statements.push(child))
 
     const mainStatements = [...this.statements]
@@ -68,7 +61,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       }
     })
 
-    debugger
     this.nodes = this.nodes.map((statementStep, index) => {
       if (index === 0) {
         return {
