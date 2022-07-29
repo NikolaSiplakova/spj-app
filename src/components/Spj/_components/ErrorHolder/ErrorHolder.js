@@ -4,8 +4,8 @@ import "./ErrorHolder.scss"
 const ErrorHolder = ({ errors }) => {
   return (
     <div>
-      {errors.map((error) => (
-        <div className="error-msg">
+      {errors.map((error, i) => (
+        <div className="error-msg" key={i}>
           <div>Riadok: {error.line}</div>
           <div>Stlpec: {error.col}</div>
           <div className="custom">{error.customMessage}</div>

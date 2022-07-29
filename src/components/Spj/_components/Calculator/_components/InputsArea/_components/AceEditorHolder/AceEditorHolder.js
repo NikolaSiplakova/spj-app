@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef, useMemo } from "react"
+import _ from "lodash"
+
 import "./AceEditorHolder.scss"
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
@@ -20,6 +22,12 @@ const AceEditorHolder = (props) => {
 
     editor.session.insert(cursorPosition, symbol)
   }
+
+  const setCode = (code) => {
+    setJaneCode(code)
+  }
+
+  const debouncedSetCode = useMemo(() => _.debounce(setCode, 3000), [setCode])
 
   const getButtonClassName = () => {
     if (areVariablesSet === false) {
@@ -43,7 +51,7 @@ const AceEditorHolder = (props) => {
           mode={customMode}
           theme="tomorrow"
           name="jane-editor"
-          onChange={(currentCode) => setJaneCode(currentCode)}
+          onChange={debouncedSetCode}
           fontSize={14}
           showPrintMargin={false}
           showGutter={true}
@@ -73,4 +81,4 @@ const AceEditorHolder = (props) => {
   )
 }
 
-export default AceEditorHolder
+export default React.memo(AceEditorHolder)
