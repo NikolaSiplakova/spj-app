@@ -8,6 +8,7 @@ import SyntaxHighlighter from "./SyntaxHighlighter"
 import "brace/theme/github"
 
 import classes from "./AceEditorHolder.module.scss"
+import Header from "../../../../../../../../common/Header/Header"
 
 const AceEditorHolder = (props) => {
   const { janeCode, setJaneCode, startVisualization, areVariablesSet } = props
@@ -35,6 +36,7 @@ const AceEditorHolder = (props) => {
       <FileImporter setJaneCode={setJaneCode} />
 
       <div className={classes["editor-holder"]}>
+        <Header title={"Program v jazyku Jane"} />
         <AceEditor
           ref={janeEditor}
           style={{

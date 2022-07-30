@@ -1,0 +1,17 @@
+@import "/src/styles/colors.scss";
+
+.header-holder {
+  align-items: center;
+  background-color: $greyish-blue;
+  border-radius: 2px 2px 0 0;
+  display: flex;
+  height: 30px;
+  padding-left: 45px;
+}
+
+.header-title {
+  color: $white;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
