@@ -17,7 +17,7 @@ const Button = (props) => {
       onClick={onClick}
     >
       {icon}
-      {isExtended === true && <div>{label}</div>}
+      <div className={classes["button__label"]}>{label}</div>
     </button>
   )
 }

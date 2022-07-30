@@ -30,7 +30,27 @@
 
   &--collapsed {
     border-radius: 50%;
+    max-width: 40px;
     padding: 0 5px;
+    transition: max-width 1s;
     width: 40px;
+
+    .button__label {
+      display: none;
+    }
+
+    &:hover {
+      border-radius: 100px;
+      max-width: 200px;
+      padding: 0 10px;
+      transition: max-width 1s;
+      width: auto;
+
+      .button__label {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
   }
 }
