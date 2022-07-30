@@ -1,4 +1,7 @@
-import React, { useRef } from "react"
+import React, { useRef, useMemo } from "react"
+import _ from "lodash"
+
+import "./AceEditorHolder.scss"
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import "ace-builds/src-noconflict/mode-javascript"
@@ -39,6 +42,11 @@ const AceEditorHolder = (props) => {
       />
     </div>
   )
+  const setCode = (code) => {
+    setJaneCode(code)
+  }
+
+  const debouncedSetCode = useMemo(() => _.debounce(setCode, 3000), [setCode])
 
   return (
     <div>
@@ -59,7 +67,7 @@ const AceEditorHolder = (props) => {
           mode={customHighlightMode}
           theme="tomorrow"
           name="jane-editor"
-          onChange={(currentCode) => setJaneCode(currentCode)}
+          onChange={debouncedSetCode}
           fontSize={14}
           showPrintMargin={false}
           showGutter={true}
@@ -82,4 +90,4 @@ const AceEditorHolder = (props) => {
   )
 }
 
-export default AceEditorHolder
+export default React.memo(AceEditorHolder)

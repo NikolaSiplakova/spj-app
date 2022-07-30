@@ -1,14 +1,11 @@
+import { React, memo } from "react"
 import "./VariablesForm.scss"
 import { Formik } from "formik"
 import VariableInput from "./_components/VariableInput/VariableInput"
+import AutoSave from "./_components/AutoSave/AutoSave"
 
 const VariableForm = (props) => {
-  const {
-    areVariablesSet,
-    setAreVariablesSet,
-    setInputValues,
-    programVariables,
-  } = props
+  const { setInputValues, programVariables } = props
 
   const onSubmitFunc = (values) => {
     setInputValues(
@@ -24,7 +21,6 @@ const VariableForm = (props) => {
         }
       })
     )
-    setAreVariablesSet(true)
   }
 
   const validate = (values) => {
@@ -39,13 +35,6 @@ const VariableForm = (props) => {
     return errors
   }
 
-  const getButtonClassName = (errors) => {
-    if (areVariablesSet === true) {
-      return "btn btn--disabled"
-    }
-    return "btn"
-  }
-
   return (
     <Formik
       initialValues={{}}
@@ -58,39 +47,25 @@ const VariableForm = (props) => {
         errors,
         touched,
         handleChange,
-        handleBlur,
         handleSubmit,
         isSubmitting,
       }) => {
+        console.log("values")
+        console.log(values)
         return (
-          <form
-            onSubmit={handleSubmit}
-            onChange={() => setAreVariablesSet(false)}
-          >
+          <form onSubmit={handleSubmit} onChange={handleChange}>
             <div className="scrollable-holder">
               {programVariables.map((variable, index) => (
                 <VariableInput
-                  areVariablesSet={areVariablesSet}
                   errors={errors}
                   index={index}
                   variable={variable}
                   values={values}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  setAreVariablesSet={setAreVariablesSet}
                   key={index}
                 />
               ))}
             </div>
-            <div className="btn-holder">
-              <button
-                className={getButtonClassName(errors)}
-                type="submit"
-                disabled={areVariablesSet === true}
-              >
-                Potvrdiť
-              </button>
-            </div>
+            <AutoSave debounceMs={1000} />
           </form>
         )
       }}
@@ -98,4 +73,4 @@ const VariableForm = (props) => {
   )
 }
 
-export default VariableForm
+export default memo(VariableForm)
