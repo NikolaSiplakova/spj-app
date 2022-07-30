@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react"
-import classes from "./AceEditorHolder.module.scss"
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import "ace-builds/src-noconflict/mode-javascript"
@@ -7,8 +6,8 @@ import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsL
 import FileImporter from "./_components/FileImporter/FileImporter"
 import SyntaxHighlighter from "./SyntaxHighlighter"
 import "brace/theme/github"
-import Button from "../../../../../../../../common/Button/Button"
-import { ReactComponent as SvgIcon } from "../../../../../../../../styles/icons/Group.svg"
+
+import classes from "./AceEditorHolder.module.scss"
 
 const AceEditorHolder = (props) => {
   const { janeCode, setJaneCode, startVisualization, areVariablesSet } = props
@@ -35,7 +34,7 @@ const AceEditorHolder = (props) => {
     <div>
       <FileImporter setJaneCode={setJaneCode} />
 
-      <div className="editor-holder">
+      <div className={classes["editor-holder"]}>
         <AceEditor
           ref={janeEditor}
           style={{
@@ -72,28 +71,6 @@ const AceEditorHolder = (props) => {
           Spustiť vizualizáciu
         </button>
       </div>
-      <Button
-        label={"Spustiť vizualizáciu"}
-        primary
-        icon={<SvgIcon className={classes["icon"]} />}
-      />
-      <Button
-        label={"Spustiť vizualizáciu"}
-        secondary
-        icon={<SvgIcon className={classes["icon"]} />}
-      />
-      <Button
-        label={"Spustiť vizualizáciu"}
-        primary
-        isExtended={false}
-        icon={<SvgIcon className={classes["icon"]} />}
-      />
-      <Button
-        label={"Spustiť vizualizáciu"}
-        secondary
-        isExtended={false}
-        icon={<SvgIcon className={classes["icon"]} />}
-      />
     </div>
   )
 }
