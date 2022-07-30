@@ -75,24 +75,24 @@ const AceEditorHolder = (props) => {
       <Button
         label={"Spustiť vizualizáciu"}
         primary
-        iconName={<SvgIcon className={classes["icon"]} />}
+        icon={<SvgIcon className={classes["icon"]} />}
       />
       <Button
         label={"Spustiť vizualizáciu"}
         secondary
-        iconName={<SvgIcon className={classes["icon"]} />}
+        icon={<SvgIcon className={classes["icon"]} />}
       />
       <Button
         label={"Spustiť vizualizáciu"}
         primary
         isExtended={false}
-        iconName={<SvgIcon className={classes["icon"]} />}
+        icon={<SvgIcon className={classes["icon"]} />}
       />
       <Button
         label={"Spustiť vizualizáciu"}
         secondary
         isExtended={false}
-        iconName={<SvgIcon className={classes["icon"]} />}
+        icon={<SvgIcon className={classes["icon"]} />}
       />
     </div>
   )
