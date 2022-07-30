@@ -1,0 +1,45 @@
+@import "/src/styles/colors.scss";
+
+.symbols {
+  background-color: $white;
+  border-top: 1px solid $light-grey;
+  color: $greyish-blue;
+  cursor: pointer;
+  display: flex;
+  height: 26px;
+  margin-left: 42px;
+}
+
+.symbol {
+  align-items: center;
+  border-right: 1px solid $light-grey;
+  display: flex;
+  flex-basis: 100%;
+  font-size: 14px;
+  justify-content: center;
+
+  &--conj {
+    font-weight: 900;
+  }
+
+  &--div {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  &--rel {
+    font-size: 12px;
+  }
+
+  &--mul {
+    font-size: 16px;
+  }
+
+  &:hover {
+    box-shadow: inset 0px 0px 3px $greyish-blue-shadow;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+}

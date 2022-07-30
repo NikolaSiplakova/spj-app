@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef } from "react"
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import "ace-builds/src-noconflict/mode-javascript"
@@ -9,42 +9,54 @@ import "brace/theme/github"
 
 import classes from "./AceEditorHolder.module.scss"
 import Header from "../../../../../../../../common/Header/Header"
+import { ReactComponent as UploadIcon } from "../../../../../../../../styles/icons/upload.svg"
+import { ReactComponent as RefreshIcon } from "../../../../../../../../styles/icons/refresh.svg"
 
 const AceEditorHolder = (props) => {
-  const { janeCode, setJaneCode, startVisualization, areVariablesSet } = props
+  const { janeCode, setJaneCode, startVisualization } = props
 
-  const customMode = new SyntaxHighlighter()
+  const customHighlightMode = new SyntaxHighlighter()
 
   const janeEditor = useRef(null)
 
-  const setText = (symbol) => {
+  const setSpecialSymbol = (symbol) => {
     const editor = janeEditor.current.editor
     const cursorPosition = editor.getCursorPosition()
 
     editor.session.insert(cursorPosition, symbol)
   }
 
-  const getButtonClassName = () => {
-    if (areVariablesSet === false) {
-      return "btn btn--disabled"
-    }
-    return "btn"
-  }
+  const renderHeaderActions = () => (
+    <div className={classes["header-actions"]}>
+      <UploadIcon
+        className={classes["header-actions__action"]}
+        title={"Nahrať program"}
+      />
+      <RefreshIcon
+        className={classes["header-actions__action"]}
+        onClick={() => setJaneCode("")}
+        title={"Vymazať program"}
+      />
+    </div>
+  )
 
   return (
     <div>
       <FileImporter setJaneCode={setJaneCode} />
 
       <div className={classes["editor-holder"]}>
-        <Header title={"Program v jazyku Jane"} />
+        <Header
+          action={renderHeaderActions()}
+          title={"Program v jazyku Jane"}
+        />
         <AceEditor
           ref={janeEditor}
           style={{
-            height: "250px",
+            height: "200px",
             width: "100%",
           }}
           placeholder="Vložte program v jazyku Jane"
-          mode={customMode}
+          mode={customHighlightMode}
           theme="tomorrow"
           name="jane-editor"
           onChange={(currentCode) => setJaneCode(currentCode)}
@@ -61,17 +73,10 @@ const AceEditorHolder = (props) => {
             tabSize: 4,
           }}
         />
-      </div>
-      <SpecialSymbolsList setText={setText} />
-      <div className="btn-holder">
-        <button
-          className={getButtonClassName()}
-          type="button"
-          onClick={startVisualization}
-          disabled={areVariablesSet === false}
-        >
-          Spustiť vizualizáciu
-        </button>
+        <SpecialSymbolsList setSpecialSymbol={setSpecialSymbol} />
+        <div className={classes["loader"]}>
+          <div className={classes["loader--completed"]}></div>
+        </div>
       </div>
     </div>
   )
