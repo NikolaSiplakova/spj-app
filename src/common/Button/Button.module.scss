@@ -1,0 +1,40 @@
+@import "/src/styles/colors.scss";
+
+.button {
+  align-items: center;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 10px;
+  height: 40px;
+  justify-content: center;
+  padding: 0 10px;
+
+  &:hover {
+    //TODO
+  }
+
+  &__icon {
+    color: $white;
+  }
+
+  &--primary {
+    background-color: $orange;
+    border: 2px solid $orange;
+    color: $white;
+  }
+
+  &--secondary {
+    background-color: $white;
+    border: 2px solid $orange;
+    color: $orange;
+  }
+
+  &--collapsed {
+    border-radius: 50%;
+    padding: 0 5px;
+    width: 40px;
+  }
+}
