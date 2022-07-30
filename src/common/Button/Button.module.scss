@@ -1,0 +1,56 @@
+@import "/src/styles/colors.scss";
+
+.button {
+  align-items: center;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 10px;
+  height: 40px;
+  justify-content: center;
+  padding: 0 10px;
+
+  &:hover {
+    //TODO
+  }
+
+  &--primary {
+    background-color: $orange;
+    border: 2px solid $orange;
+    color: $white;
+  }
+
+  &--secondary {
+    background-color: $white;
+    border: 2px solid $orange;
+    color: $orange;
+  }
+
+  &--collapsed {
+    border-radius: 50%;
+    max-width: 40px;
+    padding: 0 5px;
+    transition: max-width 1s;
+    width: 40px;
+
+    .button__label {
+      display: none;
+    }
+
+    &:hover {
+      border-radius: 100px;
+      max-width: 200px;
+      padding: 0 10px;
+      transition: max-width 1s;
+      width: auto;
+
+      .button__label {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+    }
+  }
+}

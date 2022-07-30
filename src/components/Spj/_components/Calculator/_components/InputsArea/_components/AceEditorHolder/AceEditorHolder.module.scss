@@ -39,3 +39,7 @@
     background-color: $dark-grey;
   }
 }
+
+.icon > path {
+  fill: currentColor;
+}
