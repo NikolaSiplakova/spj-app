@@ -1,0 +1,25 @@
+@import "/src/styles/colors.scss";
+
+.computations-window {
+  background-color: white;
+  box-shadow: $window-shadow;
+  margin-top: 20px;
+}
+
+.table {
+  max-height: 470px;
+  overflow: auto;
+
+  &--whole {
+    max-height: none;
+  }
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+
+  &__action {
+    cursor: pointer;
+  }
+}

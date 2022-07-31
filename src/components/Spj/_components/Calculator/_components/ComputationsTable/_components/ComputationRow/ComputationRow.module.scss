@@ -1,0 +1,21 @@
+@import "/src/styles/colors.scss";
+
+.row {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+
+  &:hover {
+    .row__index {
+      border-left: 2px solid $orange;
+      color: $orange;
+    }
+  }
+
+  &__index {
+    background-color: $light-grey;
+    border-bottom: 1px solid $white;
+    border-left: 2px solid $light-grey;
+    display: grid;
+    place-items: center;
+  }
+}

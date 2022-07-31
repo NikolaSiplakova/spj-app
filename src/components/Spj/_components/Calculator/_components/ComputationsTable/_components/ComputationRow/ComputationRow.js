@@ -1,66 +1,20 @@
-import "./ComputationRow.scss"
-import { MathJaxContext, MathJax } from "better-react-mathjax"
-import { type } from "@testing-library/user-event/dist/type"
+import PropTypes from "prop-types"
 
-const ComputationRow = ({
-  rowsCount,
-  setTypesetRowCount,
-  statementsRow,
-  typeSetRowCount,
-}) => {
-  const stateChange = `s\_${statementsRow.state + 1} = s\_${
-    statementsRow.state
-  } \\Big[ ${statementsRow.changedVariable} \\Big]`
+import StatementsRow from "./_components/StatementsRow/StatementsRow"
+import classes from "./ComputationRow.module.scss"
 
-  const oneRowStatements = statementsRow.printout
-
-  const config = {
-    tex2jax: {
-      inlineMath: [
-        ["$", "$"],
-        ["\\(", "\\)"],
-      ],
-      displayMath: [
-        ["$$", "$$"],
-        ["\\[", "\\]"],
-      ],
-    },
-    messageStyle: "none",
-  }
-
+const ComputationRow = ({ index, statementsRow }) => {
   return (
-    <MathJaxContext
-      version={2}
-      config={config}
-      onStartup={(mathJax) => (mathJax.Hub.processSectionDelay = 0)}
-    >
-      <MathJax inline dynamic hideUntilTypeset={"first"}>
-        <div className="computation-step">
-          <div>
-            {`$\\Big \\langle$`}
-            {oneRowStatements.map((statementParts, index) => (
-              <div
-                key={index}
-                className={`statement ${statementParts.statementType}`}
-              >
-                {Array.from(statementParts.oneStatementPrintout).map(
-                  (part, index) => (
-                    <div key={index} className={`statement ${part.type}`}>
-                      {`$${part.text} \\ $`}
-                    </div>
-                  )
-                )}
-              </div>
-            ))}
-            {`$\\ s\_${statementsRow.state} \\Big \\rangle$`}
-          </div>
-          {statementsRow.changedVariable !== null && (
-            <div className="computation-step__state">{`$${stateChange}$`}</div>
-          )}
-        </div>
-      </MathJax>
-    </MathJaxContext>
+    <div className={classes["row"]}>
+      <div className={classes["row__index"]}>{index + 1}</div>
+      <StatementsRow statementsRow={statementsRow} />
+    </div>
   )
 }
 
 export default ComputationRow
+
+ComputationRow.propTypes = {
+  index: PropTypes.number.isRequired,
+  statementsRow: PropTypes.array.isRequired,
+}
