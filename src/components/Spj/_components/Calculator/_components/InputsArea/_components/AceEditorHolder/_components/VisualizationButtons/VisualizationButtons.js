@@ -17,7 +17,7 @@ const VisualizationButtons = ({ startVisualization }) => (
     />
     <Button
       icon={<VisualizationIcon className={classes["icon"]} />}
-      isExtended
+      isExtended={false}
       label={"Vizualizácia"}
       onClick={startVisualization}
       primary
