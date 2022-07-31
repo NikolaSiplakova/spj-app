@@ -9,7 +9,7 @@ import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsL
 import FileImporter from "./_components/FileImporter/FileImporter"
 import VisualizationButtons from "./_components/VisualizationButtons/VisualizationButtons"
 
-import Header from "../../../../../../../../common/Header/Header"
+import Header from "common/Header/Header"
 
 import { ReactComponent as RefreshIcon } from "../../../../../../../../styles/icons/refresh.svg"
 
