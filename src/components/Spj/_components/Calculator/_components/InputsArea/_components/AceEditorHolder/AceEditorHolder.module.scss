@@ -1,36 +1,18 @@
 @import "/src//styles/colors.scss";
 .editor-holder {
   border-radius: 2px;
-  margin: 20px;
-  margin-right: 0;
-  margin-bottom: 0;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: $window-shadow;
 }
 
 .header-actions {
   display: flex;
   gap: 15px;
+}
 
-  &__action {
-    cursor: pointer;
-  }
+.action {
+  cursor: pointer;
 }
 
 .icon > path {
   fill: currentColor;
-}
-
-.loader {
-  border-radius: 0 0 2px 2px;
-  height: 5px;
-  background-color: $light-grey;
-
-  &--completed {
-    background-color: $greyish-blue;
-    border-radius: 0 0 2px 2px;
-    height: 5px;
-    width: 500px;
-  }
 }

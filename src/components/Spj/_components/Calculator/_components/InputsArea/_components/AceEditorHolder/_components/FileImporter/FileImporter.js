@@ -1,5 +1,6 @@
 import React from "react"
-
+import { ReactComponent as UploadIcon } from "../../../../../../../../../../styles/icons/upload.svg"
+import classes from "./FileImporter.module.scss"
 const FileImporter = (props) => {
   const { setJaneCode } = props
 
@@ -22,9 +23,15 @@ const FileImporter = (props) => {
   }
 
   return (
-    <div>
-      <input type="file" onChange={showFile} />
-    </div>
+    <label for="inputTag" className={classes["importer__label"]}>
+      <UploadIcon title={"Nahrať program"} />
+      <input
+        id="inputTag"
+        type="file"
+        onChange={showFile}
+        className={classes["importer"]}
+      />
+    </label>
   )
 }
 
