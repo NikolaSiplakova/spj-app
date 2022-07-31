@@ -12,8 +12,6 @@ const VariableInput = (props) => {
         <input
           className="input__text"
           type="text"
-          onChange={props.handleChange}
-          onBlur={props.handleBlur}
           name={inputName}
           value={values[`variable${index}`]}
         />

@@ -4,7 +4,7 @@ import PropTypes from "prop-types"
 import InputsArea from "./_components/InputsArea/InputsArea"
 import ComputationsTable from "./_components/ComputationsTable/ComputationsTable"
 
-import "./Calculator.scss"
+import classes from "./Calculator.module.scss"
 
 const Calculator = (props) => {
   const {
@@ -18,7 +18,7 @@ const Calculator = (props) => {
   } = props
 
   return (
-    <div>
+    <div className={classes["wrapper"]}>
       <InputsArea
         inputValues={inputValues}
         janeCode={janeCode}

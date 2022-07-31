@@ -13,9 +13,7 @@ import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "./_components/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(
-    "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);"
-  )
+  const [janeCode, setJaneCode] = useState("")
   const [statements, setStatements] = useState([])
 
   //parser
@@ -27,14 +25,14 @@ const Spj = () => {
 
   const tree = parser.prog()
 
-  //get variables in sentence
+  //1. visitor
   const plainCalculator = getPlainCalculator()
   plainCalculator.visit(tree)
   const programVariables = plainCalculator.getVariables()
 
   const [inputValues, setInputValues] = useState([])
 
-  //calucalator
+  //2. visitor
   const calculator = getMyCalculator(inputValues)
 
   const startVisualization = () => {

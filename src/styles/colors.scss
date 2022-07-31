@@ -15,11 +15,18 @@ $blue-pastel: rgb(205, 210, 230);
 $blue-pastel-border: rgb(199, 206, 234);
 
 //NEW COLORS
-$dark-blue: #14213d;
-$greyish-blue: #535c6f;
+$dark-blue: rgb(20, 33, 61);
+$dark-blue-shadow: rgba(22, 33, 61, 0.1);
+
+$greyish-blue: rgb(83, 92, 111);
 $orange: #fca311;
 $silver-grey: #e5e5e5;
 $white: white;
 $black: #000000;
 
 $error-red: #ce0000;
+
+$greyish-blue-shadow: rgba(83, 92, 111, 0.7);
+
+$window-shadow: $dark-blue-shadow 0px 4px 6px -1px,
+  $dark-blue-shadow 0px 2px 4px -1px;

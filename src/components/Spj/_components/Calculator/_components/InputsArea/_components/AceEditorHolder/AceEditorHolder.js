@@ -1,80 +1,82 @@
-import React, { useEffect, useRef } from "react"
+import React, { useRef, useMemo } from "react"
+import _ from "lodash"
+
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
-import "ace-builds/src-noconflict/mode-javascript"
+import SyntaxHighlighter from "./SyntaxHighlighter"
+
 import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsList"
 import FileImporter from "./_components/FileImporter/FileImporter"
-import SyntaxHighlighter from "./SyntaxHighlighter"
-import "brace/theme/github"
-
-import classes from "./AceEditorHolder.module.scss"
 import Header from "../../../../../../../../common/Header/Header"
 
-const AceEditorHolder = (props) => {
-  const { janeCode, setJaneCode, startVisualization, areVariablesSet } = props
+import { ReactComponent as RefreshIcon } from "../../../../../../../../styles/icons/refresh.svg"
 
-  const customMode = new SyntaxHighlighter()
+import classes from "./AceEditorHolder.module.scss"
+
+const AceEditorHolder = (props) => {
+  const { janeCode, setJaneCode, startVisualization } = props
+
+  //ace editor
+  const customHighlightMode = new SyntaxHighlighter()
 
   const janeEditor = useRef(null)
 
-  const setText = (symbol) => {
+  const setSpecialSymbol = (symbol) => {
     const editor = janeEditor.current.editor
     const cursorPosition = editor.getCursorPosition()
 
     editor.session.insert(cursorPosition, symbol)
   }
 
-  const getButtonClassName = () => {
-    if (areVariablesSet === false) {
-      return "btn btn--disabled"
-    }
-    return "btn"
+  //debounce
+  const setCode = (code) => {
+    setJaneCode(code)
   }
 
-  return (
-    <div>
+  const debouncedSetCode = useMemo(() => _.debounce(setCode, 1000), [setCode])
+
+  const renderHeaderActions = () => (
+    <div className={classes["header-actions"]}>
       <FileImporter setJaneCode={setJaneCode} />
 
-      <div className={classes["editor-holder"]}>
-        <Header title={"Program v jazyku Jane"} />
-        <AceEditor
-          ref={janeEditor}
-          style={{
-            height: "250px",
-            width: "100%",
-          }}
-          placeholder="Vložte program v jazyku Jane"
-          mode={customMode}
-          theme="tomorrow"
-          name="jane-editor"
-          onChange={(currentCode) => setJaneCode(currentCode)}
-          fontSize={14}
-          showPrintMargin={false}
-          showGutter={true}
-          highlightActiveLine={true}
-          value={janeCode}
-          setOptions={{
-            enableBasicAutocompletion: true,
-            enableLiveAutocompletion: true,
-            enableSnippets: true,
-            showLineNumbers: true,
-            tabSize: 4,
-          }}
-        />
-      </div>
-      <SpecialSymbolsList setText={setText} />
-      <div className="btn-holder">
-        <button
-          className={getButtonClassName()}
-          type="button"
-          onClick={startVisualization}
-          disabled={areVariablesSet === false}
-        >
-          Spustiť vizualizáciu
-        </button>
-      </div>
+      <RefreshIcon
+        onClick={() => setJaneCode("")}
+        title={"Vymazať program"}
+        className={classes["action"]}
+      />
+    </div>
+  )
+
+  return (
+    <div className={classes["editor-holder"]}>
+      <Header action={renderHeaderActions()} title={"Program v jazyku Jane"} />
+      <AceEditor
+        ref={janeEditor}
+        style={{
+          height: "200px",
+          width: "100%",
+        }}
+        placeholder="Vložte program v jazyku Jane"
+        mode={customHighlightMode}
+        theme="tomorrow"
+        name="jane-editor"
+        onChange={debouncedSetCode}
+        fontSize={14}
+        showPrintMargin={false}
+        showGutter={true}
+        highlightActiveLine={true}
+        value={janeCode}
+        setOptions={{
+          enableBasicAutocompletion: true,
+          enableLiveAutocompletion: true,
+          enableSnippets: true,
+          showLineNumbers: true,
+          tabSize: 4,
+        }}
+      />
+      <SpecialSymbolsList setSpecialSymbol={setSpecialSymbol} />
     </div>
   )
 }
 
-export default AceEditorHolder
+export default React.memo(AceEditorHolder)

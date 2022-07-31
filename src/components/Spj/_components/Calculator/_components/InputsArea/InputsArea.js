@@ -14,8 +14,6 @@ const InputsArea = (props) => {
     startVisualization,
   } = props
 
-  const [areVariablesSet, setAreVariablesSet] = useState(false)
-
   const renderFormSection = () => {
     if (programVariables.length === 0) {
       return <NoVariables />
@@ -23,8 +21,6 @@ const InputsArea = (props) => {
 
     return (
       <VariablesForm
-        areVariablesSet={areVariablesSet}
-        setAreVariablesSet={setAreVariablesSet}
         inputValues={inputValues}
         programVariables={programVariables}
         setInputValues={setInputValues}
@@ -34,8 +30,6 @@ const InputsArea = (props) => {
   return (
     <div className="inputs-area">
       <AceEditorHolder
-        areVariablesSet={areVariablesSet}
-        setAreVariablesSet={setAreVariablesSet}
         janeCode={janeCode}
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
