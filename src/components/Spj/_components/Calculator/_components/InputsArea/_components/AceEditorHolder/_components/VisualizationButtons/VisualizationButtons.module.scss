@@ -1,0 +1,12 @@
+@import "/src//styles/colors.scss";
+
+.buttons {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.icon > path {
+  fill: currentColor;
+}

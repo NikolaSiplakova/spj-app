@@ -1,8 +1,10 @@
-import React, { useState } from "react"
-import "./InputsArea.scss"
+import React from "react"
+
 import VariablesForm from "./_components/VariablesForm/VariablesForm"
 import AceEditorHolder from "./_components/AceEditorHolder/AceEditorHolder"
 import NoVariables from "./_components/NoVariables/NoVariables"
+
+import classes from "./InputsArea.module.scss"
 
 const InputsArea = (props) => {
   const {
@@ -14,7 +16,7 @@ const InputsArea = (props) => {
     startVisualization,
   } = props
 
-  const renderFormSection = () => {
+  const renderVariablesForm = () => {
     if (programVariables.length === 0) {
       return <NoVariables />
     }
@@ -28,15 +30,17 @@ const InputsArea = (props) => {
     )
   }
   return (
-    <div className="inputs-area">
+    <div className={classes["inputs-area"]}>
       <AceEditorHolder
         janeCode={janeCode}
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
       />
-      <div className="vars-holder">
-        <div className="vars-holder__title">Hodnoty premenných programu</div>
-        {renderFormSection()}
+      <div className={classes["variables-form"]}>
+        <div className={classes["vars-holder__title"]}>
+          Hodnoty premenných programu
+        </div>
+        {renderVariablesForm()}
       </div>
     </div>
   )

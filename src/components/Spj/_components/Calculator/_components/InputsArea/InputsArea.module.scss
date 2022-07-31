@@ -2,10 +2,11 @@
 
 .inputs-area {
   display: grid;
-  grid-template-columns: 1fr 260px;
+  gap: 20px;
+  grid-template-columns: 1fr 210px;
 }
 
-.vars-holder {
+.variables-form {
   padding: 25px;
   padding-bottom: 0;
 

@@ -1,7 +1,9 @@
 @import "/src//styles/colors.scss";
+
 .editor-holder {
   border-radius: 2px;
   box-shadow: $window-shadow;
+  max-height: 256px;
 }
 
 .header-actions {
