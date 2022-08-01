@@ -1,13 +1,9 @@
-import "./ComputationRow.scss"
 import { MathJaxContext, MathJax } from "better-react-mathjax"
-import { type } from "@testing-library/user-event/dist/type"
+import classnames from "classnames"
 
-const ComputationRow = ({
-  rowsCount,
-  setTypesetRowCount,
-  statementsRow,
-  typeSetRowCount,
-}) => {
+import classes from "./StatementsRow.module.scss"
+
+const StatementsRow = ({ statementsRow }) => {
   const stateChange = `s\_${statementsRow.state + 1} = s\_${
     statementsRow.state
   } \\Big[ ${statementsRow.changedVariable} \\Big]`
@@ -28,6 +24,8 @@ const ComputationRow = ({
     messageStyle: "none",
   }
 
+  console.log(statementsRow)
+
   return (
     <MathJaxContext
       version={2}
@@ -35,27 +33,38 @@ const ComputationRow = ({
       onStartup={(mathJax) => (mathJax.Hub.processSectionDelay = 0)}
     >
       <MathJax inline dynamic hideUntilTypeset={"first"}>
-        <div className="computation-step">
+        <div className={classes["statements-row"]}>
           <div>
             {`$\\Big \\langle$`}
             {oneRowStatements.map((statementParts, index) => (
               <div
                 key={index}
-                className={`statement ${statementParts.statementType}`}
+                className={classnames(
+                  classes["statement"],
+                  classes[`${statementParts.statementType}`]
+                )}
               >
                 {Array.from(statementParts.oneStatementPrintout).map(
                   (part, index) => (
-                    <div key={index} className={`statement ${part.type}`}>
+                    <div
+                      key={index}
+                      className={classnames(
+                        classes["statement"],
+                        classes[`${part.type}`]
+                      )}
+                    >
                       {`$${part.text} \\ $`}
                     </div>
                   )
                 )}
               </div>
             ))}
-            {`$\\ s\_${statementsRow.state} \\Big \\rangle$`}
+            {`$\\ s\_${statementsRow.state} \\Big \\rangle \\hspace{.5cm} \\Longrightarrow$`}
           </div>
           {statementsRow.changedVariable !== null && (
-            <div className="computation-step__state">{`$${stateChange}$`}</div>
+            <div
+              className={classes["statements-row__state"]}
+            >{`$${stateChange}$`}</div>
           )}
         </div>
       </MathJax>
@@ -63,4 +72,4 @@ const ComputationRow = ({
   )
 }
 
-export default ComputationRow
+export default StatementsRow

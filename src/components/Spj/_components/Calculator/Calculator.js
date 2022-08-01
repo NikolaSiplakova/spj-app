@@ -9,6 +9,7 @@ import classes from "./Calculator.module.scss"
 const Calculator = (props) => {
   const {
     inputValues,
+    isComputed,
     janeCode,
     programVariables,
     setInputValues,
@@ -27,18 +28,20 @@ const Calculator = (props) => {
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
       />
-      <ComputationsTable statementsRows={statements} />
+      <ComputationsTable isComputed={isComputed} statementsRows={statements} />
     </div>
   )
 }
 
 Calculator.propTypes = {
   inputValues: PropTypes.array.isRequired,
+  isComputed: PropTypes.bool.isRequired,
   janeCode: PropTypes.string.isRequired,
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,
+  statements: PropTypes.array.isRequired,
 }
 
 export default Calculator

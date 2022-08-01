@@ -1,16 +1,12 @@
-@import "/src/styles/statements.scss";
+@import "/src/styles/statements.module.scss";
 
-.computation-step {
+.statements-row {
   display: grid;
   grid-template-columns: 1fr 190px;
-  padding: 10px 0;
+  padding: 10px;
 
   &:first-child {
     border-bottom: 1px solid #efefef;
-  }
-
-  &:hover {
-    background-color: #dfe9f0;
   }
 
   &__state {
