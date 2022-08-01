@@ -17,6 +17,7 @@ const Spj = () => {
     "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);"
   )
   const [statements, setStatements] = useState([])
+  const [isComputed, setIsComputed] = useState(false)
 
   //parser
   const parser = getParser(janeCode)
@@ -40,6 +41,7 @@ const Spj = () => {
   const startVisualization = () => {
     calculator.visit(tree)
     setStatements(calculator.getNodes())
+    setIsComputed(true)
   }
 
   return (
@@ -51,6 +53,7 @@ const Spj = () => {
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
         setInputValues={setInputValues}
+        isComputed={isComputed}
         statements={statements}
         programVariables={programVariables}
       />

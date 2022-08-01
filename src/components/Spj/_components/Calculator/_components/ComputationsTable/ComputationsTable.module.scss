@@ -8,7 +8,14 @@
 
 .table {
   max-height: 470px;
+  min-height: 200px;
   overflow: auto;
+
+  &--info {
+    color: $greyish-blue;
+    display: grid;
+    place-items: center;
+  }
 
   &--whole {
     max-height: none;
@@ -22,4 +29,10 @@
   &__action {
     cursor: pointer;
   }
+}
+
+.info-title {
+  font-size: 15px;
+  padding: 0 50px;
+  text-align: center;
 }

@@ -4,7 +4,18 @@ import { MathJaxContext, MathJax } from "better-react-mathjax"
 import classes from "./ResultsRow.module.scss"
 
 const ResultsRow = ({ state, variables }) => {
-  // const result = `s\_${state ?? ""}`
+  const getVariableNotation = () =>
+    variables.map((variable, index) => {
+      if (index === variables.length - 1) {
+        return `${variable.varName} \\mapsto ${variable.value}`
+      }
+
+      return `${variable.varName} \\mapsto ${variable.value}, \\hspace{.5cm}\\`
+    })
+
+  console.log(getVariableNotation())
+
+  const result = `$s\_${state} = \\Big[ \\ ${getVariableNotation()} \\ \\Big]$`
 
   const config = {
     tex2jax: {
@@ -21,14 +32,14 @@ const ResultsRow = ({ state, variables }) => {
   }
 
   return (
-    <div>
+    <div className={classes["result"]}>
       <MathJaxContext
         version={2}
         config={config}
         onStartup={(mathJax) => (mathJax.Hub.processSectionDelay = 0)}
       >
         <MathJax inline dynamic hideUntilTypeset={"first"}>
-          {state}
+          {result}
         </MathJax>
       </MathJaxContext>
     </div>
