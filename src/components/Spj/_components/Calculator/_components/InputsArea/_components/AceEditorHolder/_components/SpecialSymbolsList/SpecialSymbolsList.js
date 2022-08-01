@@ -7,7 +7,7 @@ import classes from "./SpecialSymbolsList.module.scss"
 
 const SpecialSymbolsList = ({ setSpecialSymbol }) => (
   <div className={classes["symbols"]}>
-    {Object.values(SPECIAL_SYMBOLS).map((symbol) => {
+    {Object.values(SPECIAL_SYMBOLS).map((symbol, i) => {
       return (
         <div
           onClick={() => setSpecialSymbol(symbol)}
@@ -26,6 +26,7 @@ const SpecialSymbolsList = ({ setSpecialSymbol }) => (
             [classes["symbol--mul"]]:
               symbol === SPECIAL_SYMBOLS.MUL || symbol === SPECIAL_SYMBOLS.SUB,
           })}
+          key={i}
         >
           {symbol}
         </div>

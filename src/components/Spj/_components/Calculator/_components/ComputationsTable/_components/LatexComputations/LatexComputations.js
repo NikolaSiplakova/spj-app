@@ -3,7 +3,7 @@ import React, { Fragment } from "react"
 import ComputationRow from "./_components/ComputationRow/ComputationRow"
 import ResultsRow from "./_components/ResultsRow/ResultsRow"
 
-const ComputationsTable = ({ isComputed, statementsRows }) => {
+const LatexComputations = ({ isComputed, statementsRows }) => {
   const lastRow = statementsRows[statementsRows.length - 1]
 
   return (
@@ -20,4 +20,4 @@ const ComputationsTable = ({ isComputed, statementsRows }) => {
   )
 }
 
-export default ComputationsTable
+export default LatexComputations
