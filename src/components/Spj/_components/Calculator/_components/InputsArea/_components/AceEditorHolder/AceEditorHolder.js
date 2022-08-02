@@ -1,5 +1,6 @@
 import React, { useRef, useMemo } from "react"
 import _ from "lodash"
+import PropTypes from "prop-types"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
@@ -7,17 +8,14 @@ import SyntaxHighlighter from "./SyntaxHighlighter"
 
 import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsList"
 import FileImporter from "./_components/FileImporter/FileImporter"
-import VisualizationButtons from "./_components/VisualizationButtons/VisualizationButtons"
 
 import Header from "common/Header/Header"
 
-import { ReactComponent as RefreshIcon } from "../../../../../../../../styles/icons/refresh.svg"
+import { ReactComponent as RefreshIcon } from "styles/icons/refresh.svg"
 
 import classes from "./AceEditorHolder.module.scss"
 
-const AceEditorHolder = (props) => {
-  const { janeCode, setJaneCode, startVisualization } = props
-
+const AceEditorHolder = ({ janeCode, setJaneCode }) => {
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
 
@@ -77,9 +75,13 @@ const AceEditorHolder = (props) => {
         }}
       />
       <SpecialSymbolsList setSpecialSymbol={setSpecialSymbol} />
-      <VisualizationButtons startVisualization={startVisualization} />
     </div>
   )
+}
+
+AceEditorHolder.propTypes = {
+  janeCode: PropTypes.string.isRequired,
+  setJaneCode: PropTypes.func.isRequired,
 }
 
 export default React.memo(AceEditorHolder)

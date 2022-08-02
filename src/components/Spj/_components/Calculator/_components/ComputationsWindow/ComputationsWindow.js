@@ -2,17 +2,27 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import classnames from "classnames"
 
+import { VISUALIZATION } from "constants/visualizationTypes"
+
 import Header from "common/Header/Header"
+import LatexComputations from "./_components/LatexComputations/LatexComputations"
+import StepByStep from "./_components/StepByStep/StepByStep"
 
 import { ReactComponent as CloseIcon } from "styles/icons/close.svg"
 import { ReactComponent as OpenIcon } from "styles/icons/open.svg"
 import { ReactComponent as InfoIcon } from "styles/icons/info.svg"
 
-import classes from "./ComputationsTable.module.scss"
-import LatexComputations from "./_components/LatexComputations/LatexComputations"
+import classes from "./ComputationsWindow.module.scss"
 
-const ComputationsTable = ({ isComputed, statementsRows }) => {
+const ComputationsWindow = ({
+  displayedStepsCount,
+  setDisplayedStepsCount,
+  statementsRows,
+  visualizationType,
+}) => {
   const [isWholeTable, setIsWholeTable] = useState(false)
+
+  const statementsToDisplay = statementsRows.slice(0, displayedStepsCount)
 
   const toggleWholeWindow = () => {
     setIsWholeTable((current) => current === false)
@@ -37,7 +47,7 @@ const ComputationsTable = ({ isComputed, statementsRows }) => {
   }
 
   const renderActions = () => {
-    if (isComputed === false) {
+    if (visualizationType === VISUALIZATION.NONE) {
       return
     }
 
@@ -52,37 +62,36 @@ const ComputationsTable = ({ isComputed, statementsRows }) => {
     )
   }
 
-  const renderTableContent = () => {
-    if (isComputed === true) {
-      return <LatexComputations statementsRows={statementsRows} />
-    }
-
-    return (
-      <div className={classes["info-title"]}>
-        Pre zobrazenie významu zadaného programu je potrebné spustiť
-        vizualizáciu.
-      </div>
-    )
-  }
-
   return (
     <div className={classes["computations-window"]}>
       <Header action={renderActions()} title={"Vizualizácia krokov programu"} />
       <div
         className={classnames(classes["table"], {
           [classes["table--whole"]]: isWholeTable === true,
-          [classes["table--info"]]: isComputed === false,
+          [classes["table--info"]]: visualizationType === VISUALIZATION.NONE,
         })}
       >
-        {renderTableContent()}
+        <LatexComputations
+          statementsRows={statementsToDisplay}
+          visualizationType={visualizationType}
+        />
       </div>
+      {visualizationType === VISUALIZATION.STEP_BY_STEP && (
+        <StepByStep
+          allStepsCount={statementsRows.length}
+          displayedStepsCount={displayedStepsCount}
+          setDisplayedStepsCount={setDisplayedStepsCount}
+        />
+      )}
     </div>
   )
 }
 
-ComputationsTable.propTypes = {
-  isComputed: PropTypes.bool.isRequired,
+ComputationsWindow.propTypes = {
+  displayedStepsCount: PropTypes.number.isRequired,
+  setDisplayedStepsCount: PropTypes.func.isRequired,
   statementsRow: PropTypes.array.isRequired,
+  visualizationType: PropTypes.string.isRequired,
 }
 
-export default ComputationsTable
+export default ComputationsWindow

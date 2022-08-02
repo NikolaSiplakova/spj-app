@@ -13,8 +13,6 @@ const ResultsRow = ({ state, variables }) => {
       return `${variable.varName} \\mapsto ${variable.value}, \\hspace{.5cm}\\`
     })
 
-  console.log(getVariableNotation())
-
   const result = `$s\_${state} = \\Big[ \\ ${getVariableNotation()} \\ \\Big]$`
 
   const config = {

@@ -2,6 +2,7 @@
 
 .computations-window {
   background-color: white;
+  border-radius: 2px;
   box-shadow: $window-shadow;
   margin-top: 20px;
 }
@@ -29,10 +30,4 @@
   &__action {
     cursor: pointer;
   }
-}
-
-.info-title {
-  font-size: 15px;
-  padding: 0 50px;
-  text-align: center;
 }

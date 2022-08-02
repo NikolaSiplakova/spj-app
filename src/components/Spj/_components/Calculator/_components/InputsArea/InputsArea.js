@@ -13,7 +13,6 @@ const InputsArea = (props) => {
     programVariables,
     setInputValues,
     setJaneCode,
-    startVisualization,
   } = props
 
   const renderVariablesForm = () => {
@@ -31,11 +30,7 @@ const InputsArea = (props) => {
   }
   return (
     <div className={classes["inputs-area"]}>
-      <AceEditorHolder
-        janeCode={janeCode}
-        setJaneCode={setJaneCode}
-        startVisualization={startVisualization}
-      />
+      <AceEditorHolder janeCode={janeCode} setJaneCode={setJaneCode} />
       <div className={classes["variables-form"]}>
         <div className={classes["vars-holder__title"]}>
           Hodnoty premenných programu

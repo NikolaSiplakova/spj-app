@@ -1,8 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 
+import { VISUALIZATION } from "constants/visualizationTypes"
+
+import ComputationsWindow from "./_components/ComputationsWindow/ComputationsWindow"
 import InputsArea from "./_components/InputsArea/InputsArea"
-import ComputationsTable from "./_components/ComputationsTable/ComputationsTable"
+import VisualizationButtons from "./_components/VisualizationButtons/VisualizationButtons"
 
 import classes from "./Calculator.module.scss"
 
@@ -18,17 +21,36 @@ const Calculator = (props) => {
     statements,
   } = props
 
+  const [displayedStepsCount, setDisplayedStepsCount] = useState(0)
+  const [visualizationType, setVisualizationType] = useState(VISUALIZATION.NONE)
+
   return (
     <div className={classes["wrapper"]}>
       <InputsArea
         inputValues={inputValues}
         janeCode={janeCode}
         programVariables={programVariables}
+        setDisplayedStepsCount={setDisplayedStepsCount}
         setInputValues={setInputValues}
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
+        statementsRows={statements}
       />
-      <ComputationsTable isComputed={isComputed} statementsRows={statements} />
+
+      <VisualizationButtons
+        setDisplayedStepsCount={setDisplayedStepsCount}
+        setVisualizationType={setVisualizationType}
+        startVisualization={startVisualization}
+        statementsRows={statements}
+      />
+
+      <ComputationsWindow
+        displayedStepsCount={displayedStepsCount}
+        isComputed={isComputed}
+        setDisplayedStepsCount={setDisplayedStepsCount}
+        statementsRows={statements}
+        visualizationType={visualizationType}
+      />
     </div>
   )
 }
