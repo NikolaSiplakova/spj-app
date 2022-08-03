@@ -62,9 +62,17 @@ const ComputationsWindow = ({
     )
   }
 
+  const getWindowHeader = () => {
+    if (visualizationType === VISUALIZATION.STEP_BY_STEP) {
+      return "Vizualizácia krok po kroku"
+    }
+
+    return "Vizualizácia"
+  }
+
   return (
     <div className={classes["computations-window"]}>
-      <Header action={renderActions()} title={"Vizualizácia krokov programu"} />
+      <Header action={renderActions()} title={getWindowHeader()} />
       <div
         className={classnames(classes["table"], {
           [classes["table--whole"]]: isWholeTable === true,
