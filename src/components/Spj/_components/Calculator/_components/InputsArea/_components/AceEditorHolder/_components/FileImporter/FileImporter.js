@@ -23,7 +23,7 @@ const FileImporter = (props) => {
   }
 
   return (
-    <label for="inputTag" className={classes["importer__label"]}>
+    <label htmlFor="inputTag" className={classes["importer__label"]}>
       <UploadIcon title={"Nahrať program"} />
       <input
         id="inputTag"
