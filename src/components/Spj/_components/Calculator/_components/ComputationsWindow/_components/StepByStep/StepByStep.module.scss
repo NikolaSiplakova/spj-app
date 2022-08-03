@@ -1,0 +1,42 @@
+@import "/src/styles/colors.scss";
+
+.menu {
+  align-items: center;
+  background-color: $greyish-blue;
+  border-radius: 0 0 2px 2px;
+  color: $white;
+  display: flex;
+  height: 30px;
+  justify-content: space-between;
+}
+
+.back-section,
+.next-section {
+  display: flex;
+  padding: 0 45px;
+}
+
+.icon {
+  cursor: pointer;
+
+  &--decoration {
+    cursor: default;
+  }
+
+  &--space {
+    margin-right: 20px;
+  }
+
+  &--one-step {
+    padding: 0 10px;
+  }
+
+  &--disabled {
+    color: $silver-grey;
+    cursor: not-allowed;
+  }
+}
+
+.icon > path {
+  fill: currentColor;
+}

@@ -50,8 +50,6 @@ const VariableForm = (props) => {
         handleSubmit,
         isSubmitting,
       }) => {
-        console.log("values")
-        console.log(values)
         return (
           <form onSubmit={handleSubmit} onChange={handleChange}>
             <div className="scrollable-holder">

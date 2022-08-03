@@ -24,8 +24,6 @@ const StatementsRow = ({ statementsRow }) => {
     messageStyle: "none",
   }
 
-  console.log(statementsRow)
-
   return (
     <MathJaxContext
       version={2}
