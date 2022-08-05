@@ -31,12 +31,7 @@ const InputsArea = (props) => {
   return (
     <div className={classes["inputs-area"]}>
       <AceEditorHolder janeCode={janeCode} setJaneCode={setJaneCode} />
-      <div className={classes["variables-form"]}>
-        <div className={classes["vars-holder__title"]}>
-          Hodnoty premenných programu
-        </div>
-        {renderVariablesForm()}
-      </div>
+      {renderVariablesForm()}
     </div>
   )
 }

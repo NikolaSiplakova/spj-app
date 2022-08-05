@@ -1,4 +1,4 @@
-import "./VariableInput.scss"
+import classes from "./VariableInput.module.scss"
 
 const VariableInput = (props) => {
   const { errors, index, variable, values } = props
@@ -6,19 +6,23 @@ const VariableInput = (props) => {
   const inputName = `variable${index}`
 
   return (
-    <div className="input">
-      <div className="input__name">{variable.varName}</div>
-      <div className="input-holder">
-        <input
-          className="input__text"
-          type="text"
-          name={inputName}
-          value={values[`variable${index}`]}
-        />
-        {errors[`variable${index}`] !== undefined && (
-          <div className="error-message">{errors[`variable${index}`]}</div>
-        )}
-      </div>
+    <div className={classes["input-holder"]}>
+      <label htmlFor={`input${index}`} className={classes["label"]}>
+        {variable.varName}
+      </label>
+      <input
+        className={classes["text"]}
+        id={`input${index}`}
+        type="text"
+        name={inputName}
+        placeholder="Zadaj hodnotu premennej"
+        value={values[`variable${index}`]}
+      />
+      {errors[`variable${index}`] !== undefined && (
+        <div className={classes["error-message"]}>
+          {errors[`variable${index}`]}
+        </div>
+      )}
     </div>
   )
 }
