@@ -1,0 +1,17 @@
+@import "/src/styles/colors.scss";
+
+.variables-form {
+  background-color: $white;
+  border-radius: 0 0 2px 2px;
+  box-shadow: $window-shadow;
+  height: 226px;
+}
+
+.scrollable-holder {
+  max-height: 226px;
+  overflow: auto;
+}
+
+.icon {
+  cursor: pointer;
+}

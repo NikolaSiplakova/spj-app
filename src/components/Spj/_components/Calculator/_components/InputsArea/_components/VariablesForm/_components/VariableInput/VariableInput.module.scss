@@ -1,0 +1,47 @@
+@import "/src/styles/colors.scss";
+
+.label {
+  color: #07486f;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.input-holder {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  margin-bottom: 4px;
+
+  &:first-child {
+    padding-top: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+    padding-bottom: 10px;
+  }
+}
+
+.text {
+  background-color: $greyish-blue-light;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  height: 22px;
+  padding: 0 0 0 6px;
+
+  &:active {
+    border: 2px solid $orange;
+  }
+}
+
+.error-message {
+  margin-top: 6px;
+  background-color: #ffdfdf;
+  border: 1px solid #c51515;
+  padding: 4px 10px;
+  border-radius: 3px;
+  color: #c51515;
+  font-size: 12px;
+  display: block;
+}
