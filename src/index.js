@@ -1,22 +1,26 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import "./index.scss"
-import App from "./App"
-import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+import { APP_ROUTES } from "constants/routes"
+
+import App from "./App"
+import Examples from "./routes/Examples/Examples"
 import Grammar from "./routes/Grammar/Grammar"
+import Spj from "./routes/Spj/Spj"
+
+import "./index.scss"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <BrowserRouter>
     {/* <App /> */}
     <Routes>
-      <Route path="/spj-app/" element={<App />} />
-      <Route path="/spj-app/grammar" element={<Grammar />} />
-      <Route path="/spj-app/visualisation" element={<App />} />
+      <Route path={APP_ROUTES.ROOT} element={<App />} />
+      {/*maybe the path is /spj-app/ */}
+      <Route path={APP_ROUTES.GRAMMAR} element={<Grammar />} />
+      <Route path={APP_ROUTES.VISUALIZATION} element={<Spj />} />
+      <Route path={APP_ROUTES.EXAMPLES} element={<Examples />} />
     </Routes>
   </BrowserRouter>
 )
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

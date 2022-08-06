@@ -2,6 +2,8 @@ import Button from "common/Button/Button"
 import { React, memo } from "react"
 import { Link } from "react-router-dom"
 
+import { APP_ROUTES } from "constants/routes"
+
 import { ReactComponent as TukeLogo } from "styles/icons/tukeLogo.svg"
 import { ReactComponent as QuestionIcon } from "styles/icons/question.svg"
 import { ReactComponent as BookIcon } from "styles/icons/book.svg"
@@ -15,13 +17,6 @@ import classes from "./TopBar.module.scss"
 const TopBar = () => {
   const pathName = window.location.pathname
 
-  const appRoutes = {
-    examples: "/spj-app/examples",
-    grammar: "/spj-app/grammar",
-    root: "/spj-app",
-    visualization: "/spj-app/visualisation",
-  }
-
   return (
     <div className={classes["top-bar"]}>
       <div className={classes["top-bar__title"]}>
@@ -31,32 +26,32 @@ const TopBar = () => {
       <div className={classes["navigation"]}>
         <Link
           className={classes["navigation__link"]}
-          to={appRoutes.visualization}
+          to={APP_ROUTES.VISUALIZATION}
         >
           <Button
             primary
             isActive={
-              appRoutes.visualization === pathName ||
-              appRoutes.root === pathName
+              APP_ROUTES.VISUALIZATION === pathName ||
+              APP_ROUTES.ROOT === pathName
             }
             isExtended
             label="Vizualizácia"
             icon={<VisualizationIcon className={classes["icon"]} />}
           />
         </Link>
-        <Link className={classes["navigation__link"]} to={appRoutes.examples}>
+        <Link className={classes["navigation__link"]} to={APP_ROUTES.EXAMPLES}>
           <Button
             primary
-            isActive={appRoutes.examples === pathName}
+            isActive={APP_ROUTES.EXAMPLES === pathName}
             isExtended
             label="Učebnica"
             icon={<BookIcon className={classes["icon"]} />}
           />
         </Link>
-        <Link className={classes["navigation__link"]} to={appRoutes.grammar}>
+        <Link className={classes["navigation__link"]} to={APP_ROUTES.GRAMMAR}>
           <Button
             primary
-            isActive={appRoutes.grammar === pathName}
+            isActive={APP_ROUTES.GRAMMAR === pathName}
             isExtended
             label="Gramatika"
             icon={<QuestionIcon className={classes["icon"]} />}
