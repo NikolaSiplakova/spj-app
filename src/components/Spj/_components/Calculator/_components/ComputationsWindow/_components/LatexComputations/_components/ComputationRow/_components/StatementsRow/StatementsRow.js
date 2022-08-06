@@ -1,5 +1,6 @@
 import { MathJaxContext, MathJax } from "better-react-mathjax"
 import classnames from "classnames"
+import PropTypes from "prop-types"
 
 import classes from "./StatementsRow.module.scss"
 
@@ -68,6 +69,15 @@ const StatementsRow = ({ statementsRow }) => {
       </MathJax>
     </MathJaxContext>
   )
+}
+
+StatementsRow.propTypes = {
+  index: PropTypes.number,
+  statementsRow: PropTypes.object.isRequired,
+}
+
+StatementsRow.defaultProps = {
+  index: null,
 }
 
 export default StatementsRow

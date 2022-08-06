@@ -36,7 +36,11 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
 
 LatexComputations.propTypes = {
   statementsRows: PropTypes.array.isRequired,
-  visualizationType: PropTypes.string.isRequired,
+  visualizationType: PropTypes.oneOf([
+    VISUALIZATION.NONE,
+    VISUALIZATION.ALL_STEPS,
+    VISUALIZATION.STEP_BY_STEP,
+  ]).isRequired,
 }
 
 export default LatexComputations

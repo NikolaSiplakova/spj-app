@@ -99,14 +99,18 @@ const ComputationsWindow = ({
 }
 
 ComputationsWindow.propTypes = {
-  displayedStepsCount: PropTypes.number.isRequired,
+  displayedStepsCount: PropTypes.number,
   setDisplayedStepsCount: PropTypes.func.isRequired,
-  statementsRow: PropTypes.array.isRequired,
+  statementsRows: PropTypes.array.isRequired,
   visualizationType: PropTypes.oneOf([
     VISUALIZATION.NONE,
     VISUALIZATION.ALL_STEPS,
     VISUALIZATION.STEP_BY_STEP,
   ]).isRequired,
+}
+
+ComputationsWindow.defualtProps = {
+  displayedStepsCount: null,
 }
 
 export default ComputationsWindow

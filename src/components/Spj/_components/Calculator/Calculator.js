@@ -57,7 +57,6 @@ Calculator.propTypes = {
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
-  setVisualizationType: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,
   statements: PropTypes.array.isRequired,
 }

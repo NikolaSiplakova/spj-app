@@ -48,11 +48,11 @@ const Spj = () => {
       <Calculator
         inputValues={inputValues}
         janeCode={janeCode}
+        programVariables={programVariables}
+        setInputValues={setInputValues}
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}
-        setInputValues={setInputValues}
         statements={statements}
-        programVariables={programVariables}
       />
       {janeCode !== "" && <ErrorHolder errors={errorListener.errors} />}
     </div>

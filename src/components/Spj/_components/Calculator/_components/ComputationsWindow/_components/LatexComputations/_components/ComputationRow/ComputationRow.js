@@ -12,9 +12,9 @@ const ComputationRow = ({ index, statementsRow }) => {
   )
 }
 
-export default ComputationRow
-
 ComputationRow.propTypes = {
   index: PropTypes.number.isRequired,
-  statementsRow: PropTypes.array.isRequired,
+  statementsRow: PropTypes.object.isRequired,
 }
+
+export default ComputationRow
