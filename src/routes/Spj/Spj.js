@@ -10,7 +10,7 @@ import {
 
 import ErrorHolder from "./_components/ErrorHolder/ErrorHolder"
 import Calculator from "./_components/Calculator/Calculator"
-import TopBar from "./_components/TopBar/TopBar"
+import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
   const [janeCode, setJaneCode] = useState(

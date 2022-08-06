@@ -1,5 +1,5 @@
 import "./App.scss"
-import Spj from "./components/Spj/Spj"
+import Spj from "./routes/Spj/Spj"
 
 function App() {
   return (

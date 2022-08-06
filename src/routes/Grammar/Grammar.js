@@ -5,7 +5,7 @@ import ifPic from "../../pics/if.png"
 import repeat from "../../pics/repeat.png" // Tell Webpack this JS file uses this image
 import whilePic from "../../pics/while.png"
 
-import TopBar from "../../components/Spj/_components/TopBar/TopBar"
+import TopBar from "common/TopBar/TopBar"
 import RuleHolder from "./_components/RuleHolder/RuleHolder"
 
 const Grammar = () => {
