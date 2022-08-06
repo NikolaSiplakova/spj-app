@@ -12,7 +12,6 @@ import classes from "./Calculator.module.scss"
 const Calculator = (props) => {
   const {
     inputValues,
-    isComputed,
     janeCode,
     programVariables,
     setInputValues,
@@ -21,7 +20,9 @@ const Calculator = (props) => {
     statements,
   } = props
 
-  const [displayedStepsCount, setDisplayedStepsCount] = useState(0)
+  const [displayedStepsCount, setDisplayedStepsCount] = useState(
+    statements.length
+  )
   const [visualizationType, setVisualizationType] = useState(VISUALIZATION.NONE)
 
   return (
@@ -30,23 +31,18 @@ const Calculator = (props) => {
         inputValues={inputValues}
         janeCode={janeCode}
         programVariables={programVariables}
-        setDisplayedStepsCount={setDisplayedStepsCount}
         setInputValues={setInputValues}
         setJaneCode={setJaneCode}
-        startVisualization={startVisualization}
-        statementsRows={statements}
       />
 
       <VisualizationButtons
         setDisplayedStepsCount={setDisplayedStepsCount}
         setVisualizationType={setVisualizationType}
         startVisualization={startVisualization}
-        statementsRows={statements}
       />
 
       <ComputationsWindow
         displayedStepsCount={displayedStepsCount}
-        isComputed={isComputed}
         setDisplayedStepsCount={setDisplayedStepsCount}
         statementsRows={statements}
         visualizationType={visualizationType}
@@ -57,11 +53,11 @@ const Calculator = (props) => {
 
 Calculator.propTypes = {
   inputValues: PropTypes.array.isRequired,
-  isComputed: PropTypes.bool.isRequired,
   janeCode: PropTypes.string.isRequired,
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
+  setVisualizationType: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,
   statements: PropTypes.array.isRequired,
 }

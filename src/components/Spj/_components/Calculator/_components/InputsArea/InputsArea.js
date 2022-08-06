@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import VariablesForm from "./_components/VariablesForm/VariablesForm"
 import AceEditorHolder from "./_components/AceEditorHolder/AceEditorHolder"
@@ -34,6 +35,14 @@ const InputsArea = (props) => {
       {renderVariablesForm()}
     </div>
   )
+}
+
+InputsArea.propTypes = {
+  inputValues: PropTypes.array.isRequired,
+  janeCode: PropTypes.string.isRequired,
+  programVariables: PropTypes.array.isRequired,
+  setInputValues: PropTypes.func.isRequired,
+  setJaneCode: PropTypes.func.isRequired,
 }
 
 export default InputsArea

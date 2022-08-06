@@ -13,12 +13,11 @@ const VisualizationButtons = ({
   setDisplayedStepsCount,
   setVisualizationType,
   startVisualization,
-  statementsRows,
 }) => {
-  const onClickHandle = (count, visualizationType) => {
+  const onClickHandle = (visualizationType, count) => {
+    setVisualizationType(visualizationType)
     setDisplayedStepsCount(count)
     startVisualization()
-    setVisualizationType(visualizationType)
   }
 
   return (
@@ -27,16 +26,14 @@ const VisualizationButtons = ({
         icon={<StepsIcon className={classes["icon"]} />}
         isExtended
         label={"Krok po kroku"}
-        onClick={() => onClickHandle(1, VISUALIZATION.STEP_BY_STEP)}
+        onClick={() => onClickHandle(VISUALIZATION.STEP_BY_STEP, 1)}
         primary
       />
       <Button
         icon={<VisualizationIcon className={classes["icon"]} />}
         isExtended={false}
         label={"Vizualizácia"}
-        onClick={() =>
-          onClickHandle(statementsRows.length, VISUALIZATION.ALL_STEPS)
-        }
+        onClick={() => onClickHandle(VISUALIZATION.ALL_STEPS, null)}
         primary
       />
     </div>
@@ -47,7 +44,6 @@ VisualizationButtons.propTypes = {
   setDisplayedStepsCount: PropTypes.func.isRequired,
   setVisualizationType: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,
-  statementsRows: PropTypes.array.isRequired,
 }
 
 export default VisualizationButtons

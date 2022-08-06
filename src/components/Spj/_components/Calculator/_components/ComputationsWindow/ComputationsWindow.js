@@ -22,7 +22,10 @@ const ComputationsWindow = ({
 }) => {
   const [isWholeTable, setIsWholeTable] = useState(false)
 
-  const statementsToDisplay = statementsRows.slice(0, displayedStepsCount)
+  const statementsToDisplay =
+    displayedStepsCount === null
+      ? statementsRows
+      : statementsRows.slice(0, displayedStepsCount)
 
   const toggleWholeWindow = () => {
     setIsWholeTable((current) => current === false)
@@ -99,7 +102,11 @@ ComputationsWindow.propTypes = {
   displayedStepsCount: PropTypes.number.isRequired,
   setDisplayedStepsCount: PropTypes.func.isRequired,
   statementsRow: PropTypes.array.isRequired,
-  visualizationType: PropTypes.string.isRequired,
+  visualizationType: PropTypes.oneOf([
+    VISUALIZATION.NONE,
+    VISUALIZATION.ALL_STEPS,
+    VISUALIZATION.STEP_BY_STEP,
+  ]).isRequired,
 }
 
 export default ComputationsWindow
