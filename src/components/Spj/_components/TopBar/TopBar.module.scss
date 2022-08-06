@@ -1,0 +1,44 @@
+@import "/src/styles/colors.scss";
+
+.top-bar {
+  align-items: center;
+  background-color: $dark-blue;
+  display: flex;
+  height: 100px;
+  justify-content: space-between;
+  padding: 0 40px;
+
+  &__title {
+    align-items: center;
+    display: flex;
+    color: $white;
+    font-size: 20px;
+    font-weight: 600;
+    gap: 20px;
+  }
+}
+
+.navigation {
+  align-items: center;
+  display: flex;
+  gap: 15px;
+
+  &__link {
+    text-decoration: none;
+  }
+}
+
+.icon > path {
+  fill: currentColor;
+}
+
+.languages {
+  display: flex;
+  gap: 10px;
+  padding-left: 20px;
+}
+
+.lang {
+  height: 30px;
+  width: 30px;
+}
