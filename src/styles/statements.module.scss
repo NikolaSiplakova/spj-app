@@ -1,14 +1,21 @@
 @import "/src/styles/colors.scss";
 
 .statement {
-  display: inline;
-  padding: 3px;
+  background-color: transparent;
+  border: 2px solid transparent;
   border-radius: 3px;
+  display: inline;
+  padding: 3px 2px;
+
+  &--big {
+    padding: 5px 3px;
+  }
 }
 
 .while-statement {
   &:hover {
     background-color: $green-pastel;
+    border-color: $green-pastel-border;
   }
 }
 
@@ -19,8 +26,6 @@
 }
 
 .assign-statement {
-  border: 2px solid transparent;
-
   &:hover {
     background-color: $blue-pastel;
     border-color: $blue-pastel-border;
@@ -30,11 +35,13 @@
 .do-statement {
   &:hover {
     background-color: $yellow-pastel;
+    border-color: $yllow-pastel-border;
   }
 }
 
 .if-statement {
   &:hover {
     background-color: $red-pastel;
+    border-color: $red-pastel-border;
   }
 }

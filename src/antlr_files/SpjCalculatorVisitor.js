@@ -280,7 +280,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     }
     const boolValue = this.visit(ctx.children[1])
 
-    const text = ctx.children.map((child) => {
+    const text = ctx.children.map((child, index) => {
       return this.convertToLatex(child.getText())
     })
 
@@ -375,7 +375,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
   visitAssignment(ctx) {
     const assignmentParts = ctx.children.map((child) => child.getText())
-    assignmentParts.pop() //remove semicolon
 
     const assignmentVar = ctx.children[0].getText()
     const assignmentValue = this.visitChildren(ctx)[2]
@@ -393,7 +392,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       janeStatements: [
         {
           text: assignmentParts.join(" "),
-          type: STATEMENT_TYPES.ASSIGN,
+          type: null, //null because of highlighting
         },
       ],
       substats: [],

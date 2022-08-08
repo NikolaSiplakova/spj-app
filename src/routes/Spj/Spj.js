@@ -14,7 +14,7 @@ import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
   const [janeCode, setJaneCode] = useState(
-    "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);"
+    "if x<y then (x:=y; y:=y+x;) else x:=y+y;"
   )
   const [statements, setStatements] = useState([])
 

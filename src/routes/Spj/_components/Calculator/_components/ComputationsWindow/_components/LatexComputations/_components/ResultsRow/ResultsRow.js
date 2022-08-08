@@ -1,6 +1,8 @@
 import PropTypes from "prop-types"
 import { MathJaxContext, MathJax } from "better-react-mathjax"
 
+import { MATHJAX_CONFIG } from "constants/mathJaxConfig"
+
 import classes from "./ResultsRow.module.scss"
 
 const ResultsRow = ({ state, variables }) => {
@@ -15,25 +17,11 @@ const ResultsRow = ({ state, variables }) => {
 
   const result = `$s\_${state} = \\Big[ \\ ${getVariableNotation()} \\ \\Big]$`
 
-  const config = {
-    tex2jax: {
-      inlineMath: [
-        ["$", "$"],
-        ["\\(", "\\)"],
-      ],
-      displayMath: [
-        ["$$", "$$"],
-        ["\\[", "\\]"],
-      ],
-    },
-    messageStyle: "none",
-  }
-
   return (
     <div className={classes["result"]}>
       <MathJaxContext
         version={2}
-        config={config}
+        config={MATHJAX_CONFIG}
         onStartup={(mathJax) => (mathJax.Hub.processSectionDelay = 0)}
       >
         <MathJax inline dynamic hideUntilTypeset={"first"}>

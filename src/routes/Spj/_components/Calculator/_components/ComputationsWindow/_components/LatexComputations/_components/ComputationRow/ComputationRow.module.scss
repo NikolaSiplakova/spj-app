@@ -19,3 +19,18 @@
     place-items: center;
   }
 }
+
+.statements-row {
+  display: grid;
+  grid-template-columns: 1fr 190px;
+  padding: 10px;
+
+  &:first-child {
+    border-bottom: 1px solid #efefef;
+  }
+
+  &__state {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+}

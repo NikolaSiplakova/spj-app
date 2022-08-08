@@ -6,13 +6,19 @@ $dark-grey: #4d4d4c;
 $aqua-blue-shadow: rgba(8, 72, 112, 0.7);
 
 // Highlighting colors
-$red-pastel: #ffb5b5;
-$yellow-pastel: #fffbb3;
-$orange-pastel: #ffdac1;
-$green-pastel: #b5ead7;
+$red-pastel: rgb(249, 225, 225);
+$red-pastel-border: rgb(229, 205, 205);
 
-$blue-pastel: rgb(205, 210, 230);
-$blue-pastel-border: rgb(199, 206, 234);
+$yellow-pastel: rgb(252, 250, 217);
+$yllow-pastel-border: rgb(232, 230, 197);
+
+$orange-pastel: #ffdac1;
+
+$green-pastel: rgb(217, 251, 239);
+$green-pastel-border: rgb(197, 231, 219);
+
+$blue-pastel: rgb(225, 231, 255);
+$blue-pastel-border: rgb(205, 211, 235);
 
 //NEW COLORS
 $dark-blue: rgb(20, 33, 61);
