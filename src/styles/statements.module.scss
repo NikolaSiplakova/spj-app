@@ -12,20 +12,12 @@
   }
 }
 
-.while-statement {
-  &:hover {
-    background-color: $green-pastel;
-    border-color: $green-pastel-border;
-  }
-}
-
-.skip-statement {
-  &:hover {
-    background-color: $orange-pastel;
-  }
-}
-
 .assign-statement {
+  &--dot {
+    background-color: $blue-pastel;
+    border-color: $blue-pastel-border;
+  }
+
   &:hover {
     background-color: $blue-pastel;
     border-color: $blue-pastel-border;
@@ -33,15 +25,76 @@
 }
 
 .do-statement {
+  &--dot {
+    background-color: $yellow-pastel;
+    border-color: $yellow-pastel-border;
+  }
+
   &:hover {
     background-color: $yellow-pastel;
-    border-color: $yllow-pastel-border;
+    border-color: $yellow-pastel-border;
   }
 }
 
+.for-statement {
+}
+
 .if-statement {
+  &--dot {
+    background-color: $red-pastel;
+    border-color: $red-pastel-border;
+  }
+
   &:hover {
     background-color: $red-pastel;
     border-color: $red-pastel-border;
+  }
+}
+
+.repeat-statement {
+  &--dot {
+    background-color: $yellow-green-pastel;
+    border-color: $yellow-green-pastel-border;
+  }
+
+  &:hover {
+    background-color: $yellow-green-pastel;
+    border-color: $yellow-green-pastel-border;
+  }
+}
+
+.skip-statement {
+  &--dot {
+    background-color: $grey-highlight;
+    border-color: $grey-highlight-border;
+  }
+
+  &:hover {
+    background-color: $grey-highlight;
+    border-color: $grey-highlight-border;
+  }
+}
+
+.then-else-statement {
+  &--dot {
+    background-color: $turquoise-pastel;
+    border-color: $turquoise-pastel-border;
+  }
+
+  &:hover {
+    background-color: $turquoise-pastel;
+    border-color: $turquoise-pastel-border;
+  }
+}
+
+.while-statement {
+  &--dot {
+    background-color: $green-pastel;
+    border-color: $green-pastel-border;
+  }
+
+  &:hover {
+    background-color: $green-pastel;
+    border-color: $green-pastel-border;
   }
 }

@@ -24,10 +24,30 @@
 }
 
 .actions {
+  align-items: center;
   display: flex;
   gap: 15px;
 
   &__action {
     cursor: pointer;
+  }
+}
+
+.highlight {
+  display: flex;
+  position: relative;
+
+  &:hover {
+    .highlight__window {
+      display: block;
+    }
+  }
+
+  &__window {
+    display: none;
+    position: absolute;
+    right: -20px;
+    top: 30px;
+    z-index: 1;
   }
 }

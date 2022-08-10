@@ -102,7 +102,11 @@ export const inputTexts = [
   "if x>=y then while x>2 do x:=x-1;; else y:=45;;",
 
   /******************** REPEAT ********************/
-  "repeat x:=x+2; until x>8",
+  //30 x=3 -> 9, s3
+  "repeat x:=x+2 until x>8",
+
+  //31 x=2 y=1 z=3 -> 3, 6, 9, s3
+  "repeat (x:=x+y; y:=y*2; z:=x+y) until z<25",
 
   //nefunguje
   "if x>y then x:=x else y:=z; while (x>2) do x:=x+1; y:=z+4;",

@@ -1,0 +1,41 @@
+@import "/src/styles/statements.module.scss";
+
+.window {
+  background-color: $white;
+  border-radius: 10px;
+  box-shadow: $highlight-window-shadow;
+  padding: 10px;
+
+  &::before {
+    border: 0.75rem solid transparent;
+    border-bottom-color: #fff;
+    border-top: none;
+    bottom: 100%;
+    content: "";
+    filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, 0.1));
+    position: absolute;
+    right: 15px;
+  }
+}
+
+.indicator {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__color {
+    border-radius: 50%;
+    padding: 5px;
+  }
+
+  &__name {
+    font-size: 14px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+}
