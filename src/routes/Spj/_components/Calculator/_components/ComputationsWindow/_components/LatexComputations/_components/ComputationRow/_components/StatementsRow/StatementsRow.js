@@ -1,83 +1,47 @@
-import { MathJaxContext, MathJax } from "better-react-mathjax"
 import classnames from "classnames"
 import PropTypes from "prop-types"
+
+import { MathJax } from "better-react-mathjax"
 
 import classes from "./StatementsRow.module.scss"
 
 const StatementsRow = ({ statementsRow }) => {
-  const stateChange = `s\_${statementsRow.state + 1} = s\_${
-    statementsRow.state
-  } \\Big[ ${statementsRow.changedVariable} \\Big]`
-
   const oneRowStatements = statementsRow.printout
 
-  const config = {
-    tex2jax: {
-      inlineMath: [
-        ["$", "$"],
-        ["\\(", "\\)"],
-      ],
-      displayMath: [
-        ["$$", "$$"],
-        ["\\[", "\\]"],
-      ],
-    },
-    messageStyle: "none",
-  }
-
   return (
-    <MathJaxContext
-      version={2}
-      config={config}
-      onStartup={(mathJax) => (mathJax.Hub.processSectionDelay = 0)}
-    >
-      <MathJax inline dynamic hideUntilTypeset={"first"}>
-        <div className={classes["statements-row"]}>
-          <div>
-            {`$\\Big \\langle$`}
-            {oneRowStatements.map((statementParts, index) => (
+    <MathJax>
+      {`$\\Big \\langle$`}
+      {oneRowStatements.map((statementParts, index) => (
+        <div
+          key={index}
+          className={classnames(
+            classes["statement"],
+            classes["statement--big"],
+            classes[`${statementParts.statementType}`]
+          )}
+        >
+          {Array.from(statementParts.oneStatementPrintout).map(
+            (part, index) => (
               <div
                 key={index}
                 className={classnames(
                   classes["statement"],
-                  classes[`${statementParts.statementType}`]
+                  classes[`${part.type}`]
                 )}
               >
-                {Array.from(statementParts.oneStatementPrintout).map(
-                  (part, index) => (
-                    <div
-                      key={index}
-                      className={classnames(
-                        classes["statement"],
-                        classes[`${part.type}`]
-                      )}
-                    >
-                      {`$${part.text} \\ $`}
-                    </div>
-                  )
-                )}
+                {`$${part.text} \\ $`}
               </div>
-            ))}
-            {`$\\ s\_${statementsRow.state} \\Big \\rangle \\hspace{.5cm} \\Longrightarrow$`}
-          </div>
-          {statementsRow.changedVariable !== null && (
-            <div
-              className={classes["statements-row__state"]}
-            >{`$${stateChange}$`}</div>
+            )
           )}
         </div>
-      </MathJax>
-    </MathJaxContext>
+      ))}
+      {`$\\ s\_${statementsRow.state} \\Big \\rangle \\hspace{.5cm} \\Longrightarrow$`}
+    </MathJax>
   )
 }
 
 StatementsRow.propTypes = {
-  index: PropTypes.number,
   statementsRow: PropTypes.object.isRequired,
-}
-
-StatementsRow.defaultProps = {
-  index: null,
 }
 
 export default StatementsRow

@@ -8,14 +8,14 @@ import {
   getParser,
 } from "../../helpers/init"
 
+import { inputTexts } from "constants/inputTexts"
+
 import ErrorHolder from "./_components/ErrorHolder/ErrorHolder"
 import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(
-    "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);"
-  )
+  const [janeCode, setJaneCode] = useState(inputTexts[31])
   const [statements, setStatements] = useState([])
 
   //parser

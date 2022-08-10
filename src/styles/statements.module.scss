@@ -1,25 +1,22 @@
 @import "/src/styles/colors.scss";
 
 .statement {
-  display: inline;
-  padding: 3px;
+  background-color: transparent;
+  border: 2px solid transparent;
   border-radius: 3px;
-}
+  display: inline;
+  padding: 3px 2px;
 
-.while-statement {
-  &:hover {
-    background-color: $green-pastel;
-  }
-}
-
-.skip-statement {
-  &:hover {
-    background-color: $orange-pastel;
+  &--big {
+    padding: 5px 3px;
   }
 }
 
 .assign-statement {
-  border: 2px solid transparent;
+  &--dot {
+    background-color: $blue-pastel;
+    border-color: $blue-pastel-border;
+  }
 
   &:hover {
     background-color: $blue-pastel;
@@ -28,13 +25,76 @@
 }
 
 .do-statement {
+  &--dot {
+    background-color: $yellow-pastel;
+    border-color: $yellow-pastel-border;
+  }
+
   &:hover {
     background-color: $yellow-pastel;
+    border-color: $yellow-pastel-border;
   }
 }
 
+.for-statement {
+}
+
 .if-statement {
+  &--dot {
+    background-color: $red-pastel;
+    border-color: $red-pastel-border;
+  }
+
   &:hover {
     background-color: $red-pastel;
+    border-color: $red-pastel-border;
+  }
+}
+
+.repeat-statement {
+  &--dot {
+    background-color: $yellow-green-pastel;
+    border-color: $yellow-green-pastel-border;
+  }
+
+  &:hover {
+    background-color: $yellow-green-pastel;
+    border-color: $yellow-green-pastel-border;
+  }
+}
+
+.skip-statement {
+  &--dot {
+    background-color: $grey-highlight;
+    border-color: $grey-highlight-border;
+  }
+
+  &:hover {
+    background-color: $grey-highlight;
+    border-color: $grey-highlight-border;
+  }
+}
+
+.then-else-statement {
+  &--dot {
+    background-color: $turquoise-pastel;
+    border-color: $turquoise-pastel-border;
+  }
+
+  &:hover {
+    background-color: $turquoise-pastel;
+    border-color: $turquoise-pastel-border;
+  }
+}
+
+.while-statement {
+  &--dot {
+    background-color: $green-pastel;
+    border-color: $green-pastel-border;
+  }
+
+  &:hover {
+    background-color: $green-pastel;
+    border-color: $green-pastel-border;
   }
 }

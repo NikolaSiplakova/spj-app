@@ -39,7 +39,16 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     this.nodes.push(computationStep)
   }
 
-  textttKeywords = ["if", "then", "else", "while", "do", "skip"]
+  textttKeywords = [
+    "if",
+    "then",
+    "else",
+    "while",
+    "do",
+    "skip",
+    "repeat",
+    "until",
+  ]
   convertToLatex = (keyword) => {
     if (this.textttKeywords.includes(keyword)) {
       return `\\texttt{${keyword}}`
@@ -122,7 +131,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
   visitSkipStat(ctx) {
     this.setComputationStep(null, this.state, [...this.variables])
     return {
-      janeStatements: [{ text: "skip", type: STATEMENT_TYPES.SKIP }],
+      janeStatements: [{ text: "\\texttt{skip}", type: null }],
       substats: [],
       type: STATEMENT_TYPES.SKIP,
     }
@@ -137,7 +146,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       const whileSentence = ctx.children.map((child) =>
         this.convertToLatex(child.getText())
       )
-      whileSentence.pop() //remove semicolon
 
       const doStatements = ctx.children[3].children[0].children.map((child) =>
         child.getText()
@@ -155,28 +163,15 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
       const ifString = [
         {
-          text: "\\texttt{if}",
+          text: `\\texttt{if} \\ ${boolCondition} \\ \\texttt{then}`,
           type: null,
         },
         {
-          text: boolCondition,
-          type: null,
-        },
-        {
-          text: "\\texttt{then} \\ \\bigl(",
-          type: null,
-        },
-        {
-          text: doStatements.slice(1, -1),
-          type: STATEMENT_TYPES.DO,
-        },
-        {
-          text: whileSentence.join(" \\ "),
-          type: STATEMENT_TYPES.WHILE,
-        },
-        {
-          text: "\\bigl)",
-          type: null,
+          text: `\\bigl( \\ ${doStatements.slice(
+            1,
+            -1
+          )} \\ ${whileSentence.join(" \\ ")} \\ \\bigl)`,
+          type: STATEMENT_TYPES.THEN_ELSE,
         },
         {
           text: "\\texttt{else}",
@@ -184,7 +179,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
         },
         {
           text: "\\texttt{skip}",
-          type: STATEMENT_TYPES.SKIP,
+          type: STATEMENT_TYPES.THEN_ELSE,
         },
       ]
 
@@ -209,17 +204,47 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     }
 
     if (ctx.start.type === SpjParser.REPEAT) {
-      const text = ctx.children.map((child) => child.getText())
-      const ifString = {
-        text: `if ${ctx.children[3].getText()} then skip else ${text.join(
-          " "
-        )}`,
-        type: STATEMENT_TYPES.IF,
-      }
       const boolValue = this.visit(ctx.children[3])
+      const boolCondition = ctx.children[3].getText()
+      const repeatSentence = ctx.children.map((child) =>
+        this.convertToLatex(child.getText())
+      )
+
+      const repeatStatements = ctx.children[1].children[0].children.map(
+        (child) => child.getText()
+      )
+
+      if (repeatStatements[0] === "(") {
+        repeatStatements[0] = `\\bigl(`
+      }
+
+      if (repeatStatements[repeatStatements.length - 1] === ")") {
+        repeatStatements[repeatStatements.length - 1] = `\\bigl)`
+      }
+
+      repeatSentence[1] = repeatStatements.join(" \\ ")
+
+      const ifString = [
+        {
+          text: `\\texttt{if} \\ ${boolCondition} \\ \\texttt{then}`,
+          type: null,
+        },
+        {
+          text: "\\texttt{skip}",
+          type: STATEMENT_TYPES.THEN_ELSE,
+        },
+        {
+          text: "\\texttt{else}",
+          type: null,
+        },
+        {
+          text: `${repeatSentence.join(" \\ ")}`,
+          type: STATEMENT_TYPES.THEN_ELSE,
+        },
+      ]
 
       return {
-        janeStatements: [ifString],
+        janeStatements: ifString,
         substats:
           boolValue === true
             ? [this.visitSkipStat(ctx)]
@@ -262,10 +287,10 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       if (ctx.children[3].children[0].ruleIndex === SpjParser.RULE_seq) {
         const thenStatements = this.visit(ctx.children[3])
         return thenStatements[0]
-      } else {
-        const thenStatements = this.visit(ctx.children[3])
-        return thenStatements
       }
+
+      const thenStatements = this.visit(ctx.children[3])
+      return thenStatements
     }
 
     //elseStatements = sequence / statement
@@ -274,23 +299,45 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
         const elseStatements = this.visit(ctx.children[5])
         return elseStatements[0]
       }
-
       const elseStatements = this.visit(ctx.children[5])
       return elseStatements
     }
+
     const boolValue = this.visit(ctx.children[1])
 
-    const text = ctx.children.map((child) => {
-      return this.convertToLatex(child.getText())
+    const statementParts = ctx.children.map((child, index) => {
+      if (
+        (index === 3 || index === 5) &&
+        child.children[0].ruleIndex === SpjParser.RULE_seq
+      ) {
+        const seqStatements = child.children[0].children
+
+        const seqStatementsText = seqStatements.map((seqStatement) =>
+          seqStatement.getText()
+        )
+
+        if (seqStatementsText[0] === "(") {
+          seqStatementsText[0] = `\\bigl(`
+        }
+
+        if (seqStatementsText[seqStatementsText.length - 1] === ")") {
+          seqStatementsText[seqStatementsText.length - 1] = `\\bigl)`
+        }
+
+        return {
+          text: seqStatementsText.join(" \\ "),
+          type: STATEMENT_TYPES.THEN_ELSE,
+        }
+      }
+
+      return {
+        text: this.convertToLatex(child.getText()),
+        type: index === 3 || index === 5 ? STATEMENT_TYPES.THEN_ELSE : null,
+      }
     })
 
     return {
-      janeStatements: [
-        {
-          text: text.join(" \\ "), //space in latex
-          type: STATEMENT_TYPES.IF,
-        },
-      ],
+      janeStatements: statementParts,
       substats: boolValue === true ? getThenStatements() : getElseStatements(),
       type: STATEMENT_TYPES.IF,
     }
@@ -321,8 +368,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
         type: null,
       }
     })
-
-    whileStatementText.pop()
 
     return {
       janeStatements: whileStatementText,
@@ -359,15 +404,35 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       }
     }
 
-    const text = ctx.children.map((child) => child.getText())
+    const repeatStatementText = ctx.children.map((child, index) => {
+      if (index === 1) {
+        //do statements
+        const repeatStatements = child.children[0].children.map(
+          (repeatStatement) => repeatStatement.getText()
+        )
+
+        if (repeatStatements[0] === "(") {
+          repeatStatements[0] = `\\bigl(`
+        }
+
+        if (repeatStatements[repeatStatements.length - 1] === ")") {
+          repeatStatements[repeatStatements.length - 1] = `\\bigl)`
+        }
+
+        return {
+          text: repeatStatements.join(" \\ "),
+          type: STATEMENT_TYPES.DO,
+        }
+      }
+
+      return {
+        text: this.convertToLatex(child.getText()),
+        type: null,
+      }
+    })
 
     return {
-      janeStatements: [
-        {
-          text: text.join(" "),
-          type: STATEMENT_TYPES.REPEAT,
-        },
-      ],
+      janeStatements: repeatStatementText,
       substats: [...getRepeatStatements(), this.visitIfStat(ctx)],
       type: STATEMENT_TYPES.REPEAT,
     }
@@ -375,7 +440,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
   visitAssignment(ctx) {
     const assignmentParts = ctx.children.map((child) => child.getText())
-    assignmentParts.pop() //remove semicolon
 
     const assignmentVar = ctx.children[0].getText()
     const assignmentValue = this.visitChildren(ctx)[2]
@@ -393,7 +457,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       janeStatements: [
         {
           text: assignmentParts.join(" "),
-          type: STATEMENT_TYPES.ASSIGN,
+          type: null, //null because of highlighting
         },
       ],
       substats: [],

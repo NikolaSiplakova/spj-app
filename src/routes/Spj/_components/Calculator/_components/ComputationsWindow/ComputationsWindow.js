@@ -5,6 +5,7 @@ import classnames from "classnames"
 import { VISUALIZATION } from "constants/visualizationTypes"
 
 import Header from "common/Header/Header"
+import HighlightInfo from "./_components/HighlightInfo/HighlightInfo"
 import LatexComputations from "./_components/LatexComputations/LatexComputations"
 import StepByStep from "./_components/StepByStep/StepByStep"
 
@@ -57,10 +58,15 @@ const ComputationsWindow = ({
     return (
       <div className={classes["actions"]}>
         {renderArrow()}
-        <InfoIcon
-          className={classes["actions__action"]}
-          title={"Pravidlá zvýrazňovania"}
-        />
+        <div className={classes["highlight"]}>
+          <InfoIcon
+            className={classes["actions__action"]}
+            title={"Pravidlá zvýrazňovania"}
+          />
+          <div className={classes["highlight__window"]}>
+            <HighlightInfo />
+          </div>
+        </div>
       </div>
     )
   }
