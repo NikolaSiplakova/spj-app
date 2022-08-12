@@ -1,6 +1,8 @@
-import React, { useRef, useMemo } from "react"
+import React, { useCallback, useRef, useMemo, useState, useEffect } from "react"
 import _ from "lodash"
 import PropTypes from "prop-types"
+
+import useDebounce from "hooks/useDebounce"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
@@ -16,6 +18,15 @@ import { ReactComponent as RefreshIcon } from "styles/icons/refresh.svg"
 import classes from "./AceEditorHolder.module.scss"
 
 const AceEditorHolder = ({ janeCode, setJaneCode }) => {
+  //debounce
+  const [editorValue, setEditorValue] = useState(janeCode)
+
+  const [debouncedSearch, loading] = useDebounce(editorValue, 5000)
+
+  useEffect(() => {
+    setJaneCode(debouncedSearch)
+  })
+
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
 
@@ -27,13 +38,6 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
 
     editor.session.insert(cursorPosition, symbol)
   }
-
-  //debounce
-  const setCode = (code) => {
-    setJaneCode(code)
-  }
-
-  const debouncedSetCode = useMemo(() => _.debounce(setCode, 1000), [setCode])
 
   const renderHeaderActions = () => (
     <div className={classes["header-actions"]}>
@@ -47,6 +51,13 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
     </div>
   )
 
+  const renderLoader = () => {
+    if (loading === true) {
+      return "loading"
+    }
+
+    return "pica"
+  }
   return (
     <div className={classes["editor-holder"]}>
       <Header action={renderHeaderActions()} title={"Program v jazyku Jane"} />
@@ -60,12 +71,12 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
         mode={customHighlightMode}
         theme="tomorrow"
         name="jane-editor"
-        onChange={debouncedSetCode}
+        onChange={setEditorValue}
         fontSize={14}
         showPrintMargin={false}
         showGutter={true}
         highlightActiveLine={true}
-        value={janeCode}
+        value={editorValue}
         setOptions={{
           enableBasicAutocompletion: true,
           enableLiveAutocompletion: true,
@@ -75,6 +86,7 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
         }}
       />
       <SpecialSymbolsList setSpecialSymbol={setSpecialSymbol} />
+      {renderLoader()}
     </div>
   )
 }
