@@ -13,7 +13,7 @@ const VariableInput = (props) => {
       <input
         className={classes["text"]}
         id={`input${index}`}
-        type="text"
+        type="number"
         name={inputName}
         placeholder="Zadaj hodnotu premennej"
         value={values[`variable${index}`]}
