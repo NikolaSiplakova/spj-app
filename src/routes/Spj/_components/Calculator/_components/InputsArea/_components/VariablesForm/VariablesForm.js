@@ -47,7 +47,11 @@ const VariableForm = (props) => {
 
   return (
     <div>
-      <Header action={renderActions()} title="Premenné" />
+      <Header
+        action={renderActions()}
+        className={classes["header"]}
+        title="Premenné"
+      />
       <div className={classes["variables-form"]}>
         <Formik
           initialValues={{}}
