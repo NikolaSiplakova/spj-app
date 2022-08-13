@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
+
+import useDebounce from "hooks/useDebounce"
 
 import { VISUALIZATION } from "constants/visualizationTypes"
 
@@ -11,7 +13,6 @@ import classes from "./Calculator.module.scss"
 
 const Calculator = (props) => {
   const {
-    inputValues,
     janeCode,
     programVariables,
     setInputValues,
@@ -25,17 +26,29 @@ const Calculator = (props) => {
   )
   const [visualizationType, setVisualizationType] = useState(VISUALIZATION.NONE)
 
+  //debounce
+  const [editorValue, setEditorValue] = useState(janeCode)
+  const [debouncedSearch, debounceLoading] = useDebounce(editorValue, 1000)
+
+  useEffect(() => {
+    setJaneCode(debouncedSearch)
+  })
+
   return (
     <div className={classes["wrapper"]}>
       <InputsArea
-        inputValues={inputValues}
+        debounceLoading={debounceLoading}
+        editorValue={editorValue}
         janeCode={janeCode}
         programVariables={programVariables}
+        setEditorValue={setEditorValue}
         setInputValues={setInputValues}
         setJaneCode={setJaneCode}
       />
 
       <VisualizationButtons
+        debounceLoading={debounceLoading}
+        janeCode={janeCode}
         setDisplayedStepsCount={setDisplayedStepsCount}
         setVisualizationType={setVisualizationType}
         startVisualization={startVisualization}
@@ -52,7 +65,6 @@ const Calculator = (props) => {
 }
 
 Calculator.propTypes = {
-  inputValues: PropTypes.array.isRequired,
   janeCode: PropTypes.string.isRequired,
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,

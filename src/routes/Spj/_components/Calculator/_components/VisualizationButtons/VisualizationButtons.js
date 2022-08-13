@@ -10,6 +10,8 @@ import { ReactComponent as VisualizationIcon } from "styles/icons/visualization.
 import classes from "./VisualizationButtons.module.scss"
 
 const VisualizationButtons = ({
+  janeCode,
+  debounceLoading,
   setDisplayedStepsCount,
   setVisualizationType,
   startVisualization,
@@ -20,7 +22,7 @@ const VisualizationButtons = ({
     startVisualization()
   }
 
-  const isButtonDisabled = true
+  const isButtonDisabled = debounceLoading === true || janeCode === ""
 
   return (
     <div className={classes["buttons"]}>
@@ -45,6 +47,7 @@ const VisualizationButtons = ({
 }
 
 VisualizationButtons.propTypes = {
+  janeCode: PropTypes.string.isRequired,
   setDisplayedStepsCount: PropTypes.func.isRequired,
   setVisualizationType: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,

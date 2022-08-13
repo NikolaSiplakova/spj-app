@@ -17,16 +17,7 @@ import { ReactComponent as RefreshIcon } from "styles/icons/refresh.svg"
 
 import classes from "./AceEditorHolder.module.scss"
 
-const AceEditorHolder = ({ janeCode, setJaneCode }) => {
-  //debounce
-  const [editorValue, setEditorValue] = useState(janeCode)
-
-  const [debouncedSearch, loading] = useDebounce(editorValue, 5000)
-
-  useEffect(() => {
-    setJaneCode(debouncedSearch)
-  })
-
+const AceEditorHolder = ({ editorValue, setEditorValue, setJaneCode }) => {
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
 
@@ -51,13 +42,6 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
     </div>
   )
 
-  const renderLoader = () => {
-    if (loading === true) {
-      return "loading"
-    }
-
-    return "pica"
-  }
   return (
     <div className={classes["editor-holder"]}>
       <Header action={renderHeaderActions()} title={"Program v jazyku Jane"} />
@@ -86,13 +70,13 @@ const AceEditorHolder = ({ janeCode, setJaneCode }) => {
         }}
       />
       <SpecialSymbolsList setSpecialSymbol={setSpecialSymbol} />
-      {renderLoader()}
     </div>
   )
 }
 
 AceEditorHolder.propTypes = {
-  janeCode: PropTypes.string.isRequired,
+  editorValue: PropTypes.string.isRequired,
+  setEditorValue: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
 }
 

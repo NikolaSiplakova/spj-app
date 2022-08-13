@@ -14,15 +14,7 @@ const AutoSave = ({ debounceMs = 1000 }) => {
 
   useEffect(() => debouncedSubmit, [debouncedSubmit, formik.values])
 
-  return (
-    <p className="text-center text-success">
-      {!!formik.isSubmitting
-        ? "Saving..."
-        : isSaved
-        ? "Your changes saved."
-        : null}
-    </p>
-  )
+  return <p className="text-center text-success"></p>
 }
 
 export default AutoSave

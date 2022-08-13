@@ -16,7 +16,6 @@ function useDebounce(value, delay) {
     }
   }, [value, delay])
 
-  console.log(loading)
   return [debouncedValue, loading]
 }
 
