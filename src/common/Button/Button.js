@@ -25,7 +25,6 @@ const Button = (props) => {
         [classes["button--collapsed"]]: isExtended === false,
       })}
       onClick={onClick}
-      type="button"
     >
       {icon}
       <div className={classes["button__label"]}>{label}</div>
