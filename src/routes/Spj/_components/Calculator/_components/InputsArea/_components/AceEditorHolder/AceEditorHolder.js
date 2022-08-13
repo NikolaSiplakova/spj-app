@@ -1,8 +1,5 @@
-import React, { useCallback, useRef, useMemo, useState, useEffect } from "react"
-import _ from "lodash"
+import React, { useRef } from "react"
 import PropTypes from "prop-types"
-
-import useDebounce from "hooks/useDebounce"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
@@ -35,7 +32,10 @@ const AceEditorHolder = ({ editorValue, setEditorValue, setJaneCode }) => {
       <FileImporter setJaneCode={setJaneCode} />
 
       <RefreshIcon
-        onClick={() => setJaneCode("")}
+        onClick={() => {
+          setEditorValue("")
+          setJaneCode("")
+        }}
         title={"Vymazať program"}
         className={classes["action"]}
       />
