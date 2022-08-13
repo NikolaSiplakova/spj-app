@@ -1,4 +1,6 @@
-import { React, memo, Fragment } from "react"
+import { React, memo } from "react"
+import PropTypes from "prop-types"
+
 import { Formik } from "formik"
 
 import Header from "common/Header/Header"
@@ -67,7 +69,7 @@ const VariableForm = (props) => {
                     />
                   ))}
                 </div>
-                <AutoSave debounceMs={1000} />
+                <AutoSave debounceMs={100} />
               </form>
             )
           }}
@@ -75,6 +77,11 @@ const VariableForm = (props) => {
       </div>
     </div>
   )
+}
+
+VariableForm.propTypes = {
+  programVariables: PropTypes.array.isRequired,
+  setInputValues: PropTypes.func.isRequired,
 }
 
 export default memo(VariableForm)

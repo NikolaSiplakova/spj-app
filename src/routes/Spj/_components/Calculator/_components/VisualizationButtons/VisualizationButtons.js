@@ -10,6 +10,8 @@ import { ReactComponent as VisualizationIcon } from "styles/icons/visualization.
 import classes from "./VisualizationButtons.module.scss"
 
 const VisualizationButtons = ({
+  janeCode,
+  debounceLoading,
   setDisplayedStepsCount,
   setVisualizationType,
   startVisualization,
@@ -20,10 +22,13 @@ const VisualizationButtons = ({
     startVisualization()
   }
 
+  const isButtonDisabled = debounceLoading === true || janeCode === ""
+
   return (
     <div className={classes["buttons"]}>
       <Button
         icon={<StepsIcon className={classes["icon"]} />}
+        isDisabled={isButtonDisabled}
         isExtended
         label={"Krok po kroku"}
         onClick={() => onClickHandle(VISUALIZATION.STEP_BY_STEP, 1)}
@@ -31,7 +36,8 @@ const VisualizationButtons = ({
       />
       <Button
         icon={<VisualizationIcon className={classes["icon"]} />}
-        isExtended={false}
+        isDisabled={isButtonDisabled}
+        isExtended
         label={"Vizualizácia"}
         onClick={() => onClickHandle(VISUALIZATION.ALL_STEPS, null)}
         primary
@@ -41,6 +47,7 @@ const VisualizationButtons = ({
 }
 
 VisualizationButtons.propTypes = {
+  janeCode: PropTypes.string.isRequired,
   setDisplayedStepsCount: PropTypes.func.isRequired,
   setVisualizationType: PropTypes.func.isRequired,
   startVisualization: PropTypes.func.isRequired,

@@ -3,6 +3,7 @@
 .button {
   align-items: center;
   border-radius: 100px;
+  border: 2px solid;
   cursor: pointer;
   display: flex;
   font-size: 14px;
@@ -12,20 +13,23 @@
   justify-content: center;
   padding: 0 10px;
 
-  &:hover {
-    //TODO
-  }
-
   &--primary {
     background-color: $orange;
-    border: 2px solid $orange;
+    border-color: $orange;
     color: $white;
   }
 
   &--secondary {
     background-color: $white;
-    border: 2px solid $orange;
+    border-color: $orange;
     color: $orange;
+  }
+
+  &--disabled {
+    background-color: $disabled-grey;
+    border-color: $disabled-grey;
+    color: $white;
+    cursor: not-allowed;
   }
 
   &--collapsed {
@@ -37,20 +41,6 @@
 
     .button__label {
       display: none;
-    }
-
-    &:hover {
-      border-radius: 100px;
-      max-width: 200px;
-      padding: 0 10px;
-      transition: max-width 1s;
-      width: auto;
-
-      .button__label {
-        display: block;
-        overflow: hidden;
-        white-space: nowrap;
-      }
     }
   }
 }

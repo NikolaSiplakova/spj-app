@@ -9,9 +9,9 @@ import classes from "./InputsArea.module.scss"
 
 const InputsArea = (props) => {
   const {
-    inputValues,
-    janeCode,
+    editorValue,
     programVariables,
+    setEditorValue,
     setInputValues,
     setJaneCode,
   } = props
@@ -23,7 +23,6 @@ const InputsArea = (props) => {
 
     return (
       <VariablesForm
-        inputValues={inputValues}
         programVariables={programVariables}
         setInputValues={setInputValues}
       />
@@ -31,16 +30,20 @@ const InputsArea = (props) => {
   }
   return (
     <div className={classes["inputs-area"]}>
-      <AceEditorHolder janeCode={janeCode} setJaneCode={setJaneCode} />
+      <AceEditorHolder
+        editorValue={editorValue}
+        setEditorValue={setEditorValue}
+        setJaneCode={setJaneCode}
+      />
       {renderVariablesForm()}
     </div>
   )
 }
 
 InputsArea.propTypes = {
-  inputValues: PropTypes.array.isRequired,
-  janeCode: PropTypes.string.isRequired,
+  editorValue: PropTypes.string.isRequired,
   programVariables: PropTypes.array.isRequired,
+  setEditorValue: PropTypes.func.isRequired,
   setInputValues: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
 }
