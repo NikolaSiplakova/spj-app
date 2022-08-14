@@ -24,7 +24,9 @@ const Button = (props) => {
         [classes["button--secondary"]]: secondary === true || isActive === true,
         [classes["button--collapsed"]]: isExtended === false,
       })}
+      disabled={isDisabled}
       onClick={onClick}
+      type="button"
     >
       {icon}
       <div className={classes["button__label"]}>{label}</div>

@@ -10,12 +10,13 @@ import {
 
 import { inputTexts } from "constants/inputTexts"
 
-import ErrorHolder from "./_components/ErrorHolder/ErrorHolder"
 import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(inputTexts[31])
+  const [janeCode, setJaneCode] = useState(
+    "repeat (x:=x+y; y:=y*2; z:=x+y) until z<25 sad s:="
+  )
   const [statements, setStatements] = useState([])
 
   //parser
@@ -46,6 +47,7 @@ const Spj = () => {
     <div>
       <TopBar />
       <Calculator
+        errors={errorListener.errors}
         inputValues={inputValues}
         janeCode={janeCode}
         programVariables={programVariables}
@@ -54,7 +56,6 @@ const Spj = () => {
         startVisualization={startVisualization}
         statements={statements}
       />
-      {janeCode !== "" && <ErrorHolder errors={errorListener.errors} />}
     </div>
   )
 }

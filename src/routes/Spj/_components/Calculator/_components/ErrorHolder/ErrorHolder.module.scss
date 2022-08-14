@@ -1,0 +1,12 @@
+@import "/src/styles/colors.scss";
+
+.error-msg {
+  background-color: $error-red-background;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  gap: 12px;
+  margin: 16px 0px;
+  padding: 12px 20px;
+}
