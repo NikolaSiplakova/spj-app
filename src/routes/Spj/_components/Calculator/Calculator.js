@@ -6,6 +6,7 @@ import useDebounce from "hooks/useDebounce"
 import { VISUALIZATION } from "constants/visualizationTypes"
 
 import ComputationsWindow from "./_components/ComputationsWindow/ComputationsWindow"
+import ErrorHolder from "./_components/ErrorHolder/ErrorHolder"
 import InputsArea from "./_components/InputsArea/InputsArea"
 import VisualizationButtons from "./_components/VisualizationButtons/VisualizationButtons"
 
@@ -13,6 +14,7 @@ import classes from "./Calculator.module.scss"
 
 const Calculator = (props) => {
   const {
+    errors,
     janeCode,
     programVariables,
     setInputValues,
@@ -46,8 +48,13 @@ const Calculator = (props) => {
         setJaneCode={setJaneCode}
       />
 
+      {janeCode !== "" && errors.length !== 0 && (
+        <ErrorHolder errors={errors} />
+      )}
+
       <VisualizationButtons
         debounceLoading={debounceLoading}
+        hasErrors={errors.length > 0}
         janeCode={janeCode}
         setDisplayedStepsCount={setDisplayedStepsCount}
         setVisualizationType={setVisualizationType}
@@ -65,6 +72,7 @@ const Calculator = (props) => {
 }
 
 Calculator.propTypes = {
+  errors: PropTypes.array.isRequired,
   janeCode: PropTypes.string.isRequired,
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,
