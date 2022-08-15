@@ -14,6 +14,7 @@ const VariableInput = (props) => {
         className={classes["text"]}
         id={`input${index}`}
         type="number"
+        onFocus={(e) => e.target.select()}
         name={inputName}
         placeholder="Zadaj hodnotu premennej"
         value={values[`variable${index}`]}

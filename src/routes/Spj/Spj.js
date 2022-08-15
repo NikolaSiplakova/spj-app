@@ -14,9 +14,7 @@ import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(
-    "repeat (x:=x+y; y:=y*2; z:=x+y) until z<25 sad s:="
-  )
+  const [janeCode, setJaneCode] = useState(inputTexts[33])
   const [statements, setStatements] = useState([])
 
   //parser

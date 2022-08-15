@@ -20,7 +20,15 @@ const VisualizationButtons = ({
   const onClickHandle = (visualizationType, count) => {
     setVisualizationType(visualizationType)
     setDisplayedStepsCount(count)
-    startVisualization()
+    try {
+      startVisualization()
+    } catch (err) {
+      if (err instanceof RangeError) {
+        setVisualizationType(VISUALIZATION.LOOP)
+      }
+
+      console.log(err)
+    }
   }
 
   const isButtonDisabled =

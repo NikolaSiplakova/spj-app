@@ -131,7 +131,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
   visitSkipStat(ctx) {
     this.setComputationStep(null, this.state, [...this.variables])
     return {
-      janeStatements: [{ text: "\\texttt{skip}", type: null }],
+      janeStatements: [{ text: "\\texttt{skip};", type: null }],
       substats: [],
       type: STATEMENT_TYPES.SKIP,
     }
@@ -152,11 +152,11 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       )
 
       if (doStatements[0] === "(") {
-        doStatements[0] = `\\bigl(`
+        doStatements.shift()
       }
 
       if (doStatements[doStatements.length - 1] === ")") {
-        doStatements[doStatements.length - 1] = `\\bigl)`
+        doStatements.pop()
       }
 
       whileSentence[3] = doStatements.join(" \\ ")
@@ -167,10 +167,9 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
           type: null,
         },
         {
-          text: `\\bigl( \\ ${doStatements.slice(
-            1,
-            -1
-          )} \\ ${whileSentence.join(" \\ ")} \\ \\bigl)`,
+          text: `\\bigl( \\ ${doStatements} \\ ${whileSentence.join(
+            " \\ "
+          )} \\bigl)`,
           type: STATEMENT_TYPES.THEN_ELSE,
         },
         {
@@ -178,7 +177,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
           type: null,
         },
         {
-          text: "\\texttt{skip}",
+          text: "\\texttt{skip};",
           type: STATEMENT_TYPES.THEN_ELSE,
         },
       ]

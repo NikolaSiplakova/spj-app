@@ -105,9 +105,12 @@ export const inputTexts = [
   //30 x=3 -> 9, s3
   "repeat x:=x+2 until x>8",
 
-  //31 x=2 y=1 z=3 -> 3, 6, 9, s3
-  "repeat (x:=x+y; y:=y*2; z:=x+y) until z<25",
+  //31 x=2 y=1 z=3 -> 3, 2, 5, s3
+  "repeat (x:=x+y; y:=y*2; z:=x+y) until z<10",
 
-  //nefunguje
-  "if x>y then x:=x else y:=z; while (x>2) do x:=x+1; y:=z+4;",
+  //32 x=1 y=5 z=6 -> 4, 10, 6 s
+  "if x>y then x:=x else y:=z; while (x<4) do x:=x+1; y:=z+4;",
+
+  //33 infinite loop x=1
+  "while (x<4) do z:=x+1; y:=z+4;",
 ]

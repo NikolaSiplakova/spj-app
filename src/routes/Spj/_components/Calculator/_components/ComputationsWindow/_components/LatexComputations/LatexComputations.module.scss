@@ -4,4 +4,8 @@
   font-size: 15px;
   padding: 0 50px;
   text-align: center;
+
+  &--error {
+    color: $error-red;
+  }
 }
