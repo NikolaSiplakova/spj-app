@@ -5,6 +5,7 @@ import { STATEMENT_TYPES } from "../constants/statementTypes"
 import SpjVisitor from "./SpjVisitor"
 import SpjParser from "./SpjParser"
 import _ from "lodash"
+import Spj from "routes/Spj/Spj"
 
 export default class SpjCalculatorVisitor extends SpjVisitor {
   constructor(inputValues) {
@@ -57,8 +58,26 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     return keyword
   }
 
+  processSequence = (sequence) => {
+    console.log(sequence)
+
+    const text = sequence // [ StatDelimit | Stat ]
+      .map((statement) => {
+        if (statement.parentCtx.ruleIndex !== SpjParser.RULE_statDelimit) {
+          //console.log(statement.getNodeText())
+          return statement.getText()
+        }
+
+        return statement.getText()
+      })
+    debugger
+
+    return text.join(" \\ ")
+  }
+
   // PROG ;
   visitProg(ctx) {
+    // [ SContext, <EOF>]
     this.visitChildren(ctx)[0].map((child) => this.statements.push(child))
 
     const mainStatements = [...this.statements]
@@ -109,19 +128,41 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     return
   }
 
+  // children: [ParContext] || [SeqContext] || [Stat]
+  // visit:       array     ||    array     || object
   visitS(ctx) {
-    return this.visitChildren(ctx)
+    const sChildren = this.visitChildren(ctx)[0]
+
+    if (
+      ctx.children[0].ruleIndex === SpjParser.RULE_par ||
+      ctx.children[0].ruleIndex === SpjParser.RULE_seq
+    ) {
+      return sChildren
+    }
+
+    return [sChildren]
   }
 
   visitIfWhileS(ctx) {
     return this.visitChildren(ctx)
   }
 
-  visitSeq(ctx) {
+  visitPar(ctx) {
     const statements = this.visitChildren(ctx)
-    statements.shift() //remove left brace
-    statements.pop() //remove right brace
-    return statements //array
+
+    if (ctx.children[1].ruleIndex === SpjParser.RULE_seq) {
+      return statements[1]
+    } //seq vracia array
+
+    return [statements[1]] //pri zvysku si array musim vyrobit
+  }
+
+  visitStatDelimit(ctx) {
+    return this.visitChildren(ctx)[0]
+  }
+
+  visitSeq(ctx) {
+    return this.visitChildren(ctx)
   }
 
   visitAssignStat(ctx) {
@@ -183,7 +224,10 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       ]
 
       const getDoStatements = () => {
-        if (ctx.children[3].children[0].ruleIndex === SpjParser.RULE_seq) {
+        if (
+          ctx.children[3].children[0].ruleIndex === SpjParser.RULE_seq ||
+          ctx.children[3].children[0].ruleIndex === SpjParser.RULE_par
+        ) {
           const doStatements = this.visit(ctx.children[3])
           return doStatements[0]
         } else {
@@ -344,22 +388,27 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
   visitWhileStat(ctx) {
     this.setComputationStep(null, this.state, [...this.variables])
+    // [ while, condition, do, statements ]
     const whileStatementText = ctx.children.map((child, index) => {
       if (index === 3) {
-        //do statements
+        //[ ( , statements, ) ] || [statementPart, statementPart]
         const doStatements = child.children[0].children.map((doStatement) =>
-          doStatement.getText()
+          this.convertToLatex(doStatement.getText())
         )
 
-        if (doStatements[0] === "(") {
+        //[ ( , statements, ) ]
+        if (doStatements.length === 3) {
           doStatements[0] = `\\bigl(`
+          doStatements[1] = this.processSequence(
+            child.children[0].children[1].children
+          )
+          doStatements[2] = `\\bigl)`
         }
 
-        if (doStatements[doStatements.length - 1] === ")") {
-          doStatements[doStatements.length - 1] = `\\bigl)`
+        return {
+          text: doStatements.join(" \\ "),
+          type: STATEMENT_TYPES.DO,
         }
-
-        return { text: doStatements.join(" \\ "), type: STATEMENT_TYPES.DO }
       }
 
       return {
