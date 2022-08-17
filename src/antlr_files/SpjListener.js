@@ -32,12 +32,30 @@ export default class SpjListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by SpjParser#par.
+	enterPar(ctx) {
+	}
+
+	// Exit a parse tree produced by SpjParser#par.
+	exitPar(ctx) {
+	}
+
+
 	// Enter a parse tree produced by SpjParser#seq.
 	enterSeq(ctx) {
 	}
 
 	// Exit a parse tree produced by SpjParser#seq.
 	exitSeq(ctx) {
+	}
+
+
+	// Enter a parse tree produced by SpjParser#statDelimit.
+	enterStatDelimit(ctx) {
+	}
+
+	// Exit a parse tree produced by SpjParser#statDelimit.
+	exitStatDelimit(ctx) {
 	}
 
 

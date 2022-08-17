@@ -107,6 +107,14 @@ export class SpjErrorListener extends antlr4.error.ErrorListener {
       return
     }
 
+    if (msg === "missing ';' at '<EOF>'") {
+      this.errors.push({
+        ...errorInfo,
+        customMessage: "Chýbajúci znak ';' na konci príkazu",
+      })
+      return
+    }
+
     if (msg.includes("expecting 'else'")) {
       this.errors.push({
         ...errorInfo,

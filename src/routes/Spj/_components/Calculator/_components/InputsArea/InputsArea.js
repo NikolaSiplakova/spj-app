@@ -10,6 +10,7 @@ import classes from "./InputsArea.module.scss"
 const InputsArea = (props) => {
   const {
     editorValue,
+    janeEditorRef,
     programVariables,
     setEditorValue,
     setInputValues,
@@ -32,6 +33,7 @@ const InputsArea = (props) => {
     <div className={classes["inputs-area"]}>
       <AceEditorHolder
         editorValue={editorValue}
+        janeEditorRef={janeEditorRef}
         setEditorValue={setEditorValue}
         setJaneCode={setJaneCode}
       />
@@ -40,8 +42,13 @@ const InputsArea = (props) => {
   )
 }
 
+InputsArea.defaultProps = {
+  janeEditorRef: null,
+}
+
 InputsArea.propTypes = {
   editorValue: PropTypes.string.isRequired,
+  janeEditorRef: PropTypes.node,
   programVariables: PropTypes.array.isRequired,
   setEditorValue: PropTypes.func.isRequired,
   setInputValues: PropTypes.func.isRequired,

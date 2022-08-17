@@ -7,7 +7,7 @@ import { ReactComponent as ExpandIcon } from "styles/icons/extend.svg"
 
 import classes from "./Error.module.scss"
 
-const Error = ({ error }) => {
+const Error = ({ error, setCursorPositionToError }) => {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const toogleIsExpanded = () => {
@@ -16,16 +16,18 @@ const Error = ({ error }) => {
 
   return (
     <div>
-      <div className={classes["outputs"]}>
+      <div className={classes["outputs"]} onClick={toogleIsExpanded}>
         <div className={classes["error-text"]}>
           <WarningIcon />
-          <span className={classes["error-text--bold"]}>
+          <span
+            onClick={() => setCursorPositionToError(error.line, error.col)}
+            className={classes["error-text--bold"]}
+          >
             Riadok: {error.line}, stĺpec: {error.col}:
           </span>
           {error.customMessage}
         </div>
         <ExpandIcon
-          onClick={toogleIsExpanded}
           className={classNames(classes["arrow-icon"], {
             [classes["arrow-icon--expanded"]]: isExpanded === true,
           })}

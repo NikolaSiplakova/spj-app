@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import PropTypes from "prop-types"
 
 import useDebounce from "hooks/useDebounce"
@@ -36,12 +36,26 @@ const Calculator = (props) => {
     setJaneCode(debouncedSearch)
   })
 
+  const setCursorPositionToError = (row, column) => {
+    const editor = janeEditorRef.current.editor
+
+    const pos = {
+      row,
+      column,
+    }
+
+    editor.moveCursorToPosition(pos)
+    editor.clearSelection()
+  }
+
+  //ace editor
+  const janeEditorRef = useRef(null)
+
   return (
     <div className={classes["wrapper"]}>
       <InputsArea
-        debounceLoading={debounceLoading}
         editorValue={editorValue}
-        janeCode={janeCode}
+        janeEditorRef={janeEditorRef}
         programVariables={programVariables}
         setEditorValue={setEditorValue}
         setInputValues={setInputValues}
@@ -49,7 +63,10 @@ const Calculator = (props) => {
       />
 
       {janeCode !== "" && errors.length !== 0 && (
-        <ErrorHolder errors={errors} />
+        <ErrorHolder
+          errors={errors}
+          setCursorPositionToError={setCursorPositionToError}
+        />
       )}
 
       <VisualizationButtons

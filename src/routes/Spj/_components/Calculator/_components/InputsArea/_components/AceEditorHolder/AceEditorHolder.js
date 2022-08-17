@@ -1,4 +1,4 @@
-import React, { useRef } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
 import AceEditor from "react-ace"
@@ -14,18 +14,14 @@ import { ReactComponent as RefreshIcon } from "styles/icons/refresh.svg"
 
 import classes from "./AceEditorHolder.module.scss"
 
-const AceEditorHolder = ({ editorValue, setEditorValue, setJaneCode }) => {
+const AceEditorHolder = ({
+  editorValue,
+  janeEditorRef,
+  setEditorValue,
+  setJaneCode,
+}) => {
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
-
-  const janeEditor = useRef(null)
-
-  const setSpecialSymbol = (symbol) => {
-    const editor = janeEditor.current.editor
-    const cursorPosition = editor.getCursorPosition()
-
-    editor.session.insert(cursorPosition, symbol)
-  }
 
   const renderHeaderActions = () => (
     <div className={classes["header-actions"]}>
@@ -42,11 +38,17 @@ const AceEditorHolder = ({ editorValue, setEditorValue, setJaneCode }) => {
     </div>
   )
 
+  const setSpecialSymbol = (symbol) => {
+    const editor = janeEditorRef.current.editor
+    const cursorPosition = editor.getCursorPosition()
+    editor.session.insert(cursorPosition, symbol)
+  }
+
   return (
     <div className={classes["editor-holder"]}>
       <Header action={renderHeaderActions()} title={"Program v jazyku Jane"} />
       <AceEditor
-        ref={janeEditor}
+        ref={janeEditorRef}
         style={{
           height: "200px",
           width: "100%",
@@ -74,8 +76,13 @@ const AceEditorHolder = ({ editorValue, setEditorValue, setJaneCode }) => {
   )
 }
 
+AceEditorHolder.defaultProps = {
+  janeEditorRef: null,
+}
+
 AceEditorHolder.propTypes = {
   editorValue: PropTypes.string.isRequired,
+  janeEditorRef: PropTypes.node,
   setEditorValue: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
 }
