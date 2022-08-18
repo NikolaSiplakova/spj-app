@@ -1,4 +1,3 @@
-import "./Spj.scss"
 import React, { useState } from "react"
 import SpjErrorListener from "antlr_files/errors/SpjErrorListener"
 import antlr4 from "antlr4"
@@ -13,7 +12,7 @@ import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(inputTexts[19])
+  const [janeCode, setJaneCode] = useState(inputTexts[0])
   const [statements, setStatements] = useState([])
 
   //errors

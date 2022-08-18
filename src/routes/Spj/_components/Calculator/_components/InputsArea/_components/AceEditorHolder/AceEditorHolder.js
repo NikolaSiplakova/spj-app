@@ -82,7 +82,7 @@ AceEditorHolder.defaultProps = {
 
 AceEditorHolder.propTypes = {
   editorValue: PropTypes.string.isRequired,
-  janeEditorRef: PropTypes.node,
+  janeEditorRef: PropTypes.object,
   setEditorValue: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
 }

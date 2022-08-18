@@ -48,7 +48,7 @@ InputsArea.defaultProps = {
 
 InputsArea.propTypes = {
   editorValue: PropTypes.string.isRequired,
-  janeEditorRef: PropTypes.node,
+  janeEditorRef: PropTypes.object,
   programVariables: PropTypes.array.isRequired,
   setEditorValue: PropTypes.func.isRequired,
   setInputValues: PropTypes.func.isRequired,

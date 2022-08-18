@@ -16,8 +16,7 @@ ifWhileS	:	par
 			|	stat
 			;
 
-par		:	LPar stat RPar
-		|	LPar seq RPar
+par		:	LPar seq RPar
 		;
 
 seq		: 	statDelimit (statDelimit)+

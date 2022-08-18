@@ -248,13 +248,10 @@ public class SpjParser extends Parser {
 
 	public static class ParContext extends ParserRuleContext {
 		public TerminalNode LPar() { return getToken(SpjParser.LPar, 0); }
-		public StatContext stat() {
-			return getRuleContext(StatContext.class,0);
-		}
-		public TerminalNode RPar() { return getToken(SpjParser.RPar, 0); }
 		public SeqContext seq() {
 			return getRuleContext(SeqContext.class,0);
 		}
+		public TerminalNode RPar() { return getToken(SpjParser.RPar, 0); }
 		public ParContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -265,31 +262,14 @@ public class SpjParser extends Parser {
 		ParContext _localctx = new ParContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_par);
 		try {
-			setState(48);
-			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
-			case 1:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(40);
-				match(LPar);
-				setState(41);
-				stat();
-				setState(42);
-				match(RPar);
-				}
-				break;
-			case 2:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(44);
-				match(LPar);
-				setState(45);
-				seq();
-				setState(46);
-				match(RPar);
-				}
-				break;
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(40);
+			match(LPar);
+			setState(41);
+			seq();
+			setState(42);
+			match(RPar);
 			}
 		}
 		catch (RecognitionException re) {
@@ -323,19 +303,19 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(44);
 			statDelimit();
-			setState(52); 
+			setState(46); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(51);
+				setState(45);
 				statDelimit();
 				}
 				}
-				setState(54); 
+				setState(48); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << REPEAT) | (1L << FOR) | (1L << WHILE) | (1L << IF) | (1L << Skip) | (1L << Var))) != 0) );
@@ -369,9 +349,9 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56);
+			setState(50);
 			stat();
-			setState(57);
+			setState(51);
 			match(Delimit);
 			}
 		}
@@ -462,14 +442,14 @@ public class SpjParser extends Parser {
 		StatContext _localctx = new StatContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_stat);
 		try {
-			setState(85);
+			setState(79);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Var:
 				_localctx = new AssignStatContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(59);
+				setState(53);
 				assignment();
 				}
 				break;
@@ -477,7 +457,7 @@ public class SpjParser extends Parser {
 				_localctx = new SkipStatContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(60);
+				setState(54);
 				match(Skip);
 				}
 				break;
@@ -485,17 +465,17 @@ public class SpjParser extends Parser {
 				_localctx = new IfStatContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(61);
+				setState(55);
 				match(IF);
-				setState(62);
+				setState(56);
 				b(0);
-				setState(63);
+				setState(57);
 				match(THEN);
-				setState(64);
+				setState(58);
 				ifWhileS();
-				setState(65);
+				setState(59);
 				match(ELSE);
-				setState(66);
+				setState(60);
 				ifWhileS();
 				}
 				break;
@@ -503,13 +483,13 @@ public class SpjParser extends Parser {
 				_localctx = new WhileStatContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(68);
+				setState(62);
 				match(WHILE);
-				setState(69);
+				setState(63);
 				b(0);
-				setState(70);
+				setState(64);
 				match(DO);
-				setState(71);
+				setState(65);
 				ifWhileS();
 				}
 				break;
@@ -517,17 +497,17 @@ public class SpjParser extends Parser {
 				_localctx = new ForStatContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(73);
+				setState(67);
 				match(FOR);
-				setState(74);
+				setState(68);
 				assignment();
-				setState(75);
+				setState(69);
 				match(TO);
-				setState(76);
+				setState(70);
 				match(Num);
-				setState(77);
+				setState(71);
 				match(DO);
-				setState(78);
+				setState(72);
 				ifWhileS();
 				}
 				break;
@@ -535,13 +515,13 @@ public class SpjParser extends Parser {
 				_localctx = new RepeatStatContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(80);
+				setState(74);
 				match(REPEAT);
-				setState(81);
+				setState(75);
 				ifWhileS();
-				setState(82);
+				setState(76);
 				match(UNTIL);
-				setState(83);
+				setState(77);
 				b(0);
 				}
 				break;
@@ -578,11 +558,11 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(87);
+			setState(81);
 			match(Var);
-			setState(88);
+			setState(82);
 			match(Assign);
-			setState(89);
+			setState(83);
 			e(0);
 			}
 		}
@@ -679,16 +659,16 @@ public class SpjParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(106);
+			setState(100);
 			_errHandler.sync(this);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				{
 				_localctx = new TrueFalseBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(92);
+				setState(86);
 				bool();
 				}
 				break;
@@ -697,11 +677,11 @@ public class SpjParser extends Parser {
 				_localctx = new RelOpBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(93);
+				setState(87);
 				e(0);
-				setState(94);
+				setState(88);
 				relOp();
-				setState(95);
+				setState(89);
 				e(0);
 				}
 				break;
@@ -710,13 +690,13 @@ public class SpjParser extends Parser {
 				_localctx = new NegBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(97);
+				setState(91);
 				match(NEG);
-				setState(98);
+				setState(92);
 				match(LPar);
-				setState(99);
+				setState(93);
 				b(0);
-				setState(100);
+				setState(94);
 				match(RPar);
 				}
 				break;
@@ -725,36 +705,36 @@ public class SpjParser extends Parser {
 				_localctx = new ParBoolContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(102);
+				setState(96);
 				match(LPar);
-				setState(103);
+				setState(97);
 				b(0);
-				setState(104);
+				setState(98);
 				match(RPar);
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(116);
+			setState(110);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(114);
+					setState(108);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 					case 1:
 						{
 						_localctx = new AndBoolContext(new BContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_b);
-						setState(108);
+						setState(102);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");
-						setState(109);
+						setState(103);
 						match(AND);
-						setState(110);
+						setState(104);
 						b(4);
 						}
 						break;
@@ -762,20 +742,20 @@ public class SpjParser extends Parser {
 						{
 						_localctx = new OrBoolContext(new BContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_b);
-						setState(111);
+						setState(105);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(112);
+						setState(106);
 						match(OR);
-						setState(113);
+						setState(107);
 						b(3);
 						}
 						break;
 					}
 					} 
 				}
-				setState(118);
+				setState(112);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -857,7 +837,7 @@ public class SpjParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(126);
+			setState(120);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case Num:
@@ -866,7 +846,7 @@ public class SpjParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(120);
+				setState(114);
 				match(Num);
 				}
 				break;
@@ -875,7 +855,7 @@ public class SpjParser extends Parser {
 				_localctx = new VarExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(121);
+				setState(115);
 				match(Var);
 				}
 				break;
@@ -884,11 +864,11 @@ public class SpjParser extends Parser {
 				_localctx = new ParExprContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(122);
+				setState(116);
 				match(LPar);
-				setState(123);
+				setState(117);
 				e(0);
-				setState(124);
+				setState(118);
 				match(RPar);
 				}
 				break;
@@ -896,26 +876,26 @@ public class SpjParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(138);
+			setState(132);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(136);
+					setState(130);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 					case 1:
 						{
 						_localctx = new MathOpPriorExprContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(128);
+						setState(122);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");
-						setState(129);
+						setState(123);
 						mathOpPriority();
-						setState(130);
+						setState(124);
 						e(3);
 						}
 						break;
@@ -923,20 +903,20 @@ public class SpjParser extends Parser {
 						{
 						_localctx = new MathOpExprContext(new EContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_e);
-						setState(132);
+						setState(126);
 						if (!(precpred(_ctx, 1))) throw new FailedPredicateException(this, "precpred(_ctx, 1)");
-						setState(133);
+						setState(127);
 						mathOp();
-						setState(134);
+						setState(128);
 						e(2);
 						}
 						break;
 					}
 					} 
 				}
-				setState(140);
+				setState(134);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,10,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,9,_ctx);
 			}
 			}
 		}
@@ -971,7 +951,7 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(141);
+			setState(135);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << GT) | (1L << GE) | (1L << LT) | (1L << LE) | (1L << NEQ) | (1L << EQ))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1011,7 +991,7 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(143);
+			setState(137);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MOD) | (1L << DIV) | (1L << MUL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -1050,7 +1030,7 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(145);
+			setState(139);
 			_la = _input.LA(1);
 			if ( !(_la==SUB || _la==ADD) ) {
 			_errHandler.recoverInline(this);
@@ -1087,7 +1067,7 @@ public class SpjParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(147);
+			setState(141);
 			_la = _input.LA(1);
 			if ( !(_la==T__0 || _la==T__1) ) {
 			_errHandler.recoverInline(this);
@@ -1139,47 +1119,44 @@ public class SpjParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u0098\4\2\t\2\4"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3#\u0092\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
 		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\3\3\3\3\3\3\5\3%\n"+
-		"\3\3\4\3\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5\63\n\5\3\6\3\6"+
-		"\6\6\67\n\6\r\6\16\68\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b"+
-		"\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5"+
-		"\bX\n\b\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
-		"\n\3\n\3\n\3\n\5\nm\n\n\3\n\3\n\3\n\3\n\3\n\3\n\7\nu\n\n\f\n\16\nx\13"+
-		"\n\3\13\3\13\3\13\3\13\3\13\3\13\3\13\5\13\u0081\n\13\3\13\3\13\3\13\3"+
-		"\13\3\13\3\13\3\13\3\13\7\13\u008b\n\13\f\13\16\13\u008e\13\13\3\f\3\f"+
-		"\3\r\3\r\3\16\3\16\3\17\3\17\3\17\2\4\22\24\20\2\4\6\b\n\f\16\20\22\24"+
-		"\26\30\32\34\2\6\3\2\21\26\3\2\27\31\3\2\32\33\3\2\3\4\2\u009c\2\36\3"+
-		"\2\2\2\4$\3\2\2\2\6(\3\2\2\2\b\62\3\2\2\2\n\64\3\2\2\2\f:\3\2\2\2\16W"+
-		"\3\2\2\2\20Y\3\2\2\2\22l\3\2\2\2\24\u0080\3\2\2\2\26\u008f\3\2\2\2\30"+
-		"\u0091\3\2\2\2\32\u0093\3\2\2\2\34\u0095\3\2\2\2\36\37\5\4\3\2\37 \7\2"+
-		"\2\3 \3\3\2\2\2!%\5\b\5\2\"%\5\n\6\2#%\5\16\b\2$!\3\2\2\2$\"\3\2\2\2$"+
-		"#\3\2\2\2%\5\3\2\2\2&)\5\b\5\2\')\5\16\b\2(&\3\2\2\2(\'\3\2\2\2)\7\3\2"+
-		"\2\2*+\7\35\2\2+,\5\16\b\2,-\7\34\2\2-\63\3\2\2\2./\7\35\2\2/\60\5\n\6"+
-		"\2\60\61\7\34\2\2\61\63\3\2\2\2\62*\3\2\2\2\62.\3\2\2\2\63\t\3\2\2\2\64"+
-		"\66\5\f\7\2\65\67\5\f\7\2\66\65\3\2\2\2\678\3\2\2\28\66\3\2\2\289\3\2"+
-		"\2\29\13\3\2\2\2:;\5\16\b\2;<\7 \2\2<\r\3\2\2\2=X\5\20\t\2>X\7\36\2\2"+
-		"?@\7\r\2\2@A\5\22\n\2AB\7\f\2\2BC\5\6\4\2CD\7\13\2\2DE\5\6\4\2EX\3\2\2"+
-		"\2FG\7\n\2\2GH\5\22\n\2HI\7\t\2\2IJ\5\6\4\2JX\3\2\2\2KL\7\b\2\2LM\5\20"+
-		"\t\2MN\7\7\2\2NO\7\"\2\2OP\7\t\2\2PQ\5\6\4\2QX\3\2\2\2RS\7\6\2\2ST\5\6"+
-		"\4\2TU\7\5\2\2UV\5\22\n\2VX\3\2\2\2W=\3\2\2\2W>\3\2\2\2W?\3\2\2\2WF\3"+
-		"\2\2\2WK\3\2\2\2WR\3\2\2\2X\17\3\2\2\2YZ\7!\2\2Z[\7\37\2\2[\\\5\24\13"+
-		"\2\\\21\3\2\2\2]^\b\n\1\2^m\5\34\17\2_`\5\24\13\2`a\5\26\f\2ab\5\24\13"+
-		"\2bm\3\2\2\2cd\7\16\2\2de\7\35\2\2ef\5\22\n\2fg\7\34\2\2gm\3\2\2\2hi\7"+
-		"\35\2\2ij\5\22\n\2jk\7\34\2\2km\3\2\2\2l]\3\2\2\2l_\3\2\2\2lc\3\2\2\2"+
-		"lh\3\2\2\2mv\3\2\2\2no\f\5\2\2op\7\17\2\2pu\5\22\n\6qr\f\4\2\2rs\7\20"+
-		"\2\2su\5\22\n\5tn\3\2\2\2tq\3\2\2\2ux\3\2\2\2vt\3\2\2\2vw\3\2\2\2w\23"+
-		"\3\2\2\2xv\3\2\2\2yz\b\13\1\2z\u0081\7\"\2\2{\u0081\7!\2\2|}\7\35\2\2"+
-		"}~\5\24\13\2~\177\7\34\2\2\177\u0081\3\2\2\2\u0080y\3\2\2\2\u0080{\3\2"+
-		"\2\2\u0080|\3\2\2\2\u0081\u008c\3\2\2\2\u0082\u0083\f\4\2\2\u0083\u0084"+
-		"\5\30\r\2\u0084\u0085\5\24\13\5\u0085\u008b\3\2\2\2\u0086\u0087\f\3\2"+
-		"\2\u0087\u0088\5\32\16\2\u0088\u0089\5\24\13\4\u0089\u008b\3\2\2\2\u008a"+
-		"\u0082\3\2\2\2\u008a\u0086\3\2\2\2\u008b\u008e\3\2\2\2\u008c\u008a\3\2"+
-		"\2\2\u008c\u008d\3\2\2\2\u008d\25\3\2\2\2\u008e\u008c\3\2\2\2\u008f\u0090"+
-		"\t\2\2\2\u0090\27\3\2\2\2\u0091\u0092\t\3\2\2\u0092\31\3\2\2\2\u0093\u0094"+
-		"\t\4\2\2\u0094\33\3\2\2\2\u0095\u0096\t\5\2\2\u0096\35\3\2\2\2\r$(\62"+
-		"8Wltv\u0080\u008a\u008c";
+		"\3\3\4\3\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\6\3\6\6\6\61\n\6\r\6\16\6\62\3\7"+
+		"\3\7\3\7\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3"+
+		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\5\bR\n\b\3\t\3\t\3\t\3\t\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\5\ng\n\n\3"+
+		"\n\3\n\3\n\3\n\3\n\3\n\7\no\n\n\f\n\16\nr\13\n\3\13\3\13\3\13\3\13\3\13"+
+		"\3\13\3\13\5\13{\n\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\3\13\7\13\u0085"+
+		"\n\13\f\13\16\13\u0088\13\13\3\f\3\f\3\r\3\r\3\16\3\16\3\17\3\17\3\17"+
+		"\2\4\22\24\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34\2\6\3\2\21\26\3\2\27"+
+		"\31\3\2\32\33\3\2\3\4\2\u0095\2\36\3\2\2\2\4$\3\2\2\2\6(\3\2\2\2\b*\3"+
+		"\2\2\2\n.\3\2\2\2\f\64\3\2\2\2\16Q\3\2\2\2\20S\3\2\2\2\22f\3\2\2\2\24"+
+		"z\3\2\2\2\26\u0089\3\2\2\2\30\u008b\3\2\2\2\32\u008d\3\2\2\2\34\u008f"+
+		"\3\2\2\2\36\37\5\4\3\2\37 \7\2\2\3 \3\3\2\2\2!%\5\b\5\2\"%\5\n\6\2#%\5"+
+		"\16\b\2$!\3\2\2\2$\"\3\2\2\2$#\3\2\2\2%\5\3\2\2\2&)\5\b\5\2\')\5\16\b"+
+		"\2(&\3\2\2\2(\'\3\2\2\2)\7\3\2\2\2*+\7\35\2\2+,\5\n\6\2,-\7\34\2\2-\t"+
+		"\3\2\2\2.\60\5\f\7\2/\61\5\f\7\2\60/\3\2\2\2\61\62\3\2\2\2\62\60\3\2\2"+
+		"\2\62\63\3\2\2\2\63\13\3\2\2\2\64\65\5\16\b\2\65\66\7 \2\2\66\r\3\2\2"+
+		"\2\67R\5\20\t\28R\7\36\2\29:\7\r\2\2:;\5\22\n\2;<\7\f\2\2<=\5\6\4\2=>"+
+		"\7\13\2\2>?\5\6\4\2?R\3\2\2\2@A\7\n\2\2AB\5\22\n\2BC\7\t\2\2CD\5\6\4\2"+
+		"DR\3\2\2\2EF\7\b\2\2FG\5\20\t\2GH\7\7\2\2HI\7\"\2\2IJ\7\t\2\2JK\5\6\4"+
+		"\2KR\3\2\2\2LM\7\6\2\2MN\5\6\4\2NO\7\5\2\2OP\5\22\n\2PR\3\2\2\2Q\67\3"+
+		"\2\2\2Q8\3\2\2\2Q9\3\2\2\2Q@\3\2\2\2QE\3\2\2\2QL\3\2\2\2R\17\3\2\2\2S"+
+		"T\7!\2\2TU\7\37\2\2UV\5\24\13\2V\21\3\2\2\2WX\b\n\1\2Xg\5\34\17\2YZ\5"+
+		"\24\13\2Z[\5\26\f\2[\\\5\24\13\2\\g\3\2\2\2]^\7\16\2\2^_\7\35\2\2_`\5"+
+		"\22\n\2`a\7\34\2\2ag\3\2\2\2bc\7\35\2\2cd\5\22\n\2de\7\34\2\2eg\3\2\2"+
+		"\2fW\3\2\2\2fY\3\2\2\2f]\3\2\2\2fb\3\2\2\2gp\3\2\2\2hi\f\5\2\2ij\7\17"+
+		"\2\2jo\5\22\n\6kl\f\4\2\2lm\7\20\2\2mo\5\22\n\5nh\3\2\2\2nk\3\2\2\2or"+
+		"\3\2\2\2pn\3\2\2\2pq\3\2\2\2q\23\3\2\2\2rp\3\2\2\2st\b\13\1\2t{\7\"\2"+
+		"\2u{\7!\2\2vw\7\35\2\2wx\5\24\13\2xy\7\34\2\2y{\3\2\2\2zs\3\2\2\2zu\3"+
+		"\2\2\2zv\3\2\2\2{\u0086\3\2\2\2|}\f\4\2\2}~\5\30\r\2~\177\5\24\13\5\177"+
+		"\u0085\3\2\2\2\u0080\u0081\f\3\2\2\u0081\u0082\5\32\16\2\u0082\u0083\5"+
+		"\24\13\4\u0083\u0085\3\2\2\2\u0084|\3\2\2\2\u0084\u0080\3\2\2\2\u0085"+
+		"\u0088\3\2\2\2\u0086\u0084\3\2\2\2\u0086\u0087\3\2\2\2\u0087\25\3\2\2"+
+		"\2\u0088\u0086\3\2\2\2\u0089\u008a\t\2\2\2\u008a\27\3\2\2\2\u008b\u008c"+
+		"\t\3\2\2\u008c\31\3\2\2\2\u008d\u008e\t\4\2\2\u008e\33\3\2\2\2\u008f\u0090"+
+		"\t\5\2\2\u0090\35\3\2\2\2\f$(\62Qfnpz\u0084\u0086";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
