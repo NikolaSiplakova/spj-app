@@ -30,7 +30,7 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
         )}
       >
         <strong>Detegovaný nekonečený cyklus.</strong> Prosím, zmeň hodnoty
-        premenných alebo program v jayzku Jane a skús to ešte raz.
+        premenných alebo program v jazyku Jane a skús to ešte raz.
       </div>
     )
   }
