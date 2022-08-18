@@ -8,7 +8,7 @@ import classes from "./StatementsRow.module.scss"
 const StatementsRow = ({ statementsRow }) => {
   const oneRowStatements = statementsRow.printout
   return (
-    <MathJax>
+    <MathJax className={classes["latex-computation"]}>
       {`$\\Big \\langle$`}
       {oneRowStatements.map((statementParts, index) => (
         <div

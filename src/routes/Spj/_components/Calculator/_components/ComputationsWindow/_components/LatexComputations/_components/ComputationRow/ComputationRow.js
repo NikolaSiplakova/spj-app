@@ -11,6 +11,14 @@ const ComputationRow = ({ index, statementsRow }) => {
     statementsRow.state
   } \\Big[ ${statementsRow.changedVariable} \\Big]`
 
+  const renderState = () => {
+    if (statementsRow.changedVariable !== null) {
+      return <div>{`$${stateChange}$`}</div>
+    }
+
+    return <div></div>
+  }
+
   return (
     <div className={classes["row"]}>
       <div className={classes["row__index"]}>{index + 1}</div>
@@ -22,11 +30,7 @@ const ComputationRow = ({ index, statementsRow }) => {
         <MathJax inline dynamic hideUntilTypeset={"first"}>
           <div className={classes["statements-row"]}>
             <StatementsRow statementsRow={statementsRow} />
-            {statementsRow.changedVariable !== null && (
-              <div
-                className={classes["statements-row__state"]}
-              >{`$${stateChange}$`}</div>
-            )}
+            {renderState()}
           </div>
         </MathJax>
       </MathJaxContext>

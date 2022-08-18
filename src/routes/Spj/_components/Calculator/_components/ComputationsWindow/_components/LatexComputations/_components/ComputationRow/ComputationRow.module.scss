@@ -22,15 +22,11 @@
 
 .statements-row {
   display: grid;
+  gap: 20px;
   grid-template-columns: 1fr 190px;
   padding: 10px;
 
   &:first-child {
     border-bottom: 1px solid #efefef;
-  }
-
-  &__state {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
   }
 }
