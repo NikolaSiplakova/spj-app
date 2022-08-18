@@ -58,21 +58,13 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
   }
 
   processSequence = (sequence) => {
-    console.log("process seq")
-    // console.log("sequence")
-    // console.log(sequence)
     const text = sequence // [ StatDelimit | Stat ]
       .map((statement) => {
-        // console.log("statement")
-        // console.log(statement)
-
         if (statement.ruleIndex === SpjParser.RULE_statDelimit) {
           const statementParts = statement.children[0].children.map((part) => {
-            // console.log("statDelimit part")
-            // console.log(part)
             if (part.ruleIndex === undefined) {
               //terminaly
-              // console.log("terminal")
+
               return this.convertToLatex(part.getText())
             }
 
@@ -81,24 +73,17 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
               part.ruleIndex === SpjParser.RULE_ifWhileS &&
               part.children[0]?.ruleIndex === SpjParser.RULE_par
             ) {
-              // console.log("parentheses")
               return this.processSequence(part.children[0].children[1].children)
             }
 
-            // console.log("something else")
             return this.convertToLatex(part.getText())
           })
 
           return `${statementParts.join(" \\ ")};`
         }
 
-        // console.log("not statDelimit")
-
         return this.convertToLatex(statement.getText())
       })
-
-    // console.log(text)
-    // console.log("----------------------------------------------")
 
     return `(${text.join(" \\ ")})`
   }
