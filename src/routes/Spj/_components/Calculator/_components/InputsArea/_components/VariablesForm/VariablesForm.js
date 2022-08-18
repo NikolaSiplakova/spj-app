@@ -3,8 +3,9 @@ import PropTypes from "prop-types"
 
 import { Formik } from "formik"
 
-import Header from "common/Header/Header"
+import { VISUALIZATION } from "constants/visualizationTypes"
 
+import Header from "common/Header/Header"
 import VariableInput from "./_components/VariableInput/VariableInput"
 import AutoSave from "./_components/AutoSave/AutoSave"
 
@@ -12,7 +13,11 @@ import { ReactComponent as RefreshIcon } from "styles/icons/refresh.svg"
 
 import classes from "./VariablesForm.module.scss"
 
-const VariableForm = ({ setInputValues, programVariables }) => {
+const VariableForm = ({
+  programVariables,
+  setInputValues,
+  setVisualizationType,
+}) => {
   const getInitialValues = () =>
     programVariables.reduce(
       (object, key, index) => ({
@@ -40,6 +45,7 @@ const VariableForm = ({ setInputValues, programVariables }) => {
         }
       })
     )
+    setVisualizationType(VISUALIZATION.NONE)
   }
 
   return (
@@ -51,8 +57,16 @@ const VariableForm = ({ setInputValues, programVariables }) => {
           onSubmit={onSubmitFunc}
         >
           {({ values, errors, handleChange, handleSubmit, resetForm }) => {
+            const resetVariablesForm = () => {
+              resetForm()
+              setVisualizationType(VISUALIZATION.NONE)
+            }
+
             const renderActions = () => (
-              <RefreshIcon className={classes["icon"]} onClick={resetForm} />
+              <RefreshIcon
+                className={classes["icon"]}
+                onClick={resetVariablesForm}
+              />
             )
 
             return (
@@ -88,6 +102,7 @@ const VariableForm = ({ setInputValues, programVariables }) => {
 VariableForm.propTypes = {
   programVariables: PropTypes.array.isRequired,
   setInputValues: PropTypes.func.isRequired,
+  setVisualizationType: PropTypes.func.isRequired,
 }
 
 export default memo(VariableForm)

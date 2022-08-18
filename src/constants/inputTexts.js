@@ -96,7 +96,7 @@ export const inputTexts = [
   //26 x=0 y=0 a=3 b=3 -> 9, 9, 6, 3, s8
   "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);",
 
-  //27 x=7 y=2 a=0 -> 1, 7, 117649, s13
+  //27 x=7 y=7 a=0 -> 1, 7, 117649, s13
   "a:=1; while ¬(x=1) do (a:=a*y; x:=x-1;);",
 
   //28 x=5 y=10 a=0 b=0 -> 5, 10, 0, 10, s1
@@ -155,7 +155,7 @@ export const inputTexts = [
     if 3<4 then d:=3 else (d:=5; y:=5;);
   )`,
 
-  //38 x=2 y=1 z=3 -> 3, 3, 18, s5
+  //38 x=2 y=1 z=3 -> 3, 3, 18  , s5
   `repeat (
     x:=x+y; 
     y:=y*2; 

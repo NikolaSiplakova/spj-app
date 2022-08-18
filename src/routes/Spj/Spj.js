@@ -12,7 +12,7 @@ import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
 const Spj = () => {
-  const [janeCode, setJaneCode] = useState(inputTexts[36])
+  const [janeCode, setJaneCode] = useState(inputTexts[19])
   const [statements, setStatements] = useState([])
 
   //errors

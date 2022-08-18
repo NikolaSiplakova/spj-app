@@ -15,6 +15,7 @@ const InputsArea = (props) => {
     setEditorValue,
     setInputValues,
     setJaneCode,
+    setVisualizationType,
   } = props
 
   const renderVariablesForm = () => {
@@ -26,6 +27,7 @@ const InputsArea = (props) => {
       <VariablesForm
         programVariables={programVariables}
         setInputValues={setInputValues}
+        setVisualizationType={setVisualizationType}
       />
     )
   }
@@ -36,6 +38,7 @@ const InputsArea = (props) => {
         janeEditorRef={janeEditorRef}
         setEditorValue={setEditorValue}
         setJaneCode={setJaneCode}
+        setVisualizationType={setVisualizationType}
       />
       {renderVariablesForm()}
     </div>
@@ -53,6 +56,7 @@ InputsArea.propTypes = {
   setEditorValue: PropTypes.func.isRequired,
   setInputValues: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
+  setVisualizationType: PropTypes.func.isRequired,
 }
 
 export default InputsArea

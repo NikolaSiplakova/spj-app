@@ -60,6 +60,7 @@ const Calculator = (props) => {
         setEditorValue={setEditorValue}
         setInputValues={setInputValues}
         setJaneCode={setJaneCode}
+        setVisualizationType={setVisualizationType}
       />
 
       {janeCode !== "" && errors.length !== 0 && (

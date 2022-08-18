@@ -5,6 +5,8 @@ import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
 import SyntaxHighlighter from "./SyntaxHighlighter"
 
+import { VISUALIZATION } from "constants/visualizationTypes"
+
 import SpecialSymbolsList from "./_components/SpecialSymbolsList/SpecialSymbolsList"
 import FileImporter from "./_components/FileImporter/FileImporter"
 
@@ -19,6 +21,7 @@ const AceEditorHolder = ({
   janeEditorRef,
   setEditorValue,
   setJaneCode,
+  setVisualizationType,
 }) => {
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
@@ -31,6 +34,8 @@ const AceEditorHolder = ({
         onClick={() => {
           setEditorValue("")
           setJaneCode("")
+          setVisualizationType(VISUALIZATION.NONE)
+          janeEditorRef.current.editor.focus()
         }}
         title={"Vymazať program"}
         className={classes["action"]}
@@ -57,7 +62,10 @@ const AceEditorHolder = ({
         mode={customHighlightMode}
         theme="tomorrow"
         name="jane-editor"
-        onChange={setEditorValue}
+        onChange={(value) => {
+          setEditorValue(value)
+          setVisualizationType(VISUALIZATION.NONE)
+        }}
         fontSize={14}
         showPrintMargin={false}
         showGutter={true}
@@ -85,6 +93,7 @@ AceEditorHolder.propTypes = {
   janeEditorRef: PropTypes.object,
   setEditorValue: PropTypes.func.isRequired,
   setJaneCode: PropTypes.func.isRequired,
+  setVisualizationType: PropTypes.func.isRequired,
 }
 
 export default React.memo(AceEditorHolder)
