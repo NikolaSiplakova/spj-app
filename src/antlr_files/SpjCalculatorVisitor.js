@@ -207,8 +207,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
   }
 
   visitIfStat(ctx) {
-    console.log("ctx")
-    console.log(ctx)
     this.setComputationStep(null, this.state, [...this.variables])
 
     if (ctx.start.type === SpjParser.WHILE) {
@@ -237,9 +235,19 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       whileSentence[3] = processDoStatements()
 
       //do statements without first parentheses
-      const doStatements = processDoStatements().slice(0, -1).slice(1)
+      let doStatements = processDoStatements()
 
-      const ifString = [
+      if (doStatements[0] === "(") {
+        doStatements = doStatements.slice(1)
+      }
+
+      if (doStatements[doStatements.length - 1] === ")") {
+        doStatements = doStatements.slice(0, -1)
+      } else {
+        doStatements += ";"
+      }
+
+      const ifStringParts = [
         {
           text: `\\texttt{if} \\ ${boolCondition} \\ \\texttt{then}`,
           type: null,
@@ -247,7 +255,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
         {
           text: `\\bigl( \\ ${doStatements} \\ ${whileSentence.join(
             " \\ "
-          )} \\ \\bigl)`,
+          )}; \\ \\bigl)`,
           type: STATEMENT_TYPES.THEN_ELSE,
         },
         {
@@ -255,7 +263,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
           type: null,
         },
         {
-          text: "\\texttt{skip};",
+          text: "\\texttt{skip}",
           type: STATEMENT_TYPES.THEN_ELSE,
         },
       ]
@@ -271,7 +279,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
       }
 
       return {
-        janeStatements: ifString,
+        janeStatements: ifStringParts,
         substats:
           boolValue === true
             ? [...getDoStatements(), this.visitWhileStat(ctx)]
@@ -283,23 +291,26 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     if (ctx.start.type === SpjParser.REPEAT) {
       const boolValue = this.visit(ctx.children[3])
       const boolCondition = ctx.children[3].getText()
+
       const repeatSentence = ctx.children.map((child) =>
         this.convertToLatex(child.getText())
       )
 
-      const repeatStatements = ctx.children[1].children[0].children.map(
-        (child) => child.getText()
-      )
+      const processRepeatStatements = () => {
+        if (ctx.children[1].children[0].ruleIndex === SpjParser.RULE_par) {
+          return this.processSequence(
+            ctx.children[1].children[0].children[1].children //repeat
+          )
+        } else {
+          const repeatStatements = ctx.children[3].children[0].children.map(
+            (child) => this.convertToLatex(child.getText())
+          )
 
-      if (repeatStatements[0] === "(") {
-        repeatStatements[0] = `\\bigl(`
+          return repeatStatements.join(" \\ ")
+        }
       }
 
-      if (repeatStatements[repeatStatements.length - 1] === ")") {
-        repeatStatements[repeatStatements.length - 1] = `\\bigl)`
-      }
-
-      repeatSentence[1] = repeatStatements.join(" \\ ")
+      repeatSentence[1] = processRepeatStatements()
 
       const ifString = [
         {
@@ -426,38 +437,32 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
   visitWhileStat(ctx) {
     this.setComputationStep(null, this.state, [...this.variables])
     // [ while, condition, do, statements ]
-    const whileStatementText = ctx.children.map((child, index) => {
-      if (index === 3) {
-        //[ ( , statements, ) ] || [statementPart, statementPart]
-        const doStatements = child.children[0].children.map((doStatement) =>
-          this.convertToLatex(doStatement.getText())
-        )
-
-        //[ ( , statements, ) ]
-        if (doStatements.length === 3) {
-          doStatements[0] = `\\bigl(`
-          doStatements[1] = this.processSequence(
-            child.children[0].children[1].children
-          )
-          doStatements[2] = `\\bigl)`
-        }
-
-        return {
-          text: doStatements.join(" \\ "),
-          type: STATEMENT_TYPES.DO,
-        }
-      }
-
-      return {
-        text: this.convertToLatex(child.getText()),
-        type: null,
-      }
+    const whileSentence = ctx.children.map((child, index) => {
+      return { text: this.convertToLatex(child.getText()), type: null }
     })
 
-    console.log(whileStatementText)
+    const processDoStatements = () => {
+      if (ctx.children[3].children[0].ruleIndex === SpjParser.RULE_par) {
+        return {
+          text: this.processSequence(
+            ctx.children[3].children[0].children[1].children //do
+          ),
+          type: STATEMENT_TYPES.DO,
+        }
+      } else {
+        const doStatements = ctx.children[3].children[0].children.map((child) =>
+          this.convertToLatex(child.getText())
+        )
+
+        return { text: doStatements.join(" \\ "), type: STATEMENT_TYPES.DO }
+      }
+    }
+
+    //[ ( , statements, ) ] || [statementPart, statementPart]
+    whileSentence[3] = processDoStatements()
 
     return {
-      janeStatements: whileStatementText,
+      janeStatements: whileSentence,
       substats: [this.visitIfStat(ctx)],
       type: STATEMENT_TYPES.WHILE,
     }
@@ -482,7 +487,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     this.setComputationStep(null, this.state, [...this.variables])
 
     const getRepeatStatements = () => {
-      if (ctx.children[1].children[0].ruleIndex === SpjParser.RULE_seq) {
+      if (ctx.children[1].children[0].ruleIndex === SpjParser.RULE_par) {
         const repeatStatements = this.visit(ctx.children[1])
         return repeatStatements[0]
       } else {
@@ -492,31 +497,27 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     }
 
     const repeatStatementText = ctx.children.map((child, index) => {
-      if (index === 1) {
-        //do statements
-        const repeatStatements = child.children[0].children.map(
-          (repeatStatement) => repeatStatement.getText()
-        )
+      return { text: this.convertToLatex(child.getText()), type: null }
+    })
 
-        if (repeatStatements[0] === "(") {
-          repeatStatements[0] = `\\bigl(`
-        }
-
-        if (repeatStatements[repeatStatements.length - 1] === ")") {
-          repeatStatements[repeatStatements.length - 1] = `\\bigl)`
-        }
-
+    const processRepeatStatements = () => {
+      if (ctx.children[1].children[0].ruleIndex === SpjParser.RULE_par) {
         return {
-          text: repeatStatements.join(" \\ "),
+          text: this.processSequence(
+            ctx.children[1].children[0].children[1].children //repeat
+          ),
           type: STATEMENT_TYPES.DO,
         }
-      }
+      } else {
+        const repeatStatements = ctx.children[1].children[0].children.map(
+          (child) => this.convertToLatex(child.getText())
+        )
 
-      return {
-        text: this.convertToLatex(child.getText()),
-        type: null,
+        return { text: repeatStatements.join(" \\ "), type: STATEMENT_TYPES.DO }
       }
-    })
+    }
+
+    repeatStatementText[1] = processRepeatStatements()
 
     return {
       janeStatements: repeatStatementText,

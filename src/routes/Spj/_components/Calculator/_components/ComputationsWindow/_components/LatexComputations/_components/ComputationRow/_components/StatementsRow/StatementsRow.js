@@ -7,7 +7,6 @@ import classes from "./StatementsRow.module.scss"
 
 const StatementsRow = ({ statementsRow }) => {
   const oneRowStatements = statementsRow.printout
-
   return (
     <MathJax>
       {`$\\Big \\langle$`}
@@ -32,6 +31,9 @@ const StatementsRow = ({ statementsRow }) => {
                 {`$${part.text} \\ $`}
               </div>
             )
+          )}
+          {oneRowStatements.length > 1 && (
+            <span className={classes["delimiter"]}>;</span>
           )}
         </div>
       ))}

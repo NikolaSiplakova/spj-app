@@ -39,10 +39,14 @@ export const inputTexts = [
   "if x>y then x:=y-x else if x>y then x:=y else y:=x",
 
   //11 - if in then - 0, 0, s1
-  "if x<y then if x>y then x:=y; else y:=x;; else x:=y-x;;",
+  `if x<y then 
+      if x>y then x:=y else y:=x 
+    else 
+      x:=y-x`,
 
   //12	- if; if; - 24, 12, s2
-  "if x<y then x:=y else x:=y+y; if x>y then y:=17 else x:=y+x;",
+  `if x<y then x:=y else x:=y+y; 
+   if x>y then y:=17 else x:=y+x;`,
 
   //13	x->10 y->10 s1
   "if (x<y) then x:=y-x; else if x>y then x:=y; else y:=x;;;",
@@ -64,13 +68,16 @@ export const inputTexts = [
   "while x<2 do (x:=x+y; y:=x+9;)",
 
   //19 - do assign + if - 15, 12, s2
-  "while x<2 do (x:=x+y; if y<x then x:=x+2 else x:=x+3;)",
+  `while x<2 do (
+      x:=x+y; 
+      if y<x then x:=x+2 else x:=x+3;
+  )`,
 
   //20 - immediate skip - 0, 12, s0
   "while x>2 do (x:=x+y; if y<x then x:=x+2 else x:=x+3;)",
 
   //21	- AND
-  "if x<y∧x<5 then (x:=y;) else (x:=y+y;);",
+  "if x<y∧x<5 then x:=y else x:=y+y",
 
   //22	- OR
   "if x>y∨x>5 then (x:=y;) else (x:=y+y;);",
@@ -81,7 +88,7 @@ export const inputTexts = [
   /********************  SPJ  ********************/
 
   //24 x=128 y=48 -> 16, 16, s4
-  "while ¬(x=y) do if y<=x then x:=x-y; else y:=y-x;;;",
+  "while ¬(x=y) do if y<=x then x:=x-y else y:=y-x",
 
   //25 x=4 y=0 -> 1, 24, s7
   "y:=1; while ¬(x=1) do (y:=y*x; x:=x-1;);",
@@ -89,11 +96,14 @@ export const inputTexts = [
   //26 x=0 y=0 a=3 b=3 -> 9, 9, 6, 3, s8
   "x:=a+b; y:=a*b; while ¬(y<=a+b) do (a:=a+1; x:=a+b;);",
 
-  //27 x=7 y=2 a=0 -> 1, 2, 64, s13
+  //27 x=7 y=2 a=0 -> 1, 7, 117649, s13
   "a:=1; while ¬(x=1) do (a:=a*y; x:=x-1;);",
 
-  //28 x=5 y=10 a=0 b=0 -> 1, 2, 64, s13
-  "if y<=x then if a<=x then b:=x; else b:=a; else if a<=y then b:=y else b:=a; ",
+  //28 x=5 y=10 a=0 b=0 -> 5, 10, 0, 10, s1
+  `if y<=x then 
+    if a<=x then b:=x else b:=a 
+  else 
+    if a<=y then b:=y else b:=a `,
 
   /********************  FOR  ********************/
 
@@ -103,15 +113,17 @@ export const inputTexts = [
   //30 x=1 y=3
   "y:=2; while x>y do (x:=x-1; y:=2;); x:=18;",
 
-  //31 x=4 y=2
-  "if x>=y then while x>2 do x:=x-1;; else y:=45;;",
+  //31 x=4 y=2 -> 2, 2, s2
+  `if x>=y then 
+    while x>2 do x:=x-1 
+  else y:=45`,
 
   /******************** REPEAT ********************/
   //32 x=3 -> 9, s3
   "repeat x:=x+2 until x>8",
 
   //33 x=2 y=1 z=3 -> 3, 2, 5, s3
-  "repeat (x:=x+y; y:=y*2; z:=x+y) until z<10",
+  "repeat (x:=x+y; y:=y*2; z:=x+y;) until z<10",
 
   //34 x=1 y=5 z=6 -> 4, 10, 6 s5
   "if x>y then x:=x else y:=z; while (x<4) do x:=x+1; y:=z+4;",
@@ -142,4 +154,12 @@ export const inputTexts = [
     y:=y-x; 
     if 3<4 then d:=3 else (d:=5; y:=5;);
   )`,
+
+  //38 x=2 y=1 z=3 -> 3, 3, 18, s5
+  `repeat (
+    x:=x+y; 
+    y:=y*2; 
+    if x>2 then (z:=x+y; y:=3;) else (z:=x+y; y:=6;);
+  ) until z<10;
+  z:=z+10+y;`,
 ]
