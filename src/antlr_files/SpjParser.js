@@ -1,99 +1,92 @@
 // Generated from Spj.g4 by ANTLR 4.9.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
+import SpjListener from './SpjListener.js';
 import SpjVisitor from './SpjVisitor.js';
 
 
 const serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786",
-    "\u5964\u0003#\u0098\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
+    "\u5964\u0003#\u0092\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004",
     "\t\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007",
     "\u0004\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f",
-    "\u0004\r\t\r\u0003\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0006\u0003",
-    "\u001f\n\u0003\r\u0003\u000e\u0003 \u0005\u0003#\n\u0003\u0003\u0004",
-    "\u0003\u0004\u0005\u0004\'\n\u0004\u0003\u0005\u0003\u0005\u0006\u0005",
-    "+\n\u0005\r\u0005\u000e\u0005,\u0003\u0005\u0003\u0005\u0003\u0006\u0003",
-    "\u0006\u0003\u0006\u0005\u00064\n\u0006\u0003\u0006\u0003\u0006\u0003",
-    "\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006=",
-    "\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
-    "\u0005\u0006D\n\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006",
-    "\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006M\n\u0006\u0003\u0006",
-    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0006\u0005\u0006T\n\u0006",
-    "\u0005\u0006V\n\u0006\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007",
-    "\u0005\u0007\\\n\u0007\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003",
+    "\u0004\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0003\u0002\u0003",
+    "\u0002\u0003\u0002\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003%",
+    "\n\u0003\u0003\u0004\u0003\u0004\u0005\u0004)\n\u0004\u0003\u0005\u0003",
+    "\u0005\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006\u0006\u00061",
+    "\n\u0006\r\u0006\u000e\u00062\u0003\u0007\u0003\u0007\u0003\u0007\u0003",
     "\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003",
-    "\b\u0005\bm\n\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0007",
-    "\bu\n\b\f\b\u000e\bx\u000b\b\u0003\t\u0003\t\u0003\t\u0003\t\u0003\t",
-    "\u0003\t\u0003\t\u0005\t\u0081\n\t\u0003\t\u0003\t\u0003\t\u0003\t\u0003",
-    "\t\u0003\t\u0003\t\u0003\t\u0007\t\u008b\n\t\f\t\u000e\t\u008e\u000b",
-    "\t\u0003\n\u0003\n\u0003\u000b\u0003\u000b\u0003\f\u0003\f\u0003\r\u0003",
-    "\r\u0003\r\u0002\u0004\u000e\u0010\u000e\u0002\u0004\u0006\b\n\f\u000e",
-    "\u0010\u0012\u0014\u0016\u0018\u0002\u0006\u0003\u0002\u0011\u0016\u0003",
-    "\u0002\u0017\u0019\u0003\u0002\u001a\u001b\u0003\u0002\u0003\u0004\u0002",
-    "\u00a3\u0002\u001a\u0003\u0002\u0002\u0002\u0004\"\u0003\u0002\u0002",
-    "\u0002\u0006&\u0003\u0002\u0002\u0002\b(\u0003\u0002\u0002\u0002\nU",
-    "\u0003\u0002\u0002\u0002\fW\u0003\u0002\u0002\u0002\u000el\u0003\u0002",
-    "\u0002\u0002\u0010\u0080\u0003\u0002\u0002\u0002\u0012\u008f\u0003\u0002",
-    "\u0002\u0002\u0014\u0091\u0003\u0002\u0002\u0002\u0016\u0093\u0003\u0002",
-    "\u0002\u0002\u0018\u0095\u0003\u0002\u0002\u0002\u001a\u001b\u0005\u0004",
-    "\u0003\u0002\u001b\u0003\u0003\u0002\u0002\u0002\u001c#\u0005\b\u0005",
-    "\u0002\u001d\u001f\u0005\n\u0006\u0002\u001e\u001d\u0003\u0002\u0002",
-    "\u0002\u001f \u0003\u0002\u0002\u0002 \u001e\u0003\u0002\u0002\u0002",
-    " !\u0003\u0002\u0002\u0002!#\u0003\u0002\u0002\u0002\"\u001c\u0003\u0002",
-    "\u0002\u0002\"\u001e\u0003\u0002\u0002\u0002#\u0005\u0003\u0002\u0002",
-    "\u0002$\'\u0005\b\u0005\u0002%\'\u0005\n\u0006\u0002&$\u0003\u0002\u0002",
-    "\u0002&%\u0003\u0002\u0002\u0002\'\u0007\u0003\u0002\u0002\u0002(*\u0007",
-    "\u001d\u0002\u0002)+\u0005\n\u0006\u0002*)\u0003\u0002\u0002\u0002+",
-    ",\u0003\u0002\u0002\u0002,*\u0003\u0002\u0002\u0002,-\u0003\u0002\u0002",
-    "\u0002-.\u0003\u0002\u0002\u0002./\u0007\u001c\u0002\u0002/\t\u0003",
-    "\u0002\u0002\u00020V\u0005\f\u0007\u000213\u0007\u001e\u0002\u00022",
-    "4\u0007 \u0002\u000232\u0003\u0002\u0002\u000234\u0003\u0002\u0002\u0002",
-    "4V\u0003\u0002\u0002\u000256\u0007\r\u0002\u000267\u0005\u000e\b\u0002",
-    "78\u0007\f\u0002\u000289\u0005\u0006\u0004\u00029:\u0007\u000b\u0002",
-    "\u0002:<\u0005\u0006\u0004\u0002;=\u0007 \u0002\u0002<;\u0003\u0002",
-    "\u0002\u0002<=\u0003\u0002\u0002\u0002=V\u0003\u0002\u0002\u0002>?\u0007",
-    "\n\u0002\u0002?@\u0005\u000e\b\u0002@A\u0007\t\u0002\u0002AC\u0005\u0006",
-    "\u0004\u0002BD\u0007 \u0002\u0002CB\u0003\u0002\u0002\u0002CD\u0003",
-    "\u0002\u0002\u0002DV\u0003\u0002\u0002\u0002EF\u0007\b\u0002\u0002F",
-    "G\u0005\f\u0007\u0002GH\u0007\u0007\u0002\u0002HI\u0007\"\u0002\u0002",
-    "IJ\u0007\t\u0002\u0002JL\u0005\u0006\u0004\u0002KM\u0007 \u0002\u0002",
-    "LK\u0003\u0002\u0002\u0002LM\u0003\u0002\u0002\u0002MV\u0003\u0002\u0002",
-    "\u0002NO\u0007\u0006\u0002\u0002OP\u0005\u0006\u0004\u0002PQ\u0007\u0005",
-    "\u0002\u0002QS\u0005\u000e\b\u0002RT\u0007 \u0002\u0002SR\u0003\u0002",
-    "\u0002\u0002ST\u0003\u0002\u0002\u0002TV\u0003\u0002\u0002\u0002U0\u0003",
-    "\u0002\u0002\u0002U1\u0003\u0002\u0002\u0002U5\u0003\u0002\u0002\u0002",
-    "U>\u0003\u0002\u0002\u0002UE\u0003\u0002\u0002\u0002UN\u0003\u0002\u0002",
-    "\u0002V\u000b\u0003\u0002\u0002\u0002WX\u0007!\u0002\u0002XY\u0007\u001f",
-    "\u0002\u0002Y[\u0005\u0010\t\u0002Z\\\u0007 \u0002\u0002[Z\u0003\u0002",
-    "\u0002\u0002[\\\u0003\u0002\u0002\u0002\\\r\u0003\u0002\u0002\u0002",
-    "]^\b\b\u0001\u0002^m\u0005\u0018\r\u0002_`\u0005\u0010\t\u0002`a\u0005",
-    "\u0012\n\u0002ab\u0005\u0010\t\u0002bm\u0003\u0002\u0002\u0002cd\u0007",
-    "\u000e\u0002\u0002de\u0007\u001d\u0002\u0002ef\u0005\u000e\b\u0002f",
-    "g\u0007\u001c\u0002\u0002gm\u0003\u0002\u0002\u0002hi\u0007\u001d\u0002",
-    "\u0002ij\u0005\u000e\b\u0002jk\u0007\u001c\u0002\u0002km\u0003\u0002",
-    "\u0002\u0002l]\u0003\u0002\u0002\u0002l_\u0003\u0002\u0002\u0002lc\u0003",
-    "\u0002\u0002\u0002lh\u0003\u0002\u0002\u0002mv\u0003\u0002\u0002\u0002",
-    "no\f\u0005\u0002\u0002op\u0007\u000f\u0002\u0002pu\u0005\u000e\b\u0006",
-    "qr\f\u0004\u0002\u0002rs\u0007\u0010\u0002\u0002su\u0005\u000e\b\u0005",
-    "tn\u0003\u0002\u0002\u0002tq\u0003\u0002\u0002\u0002ux\u0003\u0002\u0002",
-    "\u0002vt\u0003\u0002\u0002\u0002vw\u0003\u0002\u0002\u0002w\u000f\u0003",
-    "\u0002\u0002\u0002xv\u0003\u0002\u0002\u0002yz\b\t\u0001\u0002z\u0081",
-    "\u0007\"\u0002\u0002{\u0081\u0007!\u0002\u0002|}\u0007\u001d\u0002\u0002",
-    "}~\u0005\u0010\t\u0002~\u007f\u0007\u001c\u0002\u0002\u007f\u0081\u0003",
-    "\u0002\u0002\u0002\u0080y\u0003\u0002\u0002\u0002\u0080{\u0003\u0002",
-    "\u0002\u0002\u0080|\u0003\u0002\u0002\u0002\u0081\u008c\u0003\u0002",
-    "\u0002\u0002\u0082\u0083\f\u0004\u0002\u0002\u0083\u0084\u0005\u0014",
-    "\u000b\u0002\u0084\u0085\u0005\u0010\t\u0005\u0085\u008b\u0003\u0002",
-    "\u0002\u0002\u0086\u0087\f\u0003\u0002\u0002\u0087\u0088\u0005\u0016",
-    "\f\u0002\u0088\u0089\u0005\u0010\t\u0004\u0089\u008b\u0003\u0002\u0002",
-    "\u0002\u008a\u0082\u0003\u0002\u0002\u0002\u008a\u0086\u0003\u0002\u0002",
-    "\u0002\u008b\u008e\u0003\u0002\u0002\u0002\u008c\u008a\u0003\u0002\u0002",
-    "\u0002\u008c\u008d\u0003\u0002\u0002\u0002\u008d\u0011\u0003\u0002\u0002",
-    "\u0002\u008e\u008c\u0003\u0002\u0002\u0002\u008f\u0090\t\u0002\u0002",
-    "\u0002\u0090\u0013\u0003\u0002\u0002\u0002\u0091\u0092\t\u0003\u0002",
-    "\u0002\u0092\u0015\u0003\u0002\u0002\u0002\u0093\u0094\t\u0004\u0002",
-    "\u0002\u0094\u0017\u0003\u0002\u0002\u0002\u0095\u0096\t\u0005\u0002",
-    "\u0002\u0096\u0019\u0003\u0002\u0002\u0002\u0013 \"&,3<CLSU[ltv\u0080",
-    "\u008a\u008c"].join("");
+    "\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003",
+    "\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0005\bR",
+    "\n\b\u0003\t\u0003\t\u0003\t\u0003\t\u0003\n\u0003\n\u0003\n\u0003\n",
+    "\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003",
+    "\n\u0003\n\u0003\n\u0005\ng\n\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003",
+    "\n\u0003\n\u0007\no\n\n\f\n\u000e\nr\u000b\n\u0003\u000b\u0003\u000b",
+    "\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0005\u000b",
+    "{\n\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b\u0003\u000b",
+    "\u0003\u000b\u0003\u000b\u0003\u000b\u0007\u000b\u0085\n\u000b\f\u000b",
+    "\u000e\u000b\u0088\u000b\u000b\u0003\f\u0003\f\u0003\r\u0003\r\u0003",
+    "\u000e\u0003\u000e\u0003\u000f\u0003\u000f\u0003\u000f\u0002\u0004\u0012",
+    "\u0014\u0010\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018",
+    "\u001a\u001c\u0002\u0006\u0003\u0002\u0011\u0016\u0003\u0002\u0017\u0019",
+    "\u0003\u0002\u001a\u001b\u0003\u0002\u0003\u0004\u0002\u0095\u0002\u001e",
+    "\u0003\u0002\u0002\u0002\u0004$\u0003\u0002\u0002\u0002\u0006(\u0003",
+    "\u0002\u0002\u0002\b*\u0003\u0002\u0002\u0002\n.\u0003\u0002\u0002\u0002",
+    "\f4\u0003\u0002\u0002\u0002\u000eQ\u0003\u0002\u0002\u0002\u0010S\u0003",
+    "\u0002\u0002\u0002\u0012f\u0003\u0002\u0002\u0002\u0014z\u0003\u0002",
+    "\u0002\u0002\u0016\u0089\u0003\u0002\u0002\u0002\u0018\u008b\u0003\u0002",
+    "\u0002\u0002\u001a\u008d\u0003\u0002\u0002\u0002\u001c\u008f\u0003\u0002",
+    "\u0002\u0002\u001e\u001f\u0005\u0004\u0003\u0002\u001f \u0007\u0002",
+    "\u0002\u0003 \u0003\u0003\u0002\u0002\u0002!%\u0005\b\u0005\u0002\"",
+    "%\u0005\n\u0006\u0002#%\u0005\u000e\b\u0002$!\u0003\u0002\u0002\u0002",
+    "$\"\u0003\u0002\u0002\u0002$#\u0003\u0002\u0002\u0002%\u0005\u0003\u0002",
+    "\u0002\u0002&)\u0005\b\u0005\u0002\')\u0005\u000e\b\u0002(&\u0003\u0002",
+    "\u0002\u0002(\'\u0003\u0002\u0002\u0002)\u0007\u0003\u0002\u0002\u0002",
+    "*+\u0007\u001d\u0002\u0002+,\u0005\n\u0006\u0002,-\u0007\u001c\u0002",
+    "\u0002-\t\u0003\u0002\u0002\u0002.0\u0005\f\u0007\u0002/1\u0005\f\u0007",
+    "\u00020/\u0003\u0002\u0002\u000212\u0003\u0002\u0002\u000220\u0003\u0002",
+    "\u0002\u000223\u0003\u0002\u0002\u00023\u000b\u0003\u0002\u0002\u0002",
+    "45\u0005\u000e\b\u000256\u0007 \u0002\u00026\r\u0003\u0002\u0002\u0002",
+    "7R\u0005\u0010\t\u00028R\u0007\u001e\u0002\u00029:\u0007\r\u0002\u0002",
+    ":;\u0005\u0012\n\u0002;<\u0007\f\u0002\u0002<=\u0005\u0006\u0004\u0002",
+    "=>\u0007\u000b\u0002\u0002>?\u0005\u0006\u0004\u0002?R\u0003\u0002\u0002",
+    "\u0002@A\u0007\n\u0002\u0002AB\u0005\u0012\n\u0002BC\u0007\t\u0002\u0002",
+    "CD\u0005\u0006\u0004\u0002DR\u0003\u0002\u0002\u0002EF\u0007\b\u0002",
+    "\u0002FG\u0005\u0010\t\u0002GH\u0007\u0007\u0002\u0002HI\u0007\"\u0002",
+    "\u0002IJ\u0007\t\u0002\u0002JK\u0005\u0006\u0004\u0002KR\u0003\u0002",
+    "\u0002\u0002LM\u0007\u0006\u0002\u0002MN\u0005\u0006\u0004\u0002NO\u0007",
+    "\u0005\u0002\u0002OP\u0005\u0012\n\u0002PR\u0003\u0002\u0002\u0002Q",
+    "7\u0003\u0002\u0002\u0002Q8\u0003\u0002\u0002\u0002Q9\u0003\u0002\u0002",
+    "\u0002Q@\u0003\u0002\u0002\u0002QE\u0003\u0002\u0002\u0002QL\u0003\u0002",
+    "\u0002\u0002R\u000f\u0003\u0002\u0002\u0002ST\u0007!\u0002\u0002TU\u0007",
+    "\u001f\u0002\u0002UV\u0005\u0014\u000b\u0002V\u0011\u0003\u0002\u0002",
+    "\u0002WX\b\n\u0001\u0002Xg\u0005\u001c\u000f\u0002YZ\u0005\u0014\u000b",
+    "\u0002Z[\u0005\u0016\f\u0002[\\\u0005\u0014\u000b\u0002\\g\u0003\u0002",
+    "\u0002\u0002]^\u0007\u000e\u0002\u0002^_\u0007\u001d\u0002\u0002_`\u0005",
+    "\u0012\n\u0002`a\u0007\u001c\u0002\u0002ag\u0003\u0002\u0002\u0002b",
+    "c\u0007\u001d\u0002\u0002cd\u0005\u0012\n\u0002de\u0007\u001c\u0002",
+    "\u0002eg\u0003\u0002\u0002\u0002fW\u0003\u0002\u0002\u0002fY\u0003\u0002",
+    "\u0002\u0002f]\u0003\u0002\u0002\u0002fb\u0003\u0002\u0002\u0002gp\u0003",
+    "\u0002\u0002\u0002hi\f\u0005\u0002\u0002ij\u0007\u000f\u0002\u0002j",
+    "o\u0005\u0012\n\u0006kl\f\u0004\u0002\u0002lm\u0007\u0010\u0002\u0002",
+    "mo\u0005\u0012\n\u0005nh\u0003\u0002\u0002\u0002nk\u0003\u0002\u0002",
+    "\u0002or\u0003\u0002\u0002\u0002pn\u0003\u0002\u0002\u0002pq\u0003\u0002",
+    "\u0002\u0002q\u0013\u0003\u0002\u0002\u0002rp\u0003\u0002\u0002\u0002",
+    "st\b\u000b\u0001\u0002t{\u0007\"\u0002\u0002u{\u0007!\u0002\u0002vw",
+    "\u0007\u001d\u0002\u0002wx\u0005\u0014\u000b\u0002xy\u0007\u001c\u0002",
+    "\u0002y{\u0003\u0002\u0002\u0002zs\u0003\u0002\u0002\u0002zu\u0003\u0002",
+    "\u0002\u0002zv\u0003\u0002\u0002\u0002{\u0086\u0003\u0002\u0002\u0002",
+    "|}\f\u0004\u0002\u0002}~\u0005\u0018\r\u0002~\u007f\u0005\u0014\u000b",
+    "\u0005\u007f\u0085\u0003\u0002\u0002\u0002\u0080\u0081\f\u0003\u0002",
+    "\u0002\u0081\u0082\u0005\u001a\u000e\u0002\u0082\u0083\u0005\u0014\u000b",
+    "\u0004\u0083\u0085\u0003\u0002\u0002\u0002\u0084|\u0003\u0002\u0002",
+    "\u0002\u0084\u0080\u0003\u0002\u0002\u0002\u0085\u0088\u0003\u0002\u0002",
+    "\u0002\u0086\u0084\u0003\u0002\u0002\u0002\u0086\u0087\u0003\u0002\u0002",
+    "\u0002\u0087\u0015\u0003\u0002\u0002\u0002\u0088\u0086\u0003\u0002\u0002",
+    "\u0002\u0089\u008a\t\u0002\u0002\u0002\u008a\u0017\u0003\u0002\u0002",
+    "\u0002\u008b\u008c\t\u0003\u0002\u0002\u008c\u0019\u0003\u0002\u0002",
+    "\u0002\u008d\u008e\t\u0004\u0002\u0002\u008e\u001b\u0003\u0002\u0002",
+    "\u0002\u008f\u0090\t\u0005\u0002\u0002\u0090\u001d\u0003\u0002\u0002",
+    "\u0002\f$(2Qfnpz\u0084\u0086"].join("");
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -117,9 +110,9 @@ export default class SpjParser extends antlr4.Parser {
                              "NEQ", "EQ", "MOD", "DIV", "MUL", "SUB", "ADD", 
                              "RPar", "LPar", "Skip", "Assign", "Delimit", 
                              "Var", "Num", "WS" ];
-    static ruleNames = [ "prog", "s", "ifWhileS", "seq", "stat", "assignment", 
-                         "b", "e", "relOp", "mathOpPriority", "mathOp", 
-                         "bool" ];
+    static ruleNames = [ "prog", "s", "ifWhileS", "par", "seq", "statDelimit", 
+                         "stat", "assignment", "b", "e", "relOp", "mathOpPriority", 
+                         "mathOp", "bool" ];
 
     constructor(input) {
         super(input);
@@ -135,9 +128,9 @@ export default class SpjParser extends antlr4.Parser {
 
     sempred(localctx, ruleIndex, predIndex) {
     	switch(ruleIndex) {
-    	case 6:
+    	case 8:
     	    		return this.b_sempred(localctx, predIndex);
-    	case 7:
+    	case 9:
     	    		return this.e_sempred(localctx, predIndex);
         default:
             throw "No predicate with index:" + ruleIndex;
@@ -174,8 +167,10 @@ export default class SpjParser extends antlr4.Parser {
 	    this.enterRule(localctx, 0, SpjParser.RULE_prog);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 24;
+	        this.state = 28;
 	        this.s();
+	        this.state = 29;
+	        this.match(SpjParser.EOF);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -195,36 +190,29 @@ export default class SpjParser extends antlr4.Parser {
 	s() {
 	    let localctx = new SContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 2, SpjParser.RULE_s);
-	    var _la = 0; // Token type
 	    try {
-	        this.state = 32;
+	        this.state = 34;
 	        this._errHandler.sync(this);
-	        switch(this._input.LA(1)) {
-	        case SpjParser.LPar:
+	        var la_ = this._interp.adaptivePredict(this._input,0,this._ctx);
+	        switch(la_) {
+	        case 1:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 26;
+	            this.state = 31;
+	            this.par();
+	            break;
+
+	        case 2:
+	            this.enterOuterAlt(localctx, 2);
+	            this.state = 32;
 	            this.seq();
 	            break;
-	        case SpjParser.REPEAT:
-	        case SpjParser.FOR:
-	        case SpjParser.WHILE:
-	        case SpjParser.IF:
-	        case SpjParser.Skip:
-	        case SpjParser.Var:
-	            this.enterOuterAlt(localctx, 2);
-	            this.state = 28; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	            do {
-	                this.state = 27;
-	                this.stat();
-	                this.state = 30; 
-	                this._errHandler.sync(this);
-	                _la = this._input.LA(1);
-	            } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpjParser.REPEAT) | (1 << SpjParser.FOR) | (1 << SpjParser.WHILE) | (1 << SpjParser.IF) | (1 << SpjParser.Skip) | (1 << SpjParser.Var))) !== 0));
+
+	        case 3:
+	            this.enterOuterAlt(localctx, 3);
+	            this.state = 33;
+	            this.stat();
 	            break;
-	        default:
-	            throw new antlr4.error.NoViableAltException(this);
+
 	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -246,13 +234,13 @@ export default class SpjParser extends antlr4.Parser {
 	    let localctx = new IfWhileSContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 4, SpjParser.RULE_ifWhileS);
 	    try {
-	        this.state = 36;
+	        this.state = 38;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case SpjParser.LPar:
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 34;
-	            this.seq();
+	            this.state = 36;
+	            this.par();
 	            break;
 	        case SpjParser.REPEAT:
 	        case SpjParser.FOR:
@@ -261,7 +249,7 @@ export default class SpjParser extends antlr4.Parser {
 	        case SpjParser.Skip:
 	        case SpjParser.Var:
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 35;
+	            this.state = 37;
 	            this.stat();
 	            break;
 	        default:
@@ -283,26 +271,76 @@ export default class SpjParser extends antlr4.Parser {
 
 
 
+	par() {
+	    let localctx = new ParContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 6, SpjParser.RULE_par);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 40;
+	        this.match(SpjParser.LPar);
+	        this.state = 41;
+	        this.seq();
+	        this.state = 42;
+	        this.match(SpjParser.RPar);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
 	seq() {
 	    let localctx = new SeqContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, SpjParser.RULE_seq);
+	    this.enterRule(localctx, 8, SpjParser.RULE_seq);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 38;
-	        this.match(SpjParser.LPar);
-	        this.state = 40; 
+	        this.state = 44;
+	        this.statDelimit();
+	        this.state = 46; 
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        do {
-	            this.state = 39;
-	            this.stat();
-	            this.state = 42; 
+	            this.state = 45;
+	            this.statDelimit();
+	            this.state = 48; 
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        } while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpjParser.REPEAT) | (1 << SpjParser.FOR) | (1 << SpjParser.WHILE) | (1 << SpjParser.IF) | (1 << SpjParser.Skip) | (1 << SpjParser.Var))) !== 0));
-	        this.state = 44;
-	        this.match(SpjParser.RPar);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	statDelimit() {
+	    let localctx = new StatDelimitContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 10, SpjParser.RULE_statDelimit);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 50;
+	        this.stat();
+	        this.state = 51;
+	        this.match(SpjParser.Delimit);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -321,74 +359,50 @@ export default class SpjParser extends antlr4.Parser {
 
 	stat() {
 	    let localctx = new StatContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, SpjParser.RULE_stat);
+	    this.enterRule(localctx, 12, SpjParser.RULE_stat);
 	    try {
-	        this.state = 83;
+	        this.state = 79;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case SpjParser.Var:
 	            localctx = new AssignStatContext(this, localctx);
 	            this.enterOuterAlt(localctx, 1);
-	            this.state = 46;
+	            this.state = 53;
 	            this.assignment();
 	            break;
 	        case SpjParser.Skip:
 	            localctx = new SkipStatContext(this, localctx);
 	            this.enterOuterAlt(localctx, 2);
-	            this.state = 47;
+	            this.state = 54;
 	            this.match(SpjParser.Skip);
-	            this.state = 49;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
-	            if(la_===1) {
-	                this.state = 48;
-	                this.match(SpjParser.Delimit);
-
-	            }
 	            break;
 	        case SpjParser.IF:
 	            localctx = new IfStatContext(this, localctx);
 	            this.enterOuterAlt(localctx, 3);
-	            this.state = 51;
-	            this.match(SpjParser.IF);
-	            this.state = 52;
-	            this.b(0);
-	            this.state = 53;
-	            this.match(SpjParser.THEN);
-	            this.state = 54;
-	            this.ifWhileS();
 	            this.state = 55;
-	            this.match(SpjParser.ELSE);
+	            this.match(SpjParser.IF);
 	            this.state = 56;
-	            this.ifWhileS();
+	            this.b(0);
+	            this.state = 57;
+	            this.match(SpjParser.THEN);
 	            this.state = 58;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
-	            if(la_===1) {
-	                this.state = 57;
-	                this.match(SpjParser.Delimit);
-
-	            }
+	            this.ifWhileS();
+	            this.state = 59;
+	            this.match(SpjParser.ELSE);
+	            this.state = 60;
+	            this.ifWhileS();
 	            break;
 	        case SpjParser.WHILE:
 	            localctx = new WhileStatContext(this, localctx);
 	            this.enterOuterAlt(localctx, 4);
-	            this.state = 60;
-	            this.match(SpjParser.WHILE);
-	            this.state = 61;
-	            this.b(0);
 	            this.state = 62;
-	            this.match(SpjParser.DO);
+	            this.match(SpjParser.WHILE);
 	            this.state = 63;
-	            this.ifWhileS();
+	            this.b(0);
+	            this.state = 64;
+	            this.match(SpjParser.DO);
 	            this.state = 65;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,6,this._ctx);
-	            if(la_===1) {
-	                this.state = 64;
-	                this.match(SpjParser.Delimit);
-
-	            }
+	            this.ifWhileS();
 	            break;
 	        case SpjParser.FOR:
 	            localctx = new ForStatContext(this, localctx);
@@ -405,34 +419,18 @@ export default class SpjParser extends antlr4.Parser {
 	            this.match(SpjParser.DO);
 	            this.state = 72;
 	            this.ifWhileS();
-	            this.state = 74;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
-	            if(la_===1) {
-	                this.state = 73;
-	                this.match(SpjParser.Delimit);
-
-	            }
 	            break;
 	        case SpjParser.REPEAT:
 	            localctx = new RepeatStatContext(this, localctx);
 	            this.enterOuterAlt(localctx, 6);
-	            this.state = 76;
+	            this.state = 74;
 	            this.match(SpjParser.REPEAT);
-	            this.state = 77;
+	            this.state = 75;
 	            this.ifWhileS();
-	            this.state = 78;
+	            this.state = 76;
 	            this.match(SpjParser.UNTIL);
-	            this.state = 79;
+	            this.state = 77;
 	            this.b(0);
-	            this.state = 81;
-	            this._errHandler.sync(this);
-	            var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
-	            if(la_===1) {
-	                this.state = 80;
-	                this.match(SpjParser.Delimit);
-
-	            }
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
@@ -455,23 +453,15 @@ export default class SpjParser extends antlr4.Parser {
 
 	assignment() {
 	    let localctx = new AssignmentContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 10, SpjParser.RULE_assignment);
+	    this.enterRule(localctx, 14, SpjParser.RULE_assignment);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85;
+	        this.state = 81;
 	        this.match(SpjParser.Var);
-	        this.state = 86;
+	        this.state = 82;
 	        this.match(SpjParser.Assign);
-	        this.state = 87;
+	        this.state = 83;
 	        this.e(0);
-	        this.state = 89;
-	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
-	        if(la_===1) {
-	            this.state = 88;
-	            this.match(SpjParser.Delimit);
-
-	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -495,20 +485,20 @@ export default class SpjParser extends antlr4.Parser {
 	    const _parentState = this.state;
 	    let localctx = new BContext(this, this._ctx, _parentState);
 	    let _prevctx = localctx;
-	    const _startState = 12;
-	    this.enterRecursionRule(localctx, 12, SpjParser.RULE_b, _p);
+	    const _startState = 16;
+	    this.enterRecursionRule(localctx, 16, SpjParser.RULE_b, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 106;
+	        this.state = 100;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,11,this._ctx);
+	        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
 	        switch(la_) {
 	        case 1:
 	            localctx = new TrueFalseBoolContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 92;
+	            this.state = 86;
 	            this.bool();
 	            break;
 
@@ -516,11 +506,11 @@ export default class SpjParser extends antlr4.Parser {
 	            localctx = new RelOpBoolContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 93;
+	            this.state = 87;
 	            this.e(0);
-	            this.state = 94;
+	            this.state = 88;
 	            this.relOp();
-	            this.state = 95;
+	            this.state = 89;
 	            this.e(0);
 	            break;
 
@@ -528,13 +518,13 @@ export default class SpjParser extends antlr4.Parser {
 	            localctx = new NegBoolContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 97;
+	            this.state = 91;
 	            this.match(SpjParser.NEG);
-	            this.state = 98;
+	            this.state = 92;
 	            this.match(SpjParser.LPar);
-	            this.state = 99;
+	            this.state = 93;
 	            this.b(0);
-	            this.state = 100;
+	            this.state = 94;
 	            this.match(SpjParser.RPar);
 	            break;
 
@@ -542,60 +532,60 @@ export default class SpjParser extends antlr4.Parser {
 	            localctx = new ParBoolContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 102;
+	            this.state = 96;
 	            this.match(SpjParser.LPar);
-	            this.state = 103;
+	            this.state = 97;
 	            this.b(0);
-	            this.state = 104;
+	            this.state = 98;
 	            this.match(SpjParser.RPar);
 	            break;
 
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 116;
+	        this.state = 110;
 	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,13,this._ctx)
+	        var _alt = this._interp.adaptivePredict(this._input,6,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
 	                if(this._parseListeners!==null) {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 114;
+	                this.state = 108;
 	                this._errHandler.sync(this);
-	                var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+	                var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new AndBoolContext(this, new BContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, SpjParser.RULE_b);
-	                    this.state = 108;
+	                    this.state = 102;
 	                    if (!( this.precpred(this._ctx, 3))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
 	                    }
-	                    this.state = 109;
+	                    this.state = 103;
 	                    this.match(SpjParser.AND);
-	                    this.state = 110;
+	                    this.state = 104;
 	                    this.b(4);
 	                    break;
 
 	                case 2:
 	                    localctx = new OrBoolContext(this, new BContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, SpjParser.RULE_b);
-	                    this.state = 111;
+	                    this.state = 105;
 	                    if (!( this.precpred(this._ctx, 2))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
 	                    }
-	                    this.state = 112;
+	                    this.state = 106;
 	                    this.match(SpjParser.OR);
-	                    this.state = 113;
+	                    this.state = 107;
 	                    this.b(3);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 118;
+	            this.state = 112;
 	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,13,this._ctx);
+	            _alt = this._interp.adaptivePredict(this._input,6,this._ctx);
 	        }
 
 	    } catch( error) {
@@ -621,11 +611,11 @@ export default class SpjParser extends antlr4.Parser {
 	    const _parentState = this.state;
 	    let localctx = new EContext(this, this._ctx, _parentState);
 	    let _prevctx = localctx;
-	    const _startState = 14;
-	    this.enterRecursionRule(localctx, 14, SpjParser.RULE_e, _p);
+	    const _startState = 18;
+	    this.enterRecursionRule(localctx, 18, SpjParser.RULE_e, _p);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 126;
+	        this.state = 120;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
 	        case SpjParser.Num:
@@ -633,75 +623,75 @@ export default class SpjParser extends antlr4.Parser {
 	            this._ctx = localctx;
 	            _prevctx = localctx;
 
-	            this.state = 120;
+	            this.state = 114;
 	            this.match(SpjParser.Num);
 	            break;
 	        case SpjParser.Var:
 	            localctx = new VarExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 121;
+	            this.state = 115;
 	            this.match(SpjParser.Var);
 	            break;
 	        case SpjParser.LPar:
 	            localctx = new ParExprContext(this, localctx);
 	            this._ctx = localctx;
 	            _prevctx = localctx;
-	            this.state = 122;
+	            this.state = 116;
 	            this.match(SpjParser.LPar);
-	            this.state = 123;
+	            this.state = 117;
 	            this.e(0);
-	            this.state = 124;
+	            this.state = 118;
 	            this.match(SpjParser.RPar);
 	            break;
 	        default:
 	            throw new antlr4.error.NoViableAltException(this);
 	        }
 	        this._ctx.stop = this._input.LT(-1);
-	        this.state = 138;
+	        this.state = 132;
 	        this._errHandler.sync(this);
-	        var _alt = this._interp.adaptivePredict(this._input,16,this._ctx)
+	        var _alt = this._interp.adaptivePredict(this._input,9,this._ctx)
 	        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
 	            if(_alt===1) {
 	                if(this._parseListeners!==null) {
 	                    this.triggerExitRuleEvent();
 	                }
 	                _prevctx = localctx;
-	                this.state = 136;
+	                this.state = 130;
 	                this._errHandler.sync(this);
-	                var la_ = this._interp.adaptivePredict(this._input,15,this._ctx);
+	                var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
 	                switch(la_) {
 	                case 1:
 	                    localctx = new MathOpPriorExprContext(this, new EContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, SpjParser.RULE_e);
-	                    this.state = 128;
+	                    this.state = 122;
 	                    if (!( this.precpred(this._ctx, 2))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
 	                    }
-	                    this.state = 129;
+	                    this.state = 123;
 	                    this.mathOpPriority();
-	                    this.state = 130;
+	                    this.state = 124;
 	                    this.e(3);
 	                    break;
 
 	                case 2:
 	                    localctx = new MathOpExprContext(this, new EContext(this, _parentctx, _parentState));
 	                    this.pushNewRecursionContext(localctx, _startState, SpjParser.RULE_e);
-	                    this.state = 132;
+	                    this.state = 126;
 	                    if (!( this.precpred(this._ctx, 1))) {
 	                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 1)");
 	                    }
-	                    this.state = 133;
+	                    this.state = 127;
 	                    this.mathOp();
-	                    this.state = 134;
+	                    this.state = 128;
 	                    this.e(2);
 	                    break;
 
 	                } 
 	            }
-	            this.state = 140;
+	            this.state = 134;
 	            this._errHandler.sync(this);
-	            _alt = this._interp.adaptivePredict(this._input,16,this._ctx);
+	            _alt = this._interp.adaptivePredict(this._input,9,this._ctx);
 	        }
 
 	    } catch( error) {
@@ -722,11 +712,11 @@ export default class SpjParser extends antlr4.Parser {
 
 	relOp() {
 	    let localctx = new RelOpContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 16, SpjParser.RULE_relOp);
+	    this.enterRule(localctx, 20, SpjParser.RULE_relOp);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 141;
+	        this.state = 135;
 	        _la = this._input.LA(1);
 	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpjParser.GT) | (1 << SpjParser.GE) | (1 << SpjParser.LT) | (1 << SpjParser.LE) | (1 << SpjParser.NEQ) | (1 << SpjParser.EQ))) !== 0))) {
 	        this._errHandler.recoverInline(this);
@@ -753,11 +743,11 @@ export default class SpjParser extends antlr4.Parser {
 
 	mathOpPriority() {
 	    let localctx = new MathOpPriorityContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, SpjParser.RULE_mathOpPriority);
+	    this.enterRule(localctx, 22, SpjParser.RULE_mathOpPriority);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 143;
+	        this.state = 137;
 	        _la = this._input.LA(1);
 	        if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << SpjParser.MOD) | (1 << SpjParser.DIV) | (1 << SpjParser.MUL))) !== 0))) {
 	        this._errHandler.recoverInline(this);
@@ -784,11 +774,11 @@ export default class SpjParser extends antlr4.Parser {
 
 	mathOp() {
 	    let localctx = new MathOpContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 20, SpjParser.RULE_mathOp);
+	    this.enterRule(localctx, 24, SpjParser.RULE_mathOp);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 145;
+	        this.state = 139;
 	        _la = this._input.LA(1);
 	        if(!(_la===SpjParser.SUB || _la===SpjParser.ADD)) {
 	        this._errHandler.recoverInline(this);
@@ -815,11 +805,11 @@ export default class SpjParser extends antlr4.Parser {
 
 	bool() {
 	    let localctx = new BoolContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 22, SpjParser.RULE_bool);
+	    this.enterRule(localctx, 26, SpjParser.RULE_bool);
 	    var _la = 0; // Token type
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 147;
+	        this.state = 141;
 	        _la = this._input.LA(1);
 	        if(!(_la===SpjParser.T__0 || _la===SpjParser.T__1)) {
 	        this._errHandler.recoverInline(this);
@@ -883,15 +873,17 @@ SpjParser.WS = 33;
 SpjParser.RULE_prog = 0;
 SpjParser.RULE_s = 1;
 SpjParser.RULE_ifWhileS = 2;
-SpjParser.RULE_seq = 3;
-SpjParser.RULE_stat = 4;
-SpjParser.RULE_assignment = 5;
-SpjParser.RULE_b = 6;
-SpjParser.RULE_e = 7;
-SpjParser.RULE_relOp = 8;
-SpjParser.RULE_mathOpPriority = 9;
-SpjParser.RULE_mathOp = 10;
-SpjParser.RULE_bool = 11;
+SpjParser.RULE_par = 3;
+SpjParser.RULE_seq = 4;
+SpjParser.RULE_statDelimit = 5;
+SpjParser.RULE_stat = 6;
+SpjParser.RULE_assignment = 7;
+SpjParser.RULE_b = 8;
+SpjParser.RULE_e = 9;
+SpjParser.RULE_relOp = 10;
+SpjParser.RULE_mathOpPriority = 11;
+SpjParser.RULE_mathOp = 12;
+SpjParser.RULE_bool = 13;
 
 class ProgContext extends antlr4.ParserRuleContext {
 
@@ -910,6 +902,22 @@ class ProgContext extends antlr4.ParserRuleContext {
 	s() {
 	    return this.getTypedRuleContext(SContext,0);
 	};
+
+	EOF() {
+	    return this.getToken(SpjParser.EOF, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterProg(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitProg(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -938,20 +946,29 @@ class SContext extends antlr4.ParserRuleContext {
         this.ruleIndex = SpjParser.RULE_s;
     }
 
+	par() {
+	    return this.getTypedRuleContext(ParContext,0);
+	};
+
 	seq() {
 	    return this.getTypedRuleContext(SeqContext,0);
 	};
 
-	stat = function(i) {
-	    if(i===undefined) {
-	        i = null;
-	    }
-	    if(i===null) {
-	        return this.getTypedRuleContexts(StatContext);
-	    } else {
-	        return this.getTypedRuleContext(StatContext,i);
-	    }
+	stat() {
+	    return this.getTypedRuleContext(StatContext,0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterS(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitS(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -980,17 +997,80 @@ class IfWhileSContext extends antlr4.ParserRuleContext {
         this.ruleIndex = SpjParser.RULE_ifWhileS;
     }
 
-	seq() {
-	    return this.getTypedRuleContext(SeqContext,0);
+	par() {
+	    return this.getTypedRuleContext(ParContext,0);
 	};
 
 	stat() {
 	    return this.getTypedRuleContext(StatContext,0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterIfWhileS(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitIfWhileS(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitIfWhileS(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+
+
+class ParContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = SpjParser.RULE_par;
+    }
+
+	LPar() {
+	    return this.getToken(SpjParser.LPar, 0);
+	};
+
+	seq() {
+	    return this.getTypedRuleContext(SeqContext,0);
+	};
+
+	RPar() {
+	    return this.getToken(SpjParser.RPar, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterPar(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitPar(this);
+		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof SpjVisitor ) {
+	        return visitor.visitPar(this);
 	    } else {
 	        return visitor.visitChildren(this);
 	    }
@@ -1015,28 +1095,79 @@ class SeqContext extends antlr4.ParserRuleContext {
         this.ruleIndex = SpjParser.RULE_seq;
     }
 
-	LPar() {
-	    return this.getToken(SpjParser.LPar, 0);
-	};
-
-	RPar() {
-	    return this.getToken(SpjParser.RPar, 0);
-	};
-
-	stat = function(i) {
+	statDelimit = function(i) {
 	    if(i===undefined) {
 	        i = null;
 	    }
 	    if(i===null) {
-	        return this.getTypedRuleContexts(StatContext);
+	        return this.getTypedRuleContexts(StatDelimitContext);
 	    } else {
-	        return this.getTypedRuleContext(StatContext,i);
+	        return this.getTypedRuleContext(StatDelimitContext,i);
 	    }
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterSeq(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitSeq(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitSeq(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+
+
+class StatDelimitContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = SpjParser.RULE_statDelimit;
+    }
+
+	stat() {
+	    return this.getTypedRuleContext(StatContext,0);
+	};
+
+	Delimit() {
+	    return this.getToken(SpjParser.Delimit, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterStatDelimit(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitStatDelimit(this);
+		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof SpjVisitor ) {
+	        return visitor.visitStatDelimit(this);
 	    } else {
 	        return visitor.visitChildren(this);
 	    }
@@ -1093,9 +1224,17 @@ class RepeatStatContext extends StatContext {
 	    return this.getTypedRuleContext(BContext,0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterRepeatStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitRepeatStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1141,9 +1280,17 @@ class ForStatContext extends StatContext {
 	    return this.getTypedRuleContext(IfWhileSContext,0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterForStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitForStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1168,6 +1315,18 @@ class AssignStatContext extends StatContext {
 	assignment() {
 	    return this.getTypedRuleContext(AssignmentContext,0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterAssignStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitAssignStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1216,9 +1375,17 @@ class IfStatContext extends StatContext {
 	    return this.getToken(SpjParser.ELSE, 0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterIfStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitIfStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1244,9 +1411,17 @@ class SkipStatContext extends StatContext {
 	    return this.getToken(SpjParser.Skip, 0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterSkipStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitSkipStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1284,9 +1459,17 @@ class WhileStatContext extends StatContext {
 	    return this.getTypedRuleContext(IfWhileSContext,0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterWhileStat(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitWhileStat(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1327,9 +1510,17 @@ class AssignmentContext extends antlr4.ParserRuleContext {
 	    return this.getTypedRuleContext(EContext,0);
 	};
 
-	Delimit() {
-	    return this.getToken(SpjParser.Delimit, 0);
-	};
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterAssignment(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitAssignment(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1390,6 +1581,18 @@ class NegBoolContext extends BContext {
 	    return this.getToken(SpjParser.RPar, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterNegBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitNegBool(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitNegBool(this);
@@ -1413,6 +1616,18 @@ class TrueFalseBoolContext extends BContext {
 	bool() {
 	    return this.getTypedRuleContext(BoolContext,0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterTrueFalseBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitTrueFalseBool(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1445,6 +1660,18 @@ class ParBoolContext extends BContext {
 	RPar() {
 	    return this.getToken(SpjParser.RPar, 0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterParBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitParBool(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1481,6 +1708,18 @@ class RelOpBoolContext extends BContext {
 	    return this.getTypedRuleContext(RelOpContext,0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterRelOpBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitRelOpBool(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitRelOpBool(this);
@@ -1516,6 +1755,18 @@ class OrBoolContext extends BContext {
 	    return this.getToken(SpjParser.OR, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterOrBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitOrBool(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitOrBool(this);
@@ -1550,6 +1801,18 @@ class AndBoolContext extends BContext {
 	AND() {
 	    return this.getToken(SpjParser.AND, 0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterAndBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitAndBool(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1609,6 +1872,18 @@ class MathOpExprContext extends EContext {
 	    return this.getTypedRuleContext(MathOpContext,0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterMathOpExpr(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitMathOpExpr(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitMathOpExpr(this);
@@ -1632,6 +1907,18 @@ class NumExprContext extends EContext {
 	Num() {
 	    return this.getToken(SpjParser.Num, 0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterNumExpr(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitNumExpr(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1665,6 +1952,18 @@ class ParExprContext extends EContext {
 	    return this.getToken(SpjParser.RPar, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterParExpr(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitParExpr(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitParExpr(this);
@@ -1688,6 +1987,18 @@ class VarExprContext extends EContext {
 	Var() {
 	    return this.getToken(SpjParser.Var, 0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterVarExpr(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitVarExpr(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1723,6 +2034,18 @@ class MathOpPriorExprContext extends EContext {
 	mathOpPriority() {
 	    return this.getTypedRuleContext(MathOpPriorityContext,0);
 	};
+
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterMathOpPriorExpr(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitMathOpPriorExpr(this);
+		}
+	}
 
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
@@ -1775,6 +2098,18 @@ class RelOpContext extends antlr4.ParserRuleContext {
 	    return this.getToken(SpjParser.LE, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterRelOp(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitRelOp(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitRelOp(this);
@@ -1814,6 +2149,18 @@ class MathOpPriorityContext extends antlr4.ParserRuleContext {
 	    return this.getToken(SpjParser.MOD, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterMathOpPriority(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitMathOpPriority(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitMathOpPriority(this);
@@ -1849,6 +2196,18 @@ class MathOpContext extends antlr4.ParserRuleContext {
 	    return this.getToken(SpjParser.ADD, 0);
 	};
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterMathOp(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitMathOp(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitMathOp(this);
@@ -1877,6 +2236,18 @@ class BoolContext extends antlr4.ParserRuleContext {
     }
 
 
+	enterRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.enterBool(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof SpjListener ) {
+	        listener.exitBool(this);
+		}
+	}
+
 	accept(visitor) {
 	    if ( visitor instanceof SpjVisitor ) {
 	        return visitor.visitBool(this);
@@ -1894,7 +2265,9 @@ class BoolContext extends antlr4.ParserRuleContext {
 SpjParser.ProgContext = ProgContext; 
 SpjParser.SContext = SContext; 
 SpjParser.IfWhileSContext = IfWhileSContext; 
+SpjParser.ParContext = ParContext; 
 SpjParser.SeqContext = SeqContext; 
+SpjParser.StatDelimitContext = StatDelimitContext; 
 SpjParser.StatContext = StatContext; 
 SpjParser.AssignmentContext = AssignmentContext; 
 SpjParser.BContext = BContext; 

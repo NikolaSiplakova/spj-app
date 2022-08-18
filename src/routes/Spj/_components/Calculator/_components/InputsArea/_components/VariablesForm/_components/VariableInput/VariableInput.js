@@ -1,3 +1,4 @@
+import _ from "lodash"
 import classes from "./VariableInput.module.scss"
 
 const VariableInput = (props) => {
@@ -14,6 +15,8 @@ const VariableInput = (props) => {
         className={classes["text"]}
         id={`input${index}`}
         type="number"
+        onChange={_.noop}
+        onFocus={(e) => e.target.select()}
         name={inputName}
         placeholder="Zadaj hodnotu premennej"
         value={values[`variable${index}`]}

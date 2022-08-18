@@ -1,6 +1,7 @@
 @import "/src/styles/colors.scss";
 
 .outputs {
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
 }
@@ -17,7 +18,6 @@
 
 .arrow-icon {
   color: $error-red;
-  cursor: pointer;
   transform: rotate(180deg);
 
   & > path {

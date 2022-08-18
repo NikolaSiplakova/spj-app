@@ -24,8 +24,20 @@ export default class SpjVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by SpjParser#par.
+	visitPar(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by SpjParser#seq.
 	visitSeq(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by SpjParser#statDelimit.
+	visitStatDelimit(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

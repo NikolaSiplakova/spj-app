@@ -3,30 +3,37 @@ grammar Spj ;
 /*
  * Parser Rules
  */
-prog	: 	s
+prog	: 	s EOF
 		;
 
-s	:	seq
-	|	stat+
+s	:	par
+	|	seq
+	|	stat
 	;
 
 /* statement, (statement), (statement, statement)*/
-ifWhileS	:	seq
+ifWhileS	:	par
 			|	stat
 			;
 
-seq		:	LPar stat+ RPar
+par		:	LPar seq RPar
 		;
 
-stat	:	assignment									#AssignStat
-		|	Skip Delimit?								#SkipStat
-		|	IF b THEN ifWhileS ELSE ifWhileS Delimit?	#IfStat
-		|	WHILE b DO ifWhileS Delimit?				#WhileStat
-		|	FOR assignment TO Num DO ifWhileS Delimit?	#ForStat
-		|	REPEAT ifWhileS UNTIL b	Delimit?			#RepeatStat
+seq		: 	statDelimit (statDelimit)+
 		;
 
-assignment	:	Var Assign e Delimit?
+statDelimit	:	stat Delimit	
+			;
+
+stat	:	assignment							#AssignStat
+		|	Skip								#SkipStat
+		|	IF b THEN ifWhileS ELSE ifWhileS	#IfStat
+		|	WHILE b DO ifWhileS					#WhileStat
+		|	FOR assignment TO Num DO ifWhileS	#ForStat
+		|	REPEAT ifWhileS UNTIL b				#RepeatStat
+		;
+
+assignment	:	Var Assign e
 			;
 
 b	:	bool				#TrueFalseBool

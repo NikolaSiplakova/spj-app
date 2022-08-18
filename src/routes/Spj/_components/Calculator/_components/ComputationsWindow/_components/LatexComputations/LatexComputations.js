@@ -1,5 +1,6 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
+import classnames from "classnames"
 
 import { VISUALIZATION } from "constants/visualizationTypes"
 
@@ -20,6 +21,23 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
     )
   }
 
+  if (visualizationType === VISUALIZATION.LOOP) {
+    return (
+      <div
+        className={classnames(
+          classes["info-title"],
+          classes["info-title--error"]
+        )}
+      >
+        <strong>Detegovaný nekonečený cyklus.</strong> Prosím, zmeň hodnoty
+        premenných alebo program v jayzku Jane a skús to ešte raz.
+      </div>
+    )
+  }
+
+  const finalState =
+    lastRow.changedVariable !== null ? lastRow.state + 1 : lastRow.state
+
   return (
     <Fragment>
       {statementsRows.map((statementsRow, index) => (
@@ -29,7 +47,7 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
           statementsRow={statementsRow}
         />
       ))}
-      <ResultsRow state={lastRow.state} variables={lastRow.variables} />
+      <ResultsRow state={finalState} variables={lastRow.variables} />
     </Fragment>
   )
 }
@@ -40,6 +58,7 @@ LatexComputations.propTypes = {
     VISUALIZATION.NONE,
     VISUALIZATION.ALL_STEPS,
     VISUALIZATION.STEP_BY_STEP,
+    VISUALIZATION.LOOP,
   ]).isRequired,
 }
 

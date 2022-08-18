@@ -85,7 +85,9 @@ const ComputationsWindow = ({
       <div
         className={classnames(classes["table"], {
           [classes["table--whole"]]: isWholeTable === true,
-          [classes["table--info"]]: visualizationType === VISUALIZATION.NONE,
+          [classes["table--info"]]:
+            visualizationType === VISUALIZATION.NONE ||
+            visualizationType === VISUALIZATION.LOOP,
         })}
       >
         <LatexComputations
@@ -112,6 +114,7 @@ ComputationsWindow.propTypes = {
     VISUALIZATION.NONE,
     VISUALIZATION.ALL_STEPS,
     VISUALIZATION.STEP_BY_STEP,
+    VISUALIZATION.LOOP,
   ]).isRequired,
 }
 

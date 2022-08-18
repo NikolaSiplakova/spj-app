@@ -1,1 +1,10 @@
 @import "/src/styles/statements.module.scss";
+
+.delimiter {
+  margin-left: -2px;
+}
+
+.latex-computation {
+  overflow-y: clip;
+  overflow-x: auto;
+}
