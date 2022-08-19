@@ -50,11 +50,11 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     "until",
   ]
   convertToLatex = (keyword) => {
-    if (this.textttKeywords.includes(keyword)) {
-      return `\\texttt{${keyword}}`
-    }
+    //if (this.textttKeywords.includes(keyword)) {
+    return `\\texttt{${keyword}}`
+    //}
 
-    return keyword
+    //return keyword
   }
 
   processSequence = (sequence) => {
