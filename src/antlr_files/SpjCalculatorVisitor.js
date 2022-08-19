@@ -513,7 +513,6 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
 
   visitAssignment(ctx) {
     const assignmentParts = ctx.children.map((child) => child.getText())
-
     const assignmentVar = ctx.children[0].getText()
     const assignmentValue = this.visitChildren(ctx)[2]
 
@@ -529,7 +528,7 @@ export default class SpjCalculatorVisitor extends SpjVisitor {
     return {
       janeStatements: [
         {
-          text: assignmentParts.join(" \\ "),
+          text: assignmentParts.join(""),
           type: null, //null because of highlighting
         },
       ],
