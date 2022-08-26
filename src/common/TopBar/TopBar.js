@@ -1,6 +1,7 @@
 import Button from "common/Button/Button"
 import { React, memo } from "react"
 import { Link } from "react-router-dom"
+import { useIntl } from "react-intl"
 
 import { APP_ROUTES } from "constants/routes"
 
@@ -16,12 +17,13 @@ import classes from "./TopBar.module.scss"
 
 const TopBar = () => {
   const pathName = window.location.pathname
+  const intl = useIntl()
 
   return (
     <div className={classes["top-bar"]}>
       <div className={classes["top-bar__title"]}>
         <TukeLogo />
-        <span>Sémantika programovacích jazykov</span>
+        <span>{intl.formatMessage({ id: "app_title" })}</span>
       </div>
       <div className={classes["navigation"]}>
         <Link
