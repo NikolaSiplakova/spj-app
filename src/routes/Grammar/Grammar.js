@@ -8,10 +8,10 @@ import whilePic from "../../pics/while.png"
 import TopBar from "common/TopBar/TopBar"
 import RuleHolder from "./_components/RuleHolder/RuleHolder"
 
-const Grammar = () => {
+const Grammar = (props) => {
   return (
     <div className="holder">
-      <TopBar />
+      <TopBar language={props.language} setLanguage={props.setLanguage} />
       <div className="grammar">
         <RuleHolder title="Príkaz priradenia" pic={assign} />
         <RuleHolder title="Podmieňovací príkaz" pic={ifPic} />

@@ -1,9 +1,9 @@
 import TopBar from "common/TopBar/TopBar"
 
-function Examples() {
+const Examples = (props) => {
   return (
     <div>
-      <TopBar />
+      <TopBar language={props.language} setLanguage={props.setLanguage} />
       <div>examples</div>
     </div>
   )

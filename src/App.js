@@ -14,7 +14,9 @@ import Spj from "./routes/Spj/Spj"
 import "./App.scss"
 
 function App() {
-  const [language, setLanguage] = useState(LOCALES.SLOVAK)
+  const [language, setLanguage] = useState(
+    localStorage.getItem("locale") ?? LOCALES.SLOVAK
+  )
 
   return (
     <IntlProvider
@@ -24,9 +26,18 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          <Route path={APP_ROUTES.GRAMMAR} element={<Grammar />} />
-          <Route path={APP_ROUTES.EXAMPLES} element={<Examples />} />
-          <Route path={APP_ROUTES.ROOT} element={<Spj />} />
+          <Route
+            path={APP_ROUTES.GRAMMAR}
+            element={<Grammar language={language} setLanguage={setLanguage} />}
+          />
+          <Route
+            path={APP_ROUTES.EXAMPLES}
+            element={<Examples language={language} setLanguage={setLanguage} />}
+          />
+          <Route
+            path={APP_ROUTES.ROOT}
+            element={<Spj language={language} setLanguage={setLanguage} />}
+          />
         </Routes>
       </BrowserRouter>
     </IntlProvider>

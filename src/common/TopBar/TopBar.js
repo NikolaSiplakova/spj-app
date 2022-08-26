@@ -2,6 +2,9 @@ import Button from "common/Button/Button"
 import { React, memo } from "react"
 import { Link } from "react-router-dom"
 import { useIntl } from "react-intl"
+import classnames from "classnames"
+
+import { LOCALES } from "i18n/locales"
 
 import { APP_ROUTES } from "constants/routes"
 
@@ -15,9 +18,14 @@ import enLang from "./langs/langEN.png"
 
 import classes from "./TopBar.module.scss"
 
-const TopBar = () => {
+const TopBar = (props) => {
   const pathName = window.location.pathname
   const intl = useIntl()
+
+  const handleLanguageSwitch = (locale) => {
+    props.setLanguage(locale)
+    localStorage.setItem("locale", locale)
+  }
 
   return (
     <div className={classes["top-bar"]}>
@@ -54,8 +62,22 @@ const TopBar = () => {
           />
         </Link>
         <div className={classes["languages"]}>
-          <img src={skLang} alt="SK" className={classes["lang"]} />
-          <img src={enLang} alt="EN" className={classes["lang"]} />
+          <img
+            src={skLang}
+            alt="SK"
+            className={classnames(classes["lang"], {
+              [classes["lang--disabled"]]: props.language !== LOCALES.SLOVAK,
+            })}
+            onClick={() => handleLanguageSwitch(LOCALES.SLOVAK)}
+          />
+          <img
+            src={enLang}
+            alt="EN"
+            className={classnames(classes["lang"], {
+              [classes["lang--disabled"]]: props.language !== LOCALES.ENGLISH,
+            })}
+            onClick={() => handleLanguageSwitch(LOCALES.ENGLISH)}
+          />
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ import { inputTexts } from "constants/inputTexts"
 import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
-const Spj = () => {
+const Spj = (props) => {
   const [janeCode, setJaneCode] = useState(inputTexts[19])
   const [statements, setStatements] = useState([])
 
@@ -52,7 +52,7 @@ const Spj = () => {
 
   return (
     <div>
-      <TopBar />
+      <TopBar language={props.language} setLanguage={props.setLanguage} />
       <Calculator
         errors={errorListener.errors}
         inputValues={inputValues}
