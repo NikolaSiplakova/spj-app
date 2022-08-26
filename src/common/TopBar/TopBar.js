@@ -26,16 +26,10 @@ const TopBar = () => {
         <span>{intl.formatMessage({ id: "app_title" })}</span>
       </div>
       <div className={classes["navigation"]}>
-        <Link
-          className={classes["navigation__link"]}
-          to={APP_ROUTES.VISUALIZATION}
-        >
+        <Link className={classes["navigation__link"]} to={APP_ROUTES.ROOT}>
           <Button
             primary
-            isActive={
-              APP_ROUTES.VISUALIZATION === pathName ||
-              APP_ROUTES.ROOT === pathName
-            }
+            isActive={APP_ROUTES.ROOT === pathName}
             isExtended
             label="Vizualizácia"
             icon={<VisualizationIcon className={classes["icon"]} />}
