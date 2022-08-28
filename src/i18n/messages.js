@@ -24,6 +24,7 @@ export const messages = {
     forever_loop: "Forever loop was detected.",
     change_var_values:
       "Please, change values of variables or Jane code and try again.",
+    example: "Example"
   },
 
   [LOCALES.SLOVAK]: {
@@ -49,5 +50,6 @@ export const messages = {
     forever_loop: "Detegovany nekonecny cyklus",
     change_var_values:
       "Prosím, zmeň hodnoty premenných alebo program v jazyku Jane a skús to ešte raz.",
+    example: "Príklad"
   },
 }

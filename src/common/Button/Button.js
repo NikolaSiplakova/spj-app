@@ -29,7 +29,7 @@ const Button = (props) => {
       type="button"
     >
       {icon}
-      <div className={classes["button__label"]}>{label}</div>
+      {label !== null && <div className={classes["button__label"]}>{label}</div>}
     </button>
   )
 }
@@ -41,7 +41,6 @@ Button.propTypes = {
   isActive: PropTypes.bool.isRequired,
   isDisabled: PropTypes.bool.isRequired,
   isExtended: PropTypes.bool.isRequired,
-  label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
   primary: PropTypes.bool.isRequired, //orange bckg
   secondary: PropTypes.bool.isRequired, //white bckg
@@ -51,6 +50,7 @@ Button.defaultProps = {
   isActive: false,
   isDisabled: false,
   isExtended: true,
+  label: null,
   onClick: null,
   primary: true,
   secondary: false,
