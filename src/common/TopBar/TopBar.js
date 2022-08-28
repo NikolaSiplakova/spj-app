@@ -39,7 +39,7 @@ const TopBar = (props) => {
             primary
             isActive={APP_ROUTES.ROOT === pathName}
             isExtended
-            label="Vizualizácia"
+            label={intl.formatMessage({ id: "link_visualization" })}
             icon={<VisualizationIcon className={classes["icon"]} />}
           />
         </Link>
@@ -48,7 +48,7 @@ const TopBar = (props) => {
             primary
             isActive={APP_ROUTES.EXAMPLES === pathName}
             isExtended
-            label="Učebnica"
+            label={intl.formatMessage({ id: "link_examples" })}
             icon={<BookIcon className={classes["icon"]} />}
           />
         </Link>
@@ -57,7 +57,7 @@ const TopBar = (props) => {
             primary
             isActive={APP_ROUTES.GRAMMAR === pathName}
             isExtended
-            label="Gramatika"
+            label={intl.formatMessage({ id: "link_grammars" })}
             icon={<QuestionIcon className={classes["icon"]} />}
           />
         </Link>

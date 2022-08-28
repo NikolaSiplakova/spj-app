@@ -1,4 +1,5 @@
 import { React, useEffect, Fragment, memo } from "react"
+import { useIntl } from "react-intl"
 import PropTypes from "prop-types"
 
 import { Formik } from "formik"
@@ -18,6 +19,7 @@ const VariableForm = ({
   setInputValues,
   setVisualizationType,
 }) => {
+  const intl = useIntl()
   const getInitialValues = () =>
     programVariables.reduce(
       (object, key, index) => ({
@@ -74,7 +76,7 @@ const VariableForm = ({
                 <Header
                   action={renderActions()}
                   className={classes["header"]}
-                  title="Premenné"
+                  title={intl.formatMessage({ id: "variables" })}
                 />
                 <form onSubmit={handleSubmit} onChange={handleChange}>
                   <div className={classes["scrollable-holder"]}>

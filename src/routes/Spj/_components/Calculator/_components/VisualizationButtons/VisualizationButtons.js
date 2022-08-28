@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { useIntl } from "react-intl"
 
 import { VISUALIZATION } from "constants/visualizationTypes"
 
@@ -17,6 +18,7 @@ const VisualizationButtons = ({
   setVisualizationType,
   startVisualization,
 }) => {
+  const intl = useIntl()
   const onClickHandle = (visualizationType, count) => {
     setVisualizationType(visualizationType)
     setDisplayedStepsCount(count)
@@ -40,7 +42,7 @@ const VisualizationButtons = ({
         icon={<StepsIcon className={classes["icon"]} />}
         isDisabled={isButtonDisabled}
         isExtended
-        label={"Krok po kroku"}
+        label={intl.formatMessage({ id: "step_by_step" })}
         onClick={() => onClickHandle(VISUALIZATION.STEP_BY_STEP, 1)}
         primary
       />
@@ -48,7 +50,7 @@ const VisualizationButtons = ({
         icon={<VisualizationIcon className={classes["icon"]} />}
         isDisabled={isButtonDisabled}
         isExtended
-        label={"Vizualizácia"}
+        label={intl.formatMessage({ id: "link_visualization" })}
         onClick={() => onClickHandle(VISUALIZATION.ALL_STEPS, null)}
         primary
       />

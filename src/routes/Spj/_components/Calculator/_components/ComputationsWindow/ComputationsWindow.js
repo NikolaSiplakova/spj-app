@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import classnames from "classnames"
+import { useIntl } from "react-intl"
 
 import { VISUALIZATION } from "constants/visualizationTypes"
 
@@ -22,7 +23,7 @@ const ComputationsWindow = ({
   visualizationType,
 }) => {
   const [isWholeTable, setIsWholeTable] = useState(false)
-
+  const intl = useIntl()
   const statementsToDisplay =
     displayedStepsCount === null
       ? statementsRows
@@ -61,7 +62,7 @@ const ComputationsWindow = ({
         <div className={classes["highlight"]}>
           <InfoIcon
             className={classes["actions__action"]}
-            title={"Pravidlá zvýrazňovania"}
+            title={intl.formatMessage({ id: "hightlighting_rules" })}
           />
           <div className={classes["highlight__window"]}>
             <HighlightInfo />
@@ -73,10 +74,10 @@ const ComputationsWindow = ({
 
   const getWindowHeader = () => {
     if (visualizationType === VISUALIZATION.STEP_BY_STEP) {
-      return "Vizualizácia krok po kroku"
+      return intl.formatMessage({ id: "visualization_step_by_step" })
     }
 
-    return "Vizualizácia"
+    return intl.formatMessage({ id: "link_visualization" })
   }
 
   return (

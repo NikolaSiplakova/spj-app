@@ -1,11 +1,12 @@
 import "./NoVariables.scss"
+import { useIntl } from "react-intl"
 
 const NoVariables = (props) => {
+  const intl = useIntl()
   return (
     <div className="info">
       <span className="info__text">
-        Pre zadanie hodnôt premenných musíte zadať program v jazyku Jane do
-        editora.
+        {intl.formatMessage({ id: "empty_variables" })}
       </span>
     </div>
   )

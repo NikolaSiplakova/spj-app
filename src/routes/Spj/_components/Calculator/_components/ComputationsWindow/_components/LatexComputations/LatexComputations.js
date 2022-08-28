@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import classnames from "classnames"
+import { useIntl } from "react-intl"
 
 import { VISUALIZATION } from "constants/visualizationTypes"
 
@@ -10,13 +11,13 @@ import ResultsRow from "./_components/ResultsRow/ResultsRow"
 import classes from "./LatexComputations.module.scss"
 
 const LatexComputations = ({ statementsRows, visualizationType }) => {
+  const intl = useIntl()
   const lastRow = statementsRows[statementsRows.length - 1]
 
   if (visualizationType === VISUALIZATION.NONE) {
     return (
       <div className={classes["info-title"]}>
-        Pre zobrazenie významu zadaného programu je potrebné spustiť
-        vizualizáciu.
+        {intl.formatMessage({ id: "empty_result" })}
       </div>
     )
   }
@@ -29,8 +30,8 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
           classes["info-title--error"]
         )}
       >
-        <strong>Detegovaný nekonečený cyklus.</strong> Prosím, zmeň hodnoty
-        premenných alebo program v jazyku Jane a skús to ešte raz.
+        <strong>{intl.formatMessage({ id: "forever_loop" })}</strong>
+        {intl.formatMessage({ id: "change_var_values" })}
       </div>
     )
   }

@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import classnames from "classnames"
+import { useIntl } from "react-intl"
 
 import { ReactComponent as NextIcon } from "styles/icons/next.svg"
 import { ReactComponent as NextNextIcon } from "styles/icons/next2.svg"
@@ -15,6 +16,7 @@ const StepByStep = ({
   displayedStepsCount,
   setDisplayedStepsCount,
 }) => {
+  const intl = useIntl()
   const handleToTheStartClick = () => {
     setDisplayedStepsCount(1)
   }
@@ -50,7 +52,7 @@ const StepByStep = ({
             [classes["icon--disabled"]]: displayedStepsCount === 1,
           })}
           onClick={handleStepBackClick}
-          title="Krok vzad"
+          title={intl.formatMessage({ id: "step_backward" })}
         />
       </div>
       <StepsIcon
@@ -68,14 +70,14 @@ const StepByStep = ({
             }
           )}
           onClick={handleNextStepClick}
-          title="Krok vpred"
+          title={intl.formatMessage({ id: "step_forward" })}
         />
         <NextNextIcon
           className={classnames(classes["icon"], {
             [classes["icon--disabled"]]: displayedStepsCount === allStepsCount,
           })}
           onClick={handleToTheEndClick}
-          title="Zobraziť všetky kroky"
+          title={intl.formatMessage({ id: "show_all_steps" })}
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { useIntl } from "react-intl"
 
 import AceEditor from "react-ace"
 import "ace-builds/src-noconflict/theme-tomorrow"
@@ -25,7 +26,7 @@ const AceEditorHolder = ({
 }) => {
   //ace editor
   const customHighlightMode = new SyntaxHighlighter()
-
+  const intl = useIntl()
   const renderHeaderActions = () => (
     <div className={classes["header-actions"]}>
       <FileImporter setJaneCode={setJaneCode} />
@@ -37,7 +38,7 @@ const AceEditorHolder = ({
           setVisualizationType(VISUALIZATION.NONE)
           janeEditorRef.current.editor.focus()
         }}
-        title={"Vymazať program"}
+        title={intl.formatMessage({ id: "delete_program" })}
         className={classes["action"]}
       />
     </div>
@@ -51,14 +52,17 @@ const AceEditorHolder = ({
 
   return (
     <div className={classes["editor-holder"]}>
-      <Header action={renderHeaderActions()} title={"Program v jazyku Jane"} />
+      <Header
+        action={renderHeaderActions()}
+        title={intl.formatMessage({ id: "jane_code" })}
+      />
       <AceEditor
         ref={janeEditorRef}
         style={{
           height: "200px",
           width: "100%",
         }}
-        placeholder="Vložte program v jazyku Jane"
+        placeholder={intl.formatMessage({ id: "insert_jane_code" })}
         mode={customHighlightMode}
         theme="tomorrow"
         name="jane-editor"
