@@ -15,6 +15,7 @@ const Grammar = (props) => {
         <Rule title={intl.formatMessage({"id": "conditional_command"})}/>
         <Rule title={intl.formatMessage({"id": "while_command"})}/>
         <Rule title={intl.formatMessage({"id": "repeat_command"})}/>
+        <Rule title={intl.formatMessage({"id": "empty_command"})}/>
       </div>
     </div>
   )

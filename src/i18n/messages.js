@@ -28,6 +28,7 @@ export const messages = {
     conditional_command: "Conditional command",
     while_command: "Cycle while command",
     repeat_command: "Repeat command",
+    empty_command: "Empty command",
   },
 
   [LOCALES.SLOVAK]: {
@@ -57,5 +58,6 @@ export const messages = {
     conditional_command: "Podmieňovací príkaz",
     while_command: "Príkaz cyklu while",
     repeat_command: "Príkaz cyklu repeat",
+    empty_command: "Prázdny príkaz",
   },
 }
