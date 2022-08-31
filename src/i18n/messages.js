@@ -24,6 +24,10 @@ export const messages = {
     forever_loop: "Forever loop was detected.",
     change_var_values:
       "Please, change values of variables or Jane code and try again.",
+    assignment_command: "Assignment command",
+    conditional_command: "Conditional command",
+    while_command: "Cycle while command",
+    repeat_command: "Repeat command",
   },
 
   [LOCALES.SLOVAK]: {
@@ -49,5 +53,9 @@ export const messages = {
     forever_loop: "Detegovany nekonecny cyklus",
     change_var_values:
       "Prosím, zmeň hodnoty premenných alebo program v jazyku Jane a skús to ešte raz.",
+    assignment_command: "Príkaz priradenia",
+    conditional_command: "Podmieňovací príkaz",
+    while_command: "Príkaz cyklu while",
+    repeat_command: "Príkaz cyklu repeat",
   },
 }

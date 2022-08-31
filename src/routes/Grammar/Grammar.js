@@ -1,22 +1,20 @@
-import "./Grammar.scss"
+import classes from "./Grammar.module.scss"
 import React from "react"
-import assign from "../../pics/assign.png" // Tell Webpack this JS file uses this image
-import ifPic from "../../pics/if.png"
-import repeat from "../../pics/repeat.png" // Tell Webpack this JS file uses this image
-import whilePic from "../../pics/while.png"
+import { useIntl } from "react-intl"
 
 import TopBar from "common/TopBar/TopBar"
-import RuleHolder from "./_components/RuleHolder/RuleHolder"
+import Rule from "./_components/Rule/Rule"
 
 const Grammar = (props) => {
+  const intl = useIntl()
   return (
-    <div className="holder">
+    <div className={classes["holder"]}>
       <TopBar language={props.language} setLanguage={props.setLanguage} />
-      <div className="grammar">
-        <RuleHolder title="Príkaz priradenia" pic={assign} />
-        <RuleHolder title="Podmieňovací príkaz" pic={ifPic} />
-        <RuleHolder title="Príkaz cyklu while" pic={whilePic} />
-        <RuleHolder title="Príkaz cyklu repeat" pic={repeat} />
+      <div className={classes["grammar"]}>
+        <Rule title={intl.formatMessage({"id": "assignment_command"})}/>
+        <Rule title={intl.formatMessage({"id": "conditional_command"})}/>
+        <Rule title={intl.formatMessage({"id": "while_command"})}/>
+        <Rule title={intl.formatMessage({"id": "repeat_command"})}/>
       </div>
     </div>
   )

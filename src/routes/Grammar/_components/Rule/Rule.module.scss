@@ -1,0 +1,10 @@
+@import "/src/styles/colors.scss";
+
+$card-border-width: 3px;
+
+.rule-body {
+  border-bottom: $card-border-width solid $greyish-blue;
+  border-left: $card-border-width solid $greyish-blue;
+  border-right: $card-border-width solid $greyish-blue;
+  padding: 16px;
+}
