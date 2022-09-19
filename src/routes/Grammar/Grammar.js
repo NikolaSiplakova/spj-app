@@ -11,11 +11,11 @@ const Grammar = (props) => {
     <div className={classes["holder"]}>
       <TopBar language={props.language} setLanguage={props.setLanguage} />
       <div className={classes["grammar"]}>
-        <Rule title={intl.formatMessage({"id": "assignment_command"})}/>
-        <Rule title={intl.formatMessage({"id": "conditional_command"})}/>
-        <Rule title={intl.formatMessage({"id": "while_command"})}/>
-        <Rule title={intl.formatMessage({"id": "repeat_command"})}/>
-        <Rule title={intl.formatMessage({"id": "empty_command"})}/>
+        <Rule title={intl.formatMessage({ id: "conditional_command" })} />
+        <Rule title={intl.formatMessage({ id: "while_command" })} />
+        <Rule title={intl.formatMessage({ id: "repeat_command" })} />
+        <Rule title={intl.formatMessage({ id: "empty_command" })} />
+        <Rule title={intl.formatMessage({ id: "assignment_command" })} />
       </div>
     </div>
   )
