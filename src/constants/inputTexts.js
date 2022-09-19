@@ -101,9 +101,9 @@ export const inputTexts = [
 
   //28 x=5 y=10 a=0 b=0 -> 5, 10, 0, 10, s1
   `if y<=x then 
-    if a<=x then b:=x else b:=a 
+    if a<=x then max:=x else max:=a 
   else 
-    if a<=y then b:=y else b:=a `,
+    if a<=y then max:=y else max:=a `,
 
   /********************  FOR  ********************/
 

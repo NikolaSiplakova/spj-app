@@ -3,7 +3,7 @@ import { React, memo } from "react"
 import { Link } from "react-router-dom"
 import { useIntl } from "react-intl"
 import classnames from "classnames"
-
+import _ from "lodash"
 import { LOCALES } from "i18n/locales"
 
 import { APP_ROUTES } from "constants/routes"
@@ -34,7 +34,13 @@ const TopBar = (props) => {
         <span>{intl.formatMessage({ id: "app_title" })}</span>
       </div>
       <div className={classes["navigation"]}>
-        <Link className={classes["navigation__link"]} to={APP_ROUTES.ROOT}>
+        <Link
+          className={classes["navigation__link"]}
+          to={APP_ROUTES.ROOT}
+          onClick={
+            APP_ROUTES.ROOT === pathName ? window.location.reload : _.noop
+          }
+        >
           <Button
             primary
             isActive={APP_ROUTES.ROOT === pathName}

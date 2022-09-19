@@ -20,14 +20,14 @@ const VariableForm = ({
   setVisualizationType,
 }) => {
   const intl = useIntl()
+
   const getInitialValues = () =>
-    programVariables.reduce(
-      (object, key, index) => ({
+    programVariables.reduce((object, key, index) => {
+      return {
         ...object,
-        [`variable${index}`]: 0,
-      }),
-      {}
-    )
+        [`variable${index}`]: key.value,
+      }
+    }, {})
 
   useEffect(() => {
     onSubmitFunc(getInitialValues())

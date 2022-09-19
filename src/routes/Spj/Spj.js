@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import SpjErrorListener from "antlr_files/errors/SpjErrorListener"
 import antlr4 from "antlr4"
 import SpjPlainCalculatorVisitor from "antlr_files/SpjPlainCalculatorVisitor"
@@ -11,8 +11,14 @@ import { inputTexts } from "constants/inputTexts"
 import Calculator from "./_components/Calculator/Calculator"
 import TopBar from "common/TopBar/TopBar"
 
+import { useLocation } from "react-router-dom"
+
 const Spj = (props) => {
-  const [janeCode, setJaneCode] = useState(inputTexts[19])
+  const location = useLocation()
+
+  const [janeCode, setJaneCode] = useState(
+    location.state?.initialJaneCode ?? ""
+  )
   const [statements, setStatements] = useState([])
 
   //errors
@@ -41,6 +47,24 @@ const Spj = (props) => {
 
   const [inputValues, setInputValues] = useState([])
 
+  useEffect(() => {
+    if (location.state !== null) {
+      console.log("if")
+      console.log(location.state)
+      setInputValues(location.state.initialValues)
+      window.history.replaceState(null, "")
+      console.log(location.state)
+      return
+    }
+    setJaneCode("")
+    setInputValues(programVariables)
+  }, [location.state])
+
+  const getProgramVariables = () => {
+    return programVariables.map((programVariable, i) =>
+      Object.assign({}, programVariable, inputValues[i])
+    )
+  }
   //2. visitor
 
   const calculator = new SpjCalculatorVisitor(inputValues)
@@ -57,7 +81,7 @@ const Spj = (props) => {
         errors={errorListener.errors}
         inputValues={inputValues}
         janeCode={janeCode}
-        programVariables={programVariables}
+        programVariables={getProgramVariables()}
         setInputValues={setInputValues}
         setJaneCode={setJaneCode}
         startVisualization={startVisualization}

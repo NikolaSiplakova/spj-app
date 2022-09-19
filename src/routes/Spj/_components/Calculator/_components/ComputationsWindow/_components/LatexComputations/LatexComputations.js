@@ -30,7 +30,7 @@ const LatexComputations = ({ statementsRows, visualizationType }) => {
           classes["info-title--error"]
         )}
       >
-        <strong>{intl.formatMessage({ id: "forever_loop" })}</strong>
+        <strong>{intl.formatMessage({ id: "forever_loop" })}</strong>&nbsp;
         {intl.formatMessage({ id: "change_var_values" })}
       </div>
     )
